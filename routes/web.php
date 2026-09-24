@@ -40,7 +40,9 @@ use App\Http\Controllers\Pelanggan\ETicketController as PelangganETicketControll
 */
 
 Route::get('/', function () {
-    return view('index');
+    $paketWisata = \App\Models\PaketWisata::with('jadwalTour')->get();
+
+    return view('index', compact('paketWisata'));
 });
 
 

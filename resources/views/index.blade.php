@@ -1063,7 +1063,7 @@
 
         <!-- ================= TOMBOL ADMIN ================= -->
 
-        @if(auth()->user()->role === 'admin')
+        @if(auth()->check() && auth()->user()->role === 'admin')
 
             <div class="admin-area">
 
@@ -1079,7 +1079,8 @@
 
         <!-- ================= FORM ADMIN ================= -->
 
-        @if(auth()->user()->role === 'admin')
+        @if(auth()->check() && auth()->user()->role === 'admin')
+
 
             <div class="form-wrapper" id="form-tambah">
 
