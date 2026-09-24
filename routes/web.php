@@ -40,7 +40,7 @@ use App\Http\Controllers\Pelanggan\ETicketController as PelangganETicketControll
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 
