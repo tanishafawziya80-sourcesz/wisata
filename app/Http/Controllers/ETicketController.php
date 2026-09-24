@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class PegawaiETicketController extends Controller
+class ETicketController extends Controller
 {
     public function index()
     {
