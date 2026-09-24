@@ -12,21 +12,22 @@ class PembayaranController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | INDEX
+    | HALAMAN PEMBAYARAN
     |--------------------------------------------------------------------------
     */
 
     public function index()
     {
         $pemesanan = Pemesanan::with([
-            'paketWisata',
-            'pembayaran',
-        ])
+    'pelanggan',
+    'jadwalTour',
+    'pembayaran',
+])
         ->where(
             'id_pelanggan',
             Auth::user()->id_user
         )
-        ->latest('created_at')
+        ->latest('id_pemesanan')
         ->get();
 
         return view(
@@ -38,17 +39,23 @@ class PembayaranController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | UPLOAD BUKTI
+    | SIMPAN PEMBAYARAN
     |--------------------------------------------------------------------------
     */
 
-    public function upload(Request $request)
+    public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
 
             'id_pemesanan' => [
                 'required',
                 'exists:pemesanan,id_pemesanan'
+            ],
+
+            'metode_pembayaran' => [
+                'required',
+                'string',
+                'in:transfer_bank,qris,e_wallet'
             ],
 
             'bukti_pembayaran' => [
@@ -61,9 +68,15 @@ class PembayaranController extends Controller
         ]);
 
 
+        /*
+        |--------------------------------------------------------------------------
+        | PASTIKAN PESANAN MILIK PELANGGAN
+        |--------------------------------------------------------------------------
+        */
+
         $pemesanan = Pemesanan::where(
             'id_pemesanan',
-            $request->id_pemesanan
+            $data['id_pemesanan']
         )
         ->where(
             'id_pelanggan',
@@ -72,38 +85,70 @@ class PembayaranController extends Controller
         ->firstOrFail();
 
 
-        $pembayaran =
-            Pembayaran::firstOrNew([
+        /*
+        |--------------------------------------------------------------------------
+        | UPLOAD BUKTI PEMBAYARAN
+        |--------------------------------------------------------------------------
+        */
 
+        $path = $request
+            ->file('bukti_pembayaran')
+            ->store(
+                'bukti-pembayaran',
+                'public'
+            );
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | SIMPAN DATA PEMBAYARAN
+        |--------------------------------------------------------------------------
+        */
+
+        Pembayaran::updateOrCreate(
+
+            [
                 'id_pemesanan' =>
                     $pemesanan->id_pemesanan,
+            ],
 
-            ]);
+            [
+                'metode_pembayaran' =>
+                    $data['metode_pembayaran'],
+
+                'status_pembayaran' =>
+                    'menunggu',
+
+                'bukti_pembayaran' =>
+                    $path,
+            ]
+
+        );
 
 
-        $path =
-            $request
-                ->file('bukti_pembayaran')
-                ->store(
-                    'bukti-pembayaran',
-                    'public'
-                );
-
-
-        $pembayaran->bukti_pembayaran =
-            $path;
-
-        $pembayaran->status_pembayaran =
-            'menunggu';
-
-        $pembayaran->save();
-
+        /*
+        |--------------------------------------------------------------------------
+        | KEMBALI KE HALAMAN PEMBAYARAN
+        |--------------------------------------------------------------------------
+        */
 
         return redirect()
             ->route('pelanggan.pembayaran')
             ->with(
                 'success',
-                'Bukti pembayaran berhasil dikirim dan sedang diproses.'
+                'Pembayaran berhasil dikirim. Silakan menunggu persetujuan pegawai.'
             );
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | UPLOAD BUKTI — UNTUK KOMPATIBILITAS ROUTE LAMA
+    |--------------------------------------------------------------------------
+    */
+
+    public function upload(Request $request)
+    {
+        return $this->store($request);
     }
 }

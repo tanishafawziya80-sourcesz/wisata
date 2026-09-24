@@ -8,7 +8,6 @@
     <title>Pengguna - WISATA.</title>
 
     <style>
-
         * {
             margin: 0;
             padding: 0;
@@ -32,31 +31,29 @@
             background-attachment: fixed;
 
             padding: 40px;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
         }
 
         .container {
-    width: calc(100% - 305px);
-    max-width: none;
-
-    margin-left: 285px;
-    margin-right: 20px;
-}
+            width: 100%;
+            max-width: 1100px;
+        }
 
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-
             margin-bottom: 30px;
         }
 
         .logo {
             color: white;
             text-decoration: none;
-
             font-size: 30px;
             font-weight: 800;
-
             letter-spacing: 2px;
         }
 
@@ -66,14 +63,12 @@
 
         .back {
             padding: 12px 20px;
-
             border-radius: 25px;
 
             color: white;
             text-decoration: none;
 
             background: rgba(255,255,255,.13);
-
             border: 1px solid rgba(255,255,255,.25);
 
             backdrop-filter: blur(15px);
@@ -91,16 +86,12 @@
 
             border-radius: 30px;
 
-            background:
-                rgba(255,255,255,.13);
-
-            border:
-                1px solid rgba(255,255,255,.25);
+            background: rgba(255,255,255,.13);
+            border: 1px solid rgba(255,255,255,.25);
 
             backdrop-filter: blur(22px);
 
-            box-shadow:
-                0 30px 80px rgba(0,0,0,.25);
+            box-shadow: 0 30px 80px rgba(0,0,0,.25);
 
             overflow-x: auto;
         }
@@ -109,7 +100,6 @@
             color: #a7e2ff;
 
             font-size: 12px;
-
             letter-spacing: 4px;
 
             text-transform: uppercase;
@@ -132,6 +122,7 @@
 
         .table-wrapper {
             width: 100%;
+
             overflow-x: auto;
 
             border-radius: 20px;
@@ -139,7 +130,8 @@
 
         table {
             width: 100%;
-            min-width: 850px;
+
+            min-width: 950px;
 
             border-collapse: collapse;
 
@@ -160,17 +152,20 @@
             font-size: 13px;
 
             letter-spacing: .5px;
+
+            white-space: nowrap;
         }
 
         td {
             padding: 17px 15px;
 
-            border-top:
-                1px solid rgba(255,255,255,.12);
+            border-top: 1px solid rgba(255,255,255,.12);
 
             color: rgba(255,255,255,.88);
 
             font-size: 14px;
+
+            white-space: nowrap;
         }
 
         tbody tr {
@@ -190,8 +185,7 @@
 
             background: rgba(157,220,255,.18);
 
-            border:
-                1px solid rgba(157,220,255,.25);
+            border: 1px solid rgba(157,220,255,.25);
 
             color: #c8efff;
 
@@ -204,13 +198,11 @@
 
         .number {
             width: 45px;
-
             height: 45px;
 
             display: flex;
 
             align-items: center;
-
             justify-content: center;
 
             border-radius: 14px;
@@ -239,12 +231,15 @@
 
             background: rgba(255,255,255,.10);
 
-            border:
-                1px solid rgba(255,255,255,.18);
+            border: 1px solid rgba(255,255,255,.18);
 
             color: #dff5ff;
 
             font-size: 13px;
+        }
+
+        .login-belum {
+            opacity: .6;
         }
 
         @media (max-width: 700px) {
@@ -255,6 +250,7 @@
 
             .header {
                 align-items: flex-start;
+
                 gap: 15px;
             }
 
@@ -266,348 +262,193 @@
                 padding: 25px;
             }
         }
-
-        .sidebar {
-    position: fixed;
-
-    left: 20px;
-    top: 20px;
-    bottom: 20px;
-
-    width: 255px;
-
-    padding: 30px 20px;
-
-    border-radius: 30px;
-
-    background:
-        rgba(8, 65, 88, .88);
-
-    border:
-        1px solid rgba(255,255,255,.18);
-
-    backdrop-filter: blur(22px);
-
-    box-shadow:
-        0 25px 60px rgba(0,0,0,.18);
-
-    display: flex;
-    flex-direction: column;
-
-    z-index: 1000;
-}
-
-.sidebar .logo {
-    padding: 5px 12px 28px;
-
-    font-size: 28px;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    color: white;
-}
-
-.sidebar-menu a {
-    display: flex;
-
-    align-items: center;
-
-    gap: 13px;
-
-    padding: 13px 14px;
-
-    border-radius: 18px;
-
-    color: rgba(255,255,255,.78);
-
-    text-decoration: none;
-
-    font-size: 13px;
-
-    transition: .3s;
-}
-
-.sidebar-menu a:hover {
-    background: rgba(255,255,255,.12);
-
-    color: white;
-
-    transform: translateX(4px);
-}
-
-.sidebar-menu a.active {
-    background: rgba(255,255,255,.15);
-
-    color: white;
-
-    border:
-        1px solid rgba(255,255,255,.15);
-}
-
-.sidebar-logout {
-    margin-top: auto;
-
-    padding-top: 18px;
-
-    border-top:
-        1px solid rgba(255,255,255,.15);
-}
-
-.sidebar-logout button {
-    width: 100%;
-
-    padding: 13px 15px;
-
-    border: none;
-
-    border-radius: 18px;
-
-    background: rgba(255,255,255,.12);
-
-    border:
-        1px solid rgba(255,255,255,.18);
-
-    color: white;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition: .3s;
-}
-
-.sidebar-logout button:hover {
-    background: rgba(255,255,255,.20);
-
-    transform: translateY(-2px);
-}
-
-
-/* =========================================
-   FIX SIDEBAR + CONTENT
-========================================= */
-
-@media (max-width: 1000px) {
-
-    .container {
-        width: calc(100% - 285px);
-        margin-left: 270px;
-        margin-right: 15px;
-    }
-
-}
-
-@media (max-width: 700px) {
-
-    .sidebar {
-        position: relative;
-
-        left: auto;
-        top: auto;
-        bottom: auto;
-
-        width: 100%;
-
-        margin-bottom: 25px;
-    }
-
-    .container {
-        width: 100%;
-        margin: 0;
-    }
-
-    body {
-        padding: 20px;
-    }
-
-}
-
     </style>
-
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <div class="header">
+        <!-- HEADER -->
 
-        <a href="/admin/dashboard" class="logo">
-            WISATA<span>.</span>
-        </a>
+        <div class="header">
 
-        <a href="/admin/dashboard" class="back">
-            ← Kembali ke Dashboard
-        </a>
+            <a href="/admin/dashboard" class="logo">
+                WISATA<span>.</span>
+            </a>
 
-    </div>
+            <a href="/admin/dashboard" class="back">
+                &larr; Kembali ke Dashboard
+            </a>
 
-
-    <div class="card">
-
-        <div class="small-title">
-            Admin Management
-        </div>
-
-        <h1>
-            Pengguna Website
-        </h1>
-
-        <p class="subtitle">
-            Melihat data pengguna yang terdaftar dan menggunakan
-            sistem perjalanan wisata WISATA.
-        </p>
-
-        <div class="total">
-            👥 Total Pengguna: <strong>{{ $pengguna->count() }}</strong>
         </div>
 
 
-        <div class="table-wrapper">
+        <!-- CARD -->
 
-            <table>
+        <div class="card">
 
-                <thead>
+            <div class="small-title">
+                Admin Management
+            </div>
 
-                    <tr>
+            <h1>
+                Pengguna Website
+            </h1>
 
-                        <th>No</th>
+            <p class="subtitle">
+                Melihat data pengguna yang terdaftar dan menggunakan
+                sistem perjalanan wisata WISATA.
+            </p>
 
-                        <th>Nama Lengkap</th>
 
-                        <th>Email</th>
+            <!-- TOTAL -->
 
-                        <th>No. Telepon</th>
+            <div class="total">
+                Total Pengguna:
+                <strong>{{ $pengguna->count() }}</strong>
+            </div>
 
-                        <th>Role</th>
 
-                        <th>Tanggal Daftar</th>
+            <!-- TABLE -->
 
-                    </tr>
+            <div class="table-wrapper">
 
-                </thead>
+                <table>
 
-                <tbody>
-
-                    @forelse ($pengguna as $user)
+                    <thead>
 
                         <tr>
 
-                            <td>
-                                <div class="number">
-                                    {{ $loop->iteration }}
-                                </div>
-                            </td>
+                            <th>No</th>
 
-                            <td>
-                                <strong>
-                                    {{ $user->nama_lengkap }}
-                                </strong>
-                            </td>
+                            <th>Nama Lengkap</th>
 
-                            <td>
-                                {{ $user->email }}
-                            </td>
+                            <th>Email</th>
 
-                            <td>
-                                {{ $user->no_telepon ?? '-' }}
-                            </td>
+                            <th>No. Telepon</th>
 
-                            <td>
+                            <th>Role</th>
 
-                                <span class="role">
-                                    {{ $user->role }}
-                                </span>
+                            <th>Tanggal Daftar</th>
 
-                            </td>
-
-                            <td>
-    {{ \Carbon\Carbon::parse($user->created_at)->format('d M Y') }}
-</td>
+                            <th>Login Terakhir</th>
 
                         </tr>
 
-                    @empty
+                    </thead>
 
-                        <tr>
 
-                            <td colspan="6">
+                    <tbody>
 
-                                <div class="empty">
+                        @forelse ($pengguna as $user)
 
-                                    👥
+                            <tr>
 
-                                    <br><br>
+                                <!-- NO -->
 
-                                    Belum ada pengguna yang terdaftar.
+                                <td>
 
-                                </div>
+                                    <div class="number">
+                                        {{ $loop->iteration }}
+                                    </div>
 
-                            </td>
+                                </td>
 
-                        </tr>
 
-                    @endforelse
+                                <!-- NAMA -->
 
-                </tbody>
+                                <td>
 
-            </table>
+                                    <strong>
+                                        {{ $user->nama_lengkap }}
+                                    </strong>
+
+                                </td>
+
+
+                                <!-- EMAIL -->
+
+                                <td>
+                                    {{ $user->email }}
+                                </td>
+
+
+                                <!-- TELEPON -->
+
+                                <td>
+                                    {{ $user->no_telepon ?? '-' }}
+                                </td>
+
+
+                                <!-- ROLE -->
+
+                                <td>
+
+                                    <span class="role">
+                                        {{ $user->role }}
+                                    </span>
+
+                                </td>
+
+
+                                <!-- TANGGAL DAFTAR -->
+
+                                <td>
+
+                                    {{ $user->created_at
+                                        ? \Carbon\Carbon::parse($user->created_at)->format('d M Y')
+                                        : '-'
+                                    }}
+
+                                </td>
+
+
+                                <!-- LOGIN TERAKHIR -->
+
+                                <td>
+
+                                    @if ($user->last_login_at)
+
+                                        {{ \Carbon\Carbon::parse($user->last_login_at)->format('d M Y H:i') }}
+
+                                    @else
+
+                                        <span class="login-belum">
+                                            Belum pernah login
+                                        </span>
+
+                                    @endif
+
+                                </td>
+
+                            </tr>
+
+                        @empty
+
+                            <tr>
+
+                                <td colspan="7">
+
+                                    <div class="empty">
+                                        Belum ada pengguna yang terdaftar.
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        @endforelse
+
+                    </tbody>
+
+                </table>
+
+            </div>
 
         </div>
 
     </div>
-
-</div>
-
-<aside class="sidebar">
-
-    <a href="/admin/dashboard" class="logo">
-        WISATA<span>.</span>
-    </a>
-
-
-    <div class="sidebar-menu">
-
-        <a href="/admin/dashboard">
-            🏠
-            <span>Dashboard</span>
-        </a>
-
-        <a href="/admin/paket-wisata">
-            🌴
-            <span>Paket Wisata</span>
-        </a>
-
-        <a href="#">
-            📅
-            <span>Jadwal Tour</span>
-        </a>
-
-        <a href="/admin/pengguna">
-            👥
-            <span>Pengguna</span>
-        </a>
-
-    </div>
-
-
-    <div class="sidebar-logout">
-
-        <form action="/logout" method="POST">
-
-            @csrf
-
-            <button type="submit">
-                🚪 &nbsp; Logout
-            </button>
-
-        </form>
-
-    </div>
-
-</aside>
 
 </body>
 

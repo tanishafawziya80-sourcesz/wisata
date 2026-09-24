@@ -1453,7 +1453,9 @@
 
 <!-- E-TICKET -->
 
-<a href="/pegawai/e-ticket" class="card">
+<a href="/pegawai/e-ticket"
+   class="card"
+   style="text-decoration: none;">
 
     <div class="icon">
         03
@@ -1514,7 +1516,6 @@
 
 
 </div>
-
 
 </section>
 

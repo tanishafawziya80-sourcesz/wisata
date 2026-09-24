@@ -4,14 +4,16 @@ namespace App\Http\Controllers\Pegawai;
 
 use App\Http\Controllers\Controller;
 use App\Models\ETicket;
+use App\Models\Pemesanan;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Str;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ETicketController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | HALAMAN DATA E-TICKET
+    | DATA E-TICKET
     |--------------------------------------------------------------------------
     */
 
@@ -19,41 +21,188 @@ class ETicketController extends Controller
     {
         $eTickets = ETicket::with([
             'pemesanan.pelanggan',
-            'pemesanan.pembayaran'
+            'pemesanan.pembayaran',
+            'pemesanan.jadwalTour'
         ])
-        ->latest()
+        ->latest('id_ticket')
+        ->get();
+
+        $pemesananSiapTerbit = Pemesanan::with([
+            'pelanggan',
+            'pembayaran',
+            'jadwalTour'
+        ])
+        ->where('status_pemesanan', 'disetujui')
+        ->whereHas('pembayaran', function ($query) {
+            $query->where(
+                'status_pembayaran',
+                'disetujui'
+            );
+        })
+        ->whereDoesntHave('eTicket')
+        ->latest('id_pemesanan')
         ->get();
 
         return view(
             'pegawai.e-ticket.index',
-            compact('eTickets')
+            compact(
+                'eTickets',
+                'pemesananSiapTerbit'
+            )
         );
     }
 
 
     /*
     |--------------------------------------------------------------------------
-    | DOWNLOAD E-TICKET PDF
+    | TERBITKAN E-TICKET
+    |--------------------------------------------------------------------------
+    */
+
+    public function terbitkan($id_pemesanan)
+    {
+        $pemesanan = Pemesanan::with([
+            'pelanggan',
+            'jadwalTour',
+            'pembayaran'
+        ])
+        ->findOrFail($id_pemesanan);
+
+        /*
+        |--------------------------------------------------------------------------
+        | PEMBAYARAN HARUS SUDAH DISETUJUI
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            !$pemesanan->pembayaran ||
+            $pemesanan->pembayaran->status_pembayaran !== 'disetujui'
+        ) {
+            return redirect()
+                ->route('pegawai.e-ticket.index')
+                ->with(
+                    'error',
+                    'E-Ticket belum dapat diterbitkan karena pembayaran belum disetujui.'
+                );
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | PEMESANAN HARUS SUDAH DISETUJUI
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            $pemesanan->status_pemesanan !== 'disetujui'
+        ) {
+            return redirect()
+                ->route('pegawai.e-ticket.index')
+                ->with(
+                    'error',
+                    'Pemesanan belum disetujui.'
+                );
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | CEK TIKET
+        |--------------------------------------------------------------------------
+        */
+
+        $ticket = ETicket::where(
+            'id_pemesanan',
+            $pemesanan->id_pemesanan
+        )->first();
+
+        if ($ticket) {
+            return redirect()
+                ->route('pegawai.e-ticket.index')
+                ->with(
+                    'error',
+                    'E-Ticket untuk pemesanan ini sudah diterbitkan.'
+                );
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | NOMOR TICKET
+        |--------------------------------------------------------------------------
+        */
+
+        $nomorTicket =
+            'FZ-' .
+            now()->format('Ymd') .
+            '-' .
+            strtoupper(
+                Str::random(6)
+            );
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | SIMPAN E-TICKET
+        |--------------------------------------------------------------------------
+        */
+
+        ETicket::create([
+            'id_pemesanan' =>
+                $pemesanan->id_pemesanan,
+
+            'nomor_ticket' =>
+                $nomorTicket,
+
+            'file_pdf' =>
+                null,
+
+            'tgl_terbit' =>
+                now(),
+        ]);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | UPDATE STATUS PEMESANAN
+        |--------------------------------------------------------------------------
+        */
+
+        $pemesanan->update([
+            'status_pemesanan' => 'selesai',
+        ]);
+
+
+        return redirect()
+            ->route('pegawai.e-ticket.index')
+            ->with(
+                'success',
+                'E-Ticket berhasil diterbitkan untuk ' .
+                ($pemesanan->pelanggan->nama_lengkap ?? 'pelanggan') .
+                '.'
+            );
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | DOWNLOAD E-TICKET
     |--------------------------------------------------------------------------
     */
 
     public function download($id)
     {
-        /*
-        |--------------------------------------------------------------------------
-        | AMBIL DATA TICKET
-        |--------------------------------------------------------------------------
-        */
-
         $ticket = ETicket::with([
             'pemesanan.pelanggan',
-            'pemesanan.pembayaran'
-        ])->findOrFail($id);
+            'pemesanan.pembayaran',
+            'pemesanan.jadwalTour'
+        ])
+        ->findOrFail($id);
 
 
         /*
         |--------------------------------------------------------------------------
-        | KODE BOOKING
+        | DATA DASAR
         |--------------------------------------------------------------------------
         */
 
@@ -61,41 +210,43 @@ class ETicketController extends Controller
             $ticket->pemesanan->kode_booking
             ?? '-';
 
+        $namaPelanggan =
+            $ticket->pemesanan->pelanggan->nama_lengkap
+            ?? '-';
+
 
         /*
         |--------------------------------------------------------------------------
-        | DATA QR CODE
+        | DATA QR
         |--------------------------------------------------------------------------
         */
 
         $qrData =
             "FAWZATA TRAVEL\n" .
-            "E-TICKET\n" .
+            "E-TICKET WISATA\n" .
             "Nomor Ticket: " .
             $ticket->nomor_ticket .
             "\n" .
             "Kode Booking: " .
-            $kodeBooking;
+            $kodeBooking .
+            "\n" .
+            "Nama: " .
+            $namaPelanggan;
 
 
         /*
         |--------------------------------------------------------------------------
         | GENERATE QR CODE
         |--------------------------------------------------------------------------
-        |
-        | Hasil QR dibuat dalam format PNG.
-        | PNG kemudian diubah menjadi Base64
-        | supaya dapat langsung dimasukkan ke PDF.
-        |
         */
 
-       $qrCode = base64_encode(
-    QrCode::format('svg')
-        ->size(300)
-        ->margin(2)
-        ->errorCorrection('H')
-        ->generate($qrData)
-);
+        $qrCode = base64_encode(
+            QrCode::format('svg')
+                ->size(300)
+                ->margin(2)
+                ->errorCorrection('H')
+                ->generate($qrData)
+        );
 
 
         /*
@@ -117,27 +268,18 @@ class ETicketController extends Controller
         |--------------------------------------------------------------------------
         | UKURAN PDF
         |--------------------------------------------------------------------------
-        |
-        | Landscape dipakai supaya tiket yang lebar
-        | tidak terpotong di bagian kanan.
-        |
         */
 
-        $pdf->setPaper('a4', 'landscape');
+        $pdf->setPaper(
+            'a4',
+            'landscape'
+        );
 
 
         /*
         |--------------------------------------------------------------------------
         | NAMA FILE
         |--------------------------------------------------------------------------
-        |
-        | Jangan langsung menggunakan file_pdf dari database
-        | karena bisa saja isinya berupa path seperti:
-        |
-        | storage/e-ticket/ticket-1.pdf
-        |
-        | Sedangkan download() hanya menerima nama file.
-        |
         */
 
         $filename =
@@ -150,10 +292,6 @@ class ETicketController extends Controller
         |--------------------------------------------------------------------------
         | BERSIHKAN NAMA FILE
         |--------------------------------------------------------------------------
-        |
-        | Menghindari karakter / atau \ yang menyebabkan
-        | error Symfony HeaderUtils.
-        |
         */
 
         $filename = preg_replace(
@@ -169,6 +307,8 @@ class ETicketController extends Controller
         |--------------------------------------------------------------------------
         */
 
-        return $pdf->download($filename);
+        return $pdf->download(
+            $filename
+        );
     }
 }

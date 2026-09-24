@@ -9,34 +9,39 @@ use App\Models\User;
 class AuthController extends Controller
 {
     public function login(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+{
+    $credentials = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
+
+    if (Auth::attempt($credentials)) {
+
+        $request->session()->regenerate();
+
+        $user = Auth::user();
+
+        // CATAT LOGIN TERAKHIR
+        $user->update([
+            'last_login_at' => now(),
         ]);
 
-        if (Auth::attempt($credentials)) {
-
-            $request->session()->regenerate();
-
-            $user = Auth::user();
-
-            if ($user->role === 'admin') {
-                return redirect('/admin/dashboard');
-            }
-
-            if ($user->role === 'pegawai') {
-                return redirect('/pegawai/dashboard');
-            }
-
-            return redirect('/pelanggan/dashboard');
+        // REDIRECT SESUAI ROLE
+        if ($user->role === 'admin') {
+            return redirect('/admin/dashboard');
         }
 
-        return back()->withErrors([
-            'email' => 'Email atau password salah.',
-        ])->onlyInput('email');
+        if ($user->role === 'pegawai') {
+            return redirect('/pegawai/dashboard');
+        }
+
+        return redirect('/pelanggan/dashboard');
     }
 
+    return back()->withErrors([
+        'email' => 'Email atau password salah.',
+    ])->onlyInput('email');
+}
 
     public function register(Request $request)
     {

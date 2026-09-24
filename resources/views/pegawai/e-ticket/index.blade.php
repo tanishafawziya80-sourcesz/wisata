@@ -1,638 +1,1036 @@
 <!DOCTYPE html>
-
 <html lang="id">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<title>E-Ticket - WISATA.</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", Arial, sans-serif;
-    }
+    <title>E-Ticket - FAWZATA TRAVEL</title>
 
-    body {
-        min-height: 100vh;
-        color: white;
 
-        background:
-            linear-gradient(
-                rgba(4, 35, 52, .72),
-                rgba(7, 48, 67, .88)
-            ),
-            url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=90");
+    <style>
 
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        overflow-x: hidden;
-    }
-
-    /* ================= CLOUD ================= */
-
-    .clouds {
-        position: fixed;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        pointer-events: none;
-        z-index: 0;
-    }
-
-    .cloud {
-        position: absolute;
-        width: 150px;
-        height: 45px;
-        background: rgba(255,255,255,.20);
-        border-radius: 50px;
-        filter: blur(.5px);
-        opacity: .65;
-        animation: cloudMove 45s linear infinite;
-    }
-
-    .cloud span {
-        position: absolute;
-        display: block;
-        background: rgba(255,255,255,.22);
-        border-radius: 50%;
-    }
-
-    .cloud span:nth-child(1) {
-        width: 55px;
-        height: 55px;
-        left: 20px;
-        bottom: 15px;
-    }
-
-    .cloud span:nth-child(2) {
-        width: 70px;
-        height: 70px;
-        left: 55px;
-        bottom: 10px;
-    }
-
-    .cloud span:nth-child(3) {
-        width: 48px;
-        height: 48px;
-        right: 15px;
-        bottom: 13px;
-    }
-
-    .cloud-1 {
-        top: 18%;
-        left: -200px;
-        transform: scale(.75);
-        animation-duration: 48s;
-    }
-
-    .cloud-2 {
-        top: 35%;
-        left: -230px;
-        transform: scale(1.15);
-        opacity: .35;
-        animation-duration: 60s;
-        animation-delay: -15s;
-    }
-
-    .cloud-3 {
-        top: 55%;
-        left: -180px;
-        transform: scale(.65);
-        opacity: .30;
-        animation-duration: 52s;
-        animation-delay: -25s;
-    }
-
-    .cloud-4 {
-        top: 75%;
-        left: -200px;
-        transform: scale(.9);
-        opacity: .25;
-        animation-duration: 65s;
-        animation-delay: -35s;
-    }
-
-    @keyframes cloudMove {
-        0% {
-            transform: translateX(0) translateY(0);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
         }
 
-        50% {
-            transform: translateX(55vw) translateY(-10px);
+
+        body {
+
+            min-height: 100vh;
+
+            color: #183b4d;
+
+            background:
+                linear-gradient(
+                    rgba(7,48,67,.82),
+                    rgba(18,60,87,.94)
+                ),
+                url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=90");
+
+            background-size: cover;
+
+            background-position: center;
+
+            background-attachment: fixed;
+
+            padding-bottom: 80px;
         }
 
-        100% {
-            transform: translateX(115vw) translateY(5px);
-        }
-    }
 
-    /* ================= NAVBAR ================= */
-
-    .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 78px;
-        padding: 0 7%;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        background: rgba(255,255,255,.10);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-
-        border-bottom: 1px solid rgba(255,255,255,.18);
-
-        z-index: 1000;
-    }
-
-    .logo {
-        color: white;
-        text-decoration: none;
-        font-size: 27px;
-        font-weight: 800;
-        letter-spacing: 2px;
-        transition: .3s ease;
-    }
-
-    .logo:hover {
-        transform: translateY(-2px);
-        letter-spacing: 3px;
-    }
-
-    .logo span {
-        color: #9ddcff;
-    }
-
-    .nav-right {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .role {
-        padding: 9px 17px;
-        border-radius: 30px;
-
-        background: rgba(255,255,255,.12);
-        border: 1px solid rgba(255,255,255,.20);
-
-        color: rgba(255,255,255,.90);
-
-        font-size: 13px;
-        font-weight: 700;
-    }
-
-    .logout {
-        border: 1px solid rgba(255,255,255,.20);
-
-        padding: 10px 18px;
-        border-radius: 25px;
-
-        background: rgba(255,255,255,.92);
-        color: #123c57;
-
-        font-weight: 700;
-        cursor: pointer;
-        transition: .3s;
-    }
-
-    .logout:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(0,0,0,.20);
-        background: white;
-    }
-
-    /* ================= CONTAINER ================= */
-
-    .container {
-        position: relative;
-        z-index: 2;
-
-        width: 90%;
-        max-width: 1250px;
-
-        margin: auto;
-
-        padding-top: 130px;
-        padding-bottom: 90px;
-    }
-
-    /* ================= HEADER ================= */
-
-    .header {
-        margin-bottom: 35px;
-        animation: fadeUp .8s ease both;
-    }
-
-    .small-title {
-        font-size: 12px;
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        color: #a7e2ff;
-        margin-bottom: 12px;
-        font-weight: 700;
-    }
-
-    .header h1 {
-        font-size: clamp(40px, 6vw, 62px);
-        line-height: 1.05;
-        margin-bottom: 12px;
-        font-weight: 850;
-    }
-
-    .header p {
-        max-width: 650px;
-        color: rgba(255,255,255,.72);
-        line-height: 1.7;
-        font-size: 15px;
-    }
-
-    /* ================= CARD ================= */
-
-    .card {
-        position: relative;
-
-        padding: 30px;
-        border-radius: 30px;
-
-        background:
-            linear-gradient(
-                135deg,
-                rgba(255,255,255,.14),
-                rgba(255,255,255,.07)
-            );
-
-        backdrop-filter: blur(22px);
-        -webkit-backdrop-filter: blur(22px);
-
-        border: 1px solid rgba(255,255,255,.20);
-
-        box-shadow: 0 30px 80px rgba(0,0,0,.22);
-
-        animation: fadeUp 1s ease both;
-
-        overflow: hidden;
-    }
-
-    .card::before {
-        content: "";
-
-        position: absolute;
-
-        width: 300px;
-        height: 300px;
-
-        top: -180px;
-        right: -100px;
-
-        border-radius: 50%;
-
-        background:
-            radial-gradient(
-                circle,
-                rgba(150,230,255,.15),
-                transparent 70%
-            );
-
-        pointer-events: none;
-    }
-
-    /* ================= CARD HEADER ================= */
-
-    .card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        margin-bottom: 25px;
-        gap: 20px;
-    }
-
-    .card-title {
-        font-size: 21px;
-        font-weight: 800;
-    }
-
-    .card-subtitle {
-        margin-top: 5px;
-        color: rgba(255,255,255,.55);
-        font-size: 13px;
-    }
-
-    .total-ticket {
-        padding: 10px 16px;
-        border-radius: 20px;
-
-        background: rgba(255,255,255,.10);
-        border: 1px solid rgba(255,255,255,.16);
-
-        color: #cceeff;
-
-        font-size: 12px;
-        font-weight: 700;
-
-        white-space: nowrap;
-    }
-
-    /* ================= TABLE ================= */
-
-    .table-wrapper {
-        overflow-x: auto;
-        border-radius: 20px;
-
-        scrollbar-width: thin;
-    }
-
-    table {
-        width: 100%;
-        min-width: 900px;
-
-        border-collapse: separate;
-        border-spacing: 0;
-    }
-
-    th {
-        padding: 17px;
-
-        text-align: left;
-
-        color: #bfeaff;
-
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 1.4px;
-
-        background: rgba(255,255,255,.06);
-
-        border-bottom: 1px solid rgba(255,255,255,.18);
-
-        white-space: nowrap;
-    }
-
-    th:first-child {
-        border-top-left-radius: 15px;
-    }
-
-    th:last-child {
-        border-top-right-radius: 15px;
-    }
-
-    td {
-        padding: 18px 17px;
-
-        color: rgba(255,255,255,.86);
-
-        border-bottom: 1px solid rgba(255,255,255,.09);
-
-        vertical-align: middle;
-
-        font-size: 13px;
-    }
-
-    tbody tr {
-        transition: .3s ease;
-        background: rgba(255,255,255,.025);
-    }
-
-    tbody tr:hover {
-        background: rgba(255,255,255,.075);
-        transform: translateX(3px);
-    }
-
-    tbody tr:last-child td {
-        border-bottom: none;
-    }
-
-    /* ================= TICKET ================= */
-
-    .ticket {
-        color: #bfeaff;
-        font-weight: 800;
-        letter-spacing: .5px;
-        white-space: nowrap;
-    }
-
-    /* ================= DOWNLOAD ================= */
-
-    .download-btn {
-        display: inline-flex;
-
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-
-        padding: 10px 16px;
-
-        border-radius: 22px;
-
-        background: rgba(157,220,255,.14);
-
-        border: 1px solid rgba(157,220,255,.28);
-
-        color: #d8f4ff;
-
-        text-decoration: none;
-
-        font-size: 12px;
-        font-weight: 750;
-
-        transition: .3s ease;
-
-        white-space: nowrap;
-    }
-
-    .download-btn:hover {
-        background: rgba(157,220,255,.27);
-
-        border-color: rgba(180,235,255,.45);
-
-        transform: translateY(-3px);
-
-        box-shadow: 0 10px 25px rgba(0,0,0,.20);
-    }
-
-    .download-btn:active {
-        transform: scale(.96);
-    }
-
-    .download-icon {
-        width: 17px;
-        height: 17px;
-
-        display: inline-flex;
-
-        align-items: center;
-        justify-content: center;
-
-        border-radius: 50%;
-
-        background: rgba(255,255,255,.14);
-
-        font-size: 10px;
-    }
-
-    .date {
-        color: rgba(255,255,255,.70);
-        white-space: nowrap;
-    }
-
-    /* ================= EMPTY ================= */
-
-    .empty {
-        text-align: center;
-        padding: 60px 20px;
-        color: rgba(255,255,255,.55);
-    }
-
-    .empty-title {
-        color: white;
-        font-size: 20px;
-        font-weight: 700;
-        margin-bottom: 7px;
-    }
-
-    .empty-text {
-        font-size: 13px;
-        color: rgba(255,255,255,.50);
-    }
-
-    /* ================= BACK ================= */
-
-    .back-btn {
-        display: inline-flex;
-
-        align-items: center;
-        gap: 8px;
-
-        margin-top: 25px;
-
-        padding: 12px 20px;
-
-        border-radius: 25px;
-
-        text-decoration: none;
-
-        background: rgba(255,255,255,.92);
-
-        color: #123c57;
-
-        font-weight: 700;
-
-        transition: .3s;
-
-        box-shadow: 0 8px 25px rgba(0,0,0,.10);
-    }
-
-    .back-btn:hover {
-        transform: translateY(-3px);
-
-        box-shadow: 0 12px 30px rgba(0,0,0,.20);
-
-        background: white;
-    }
-
-    /* ================= ANIMATION ================= */
-
-    @keyframes fadeUp {
-        from {
-            opacity: 0;
-            transform: translateY(25px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    /* ================= RESPONSIVE ================= */
-
-    @media (max-width: 700px) {
+        /* =========================================================
+           NAVBAR
+        ========================================================= */
 
         .navbar {
-            padding: 0 5%;
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            height: 78px;
+
+            padding: 0 7%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background:
+                rgba(18,60,87,.82);
+
+            backdrop-filter: blur(20px);
+
+            -webkit-backdrop-filter: blur(20px);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.15);
+
+            z-index: 1000;
         }
+
+
+        .logo {
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 25px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+        }
+
+
+        .logo span {
+
+            color: #9ddcff;
+        }
+
+
+        .nav-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
 
         .role {
-            display: none;
+
+            padding: 9px 17px;
+
+            border-radius: 25px;
+
+            background:
+                rgba(255,255,255,.10);
+
+            border:
+                1px solid
+                rgba(255,255,255,.18);
+
+            color: white;
+
+            font-size: 12px;
+
+            font-weight: 700;
         }
+
+
+        .logout {
+
+            border: none;
+
+            padding: 10px 18px;
+
+            border-radius: 25px;
+
+            background: white;
+
+            color: #123c57;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: .25s;
+        }
+
+
+        .logout:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(0,0,0,.15);
+        }
+
+
+        /* =========================================================
+           CONTAINER
+        ========================================================= */
 
         .container {
-            width: 92%;
-            padding-top: 110px;
+
+            width: 90%;
+
+            max-width: 1150px;
+
+            margin: auto;
+
+            padding-top: 125px;
         }
 
-        .card {
-            padding: 18px;
-            border-radius: 24px;
+
+        .small-title {
+
+            color: #9ddcff;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
         }
 
-        .card-header {
+
+        h1 {
+
+            color: white;
+
+            font-size:
+                clamp(38px,6vw,55px);
+
+            margin-bottom: 10px;
+        }
+
+
+        .description {
+
+            color:
+                rgba(255,255,255,.72);
+
+            font-size: 14px;
+
+            margin-bottom: 35px;
+        }
+
+
+        /* =========================================================
+           ALERT
+        ========================================================= */
+
+        .alert {
+
+            padding: 15px 18px;
+
+            border-radius: 14px;
+
+            margin-bottom: 20px;
+
+            font-size: 13px;
+
+            font-weight: 600;
+        }
+
+
+        .alert-success {
+
+            background: #effbf4;
+
+            border: 1px solid #c8efd7;
+
+            color: #287448;
+        }
+
+
+        .alert-error {
+
+            background: #fff1f1;
+
+            border: 1px solid #ffd0d0;
+
+            color: #a33b3b;
+        }
+
+
+        /* =========================================================
+           SECTION
+        ========================================================= */
+
+        .section {
+
+            margin-bottom: 35px;
+        }
+
+
+        .section-heading {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 18px;
+        }
+
+
+        .section-title {
+
+            color: white;
+
+            font-size: 20px;
+
+            font-weight: 800;
+        }
+
+
+        .section-badge {
+
+            padding: 7px 13px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,.10);
+
+            border:
+                1px solid
+                rgba(255,255,255,.18);
+
+            color: #dff5ff;
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           READY CARD
+        ========================================================= */
+
+        .ready-card {
+
+            padding: 25px;
+
+            border-radius: 25px;
+
+            background:
+                rgba(255,255,255,.94);
+
+            border:
+                1px solid
+                rgba(255,255,255,.60);
+
+            box-shadow:
+                0 25px 70px
+                rgba(0,0,0,.20);
+
+            margin-bottom: 18px;
+
+            transition: .3s;
+
+            animation:
+                fadeUp .45s ease both;
+        }
+
+
+        .ready-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 30px 80px
+                rgba(0,0,0,.26);
+        }
+
+
+        .ready-header {
+
+            display: flex;
+
             align-items: flex-start;
-            flex-direction: column;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding-bottom: 18px;
+
+            margin-bottom: 20px;
+
+            border-bottom:
+                1px dashed
+                #cbdce4;
         }
 
-        .header h1 {
-            font-size: 42px;
+
+        .package-name {
+
+            color: #123c57;
+
+            font-size: 20px;
+
+            font-weight: 800;
         }
-    }
-</style>
-```
+
+
+        .booking-code {
+
+            margin-top: 6px;
+
+            color: #78909c;
+
+            font-size: 12px;
+        }
+
+
+        .ready-status {
+
+            padding: 8px 13px;
+
+            border-radius: 20px;
+
+            background: #e9f9f0;
+
+            border:
+                1px solid
+                #c7ebd5;
+
+            color: #287448;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================================================
+           DETAIL
+        ========================================================= */
+
+        .detail-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .detail {
+
+            padding: 15px;
+
+            border-radius: 15px;
+
+            background: #f7fbfd;
+
+            border:
+                1px solid
+                #dfebef;
+        }
+
+
+        .detail-label {
+
+            color: #78909c;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 6px;
+        }
+
+
+        .detail-value {
+
+            color: #183b4d;
+
+            font-size: 13px;
+
+            font-weight: 800;
+        }
+
+
+        /* =========================================================
+           READY FOOTER
+        ========================================================= */
+
+        .ready-footer {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding-top: 18px;
+
+            border-top:
+                1px solid
+                #edf2f4;
+        }
+
+
+        .payment-approved {
+
+            color: #287448;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        .payment-approved span {
+
+            display: block;
+
+            color: #78909c;
+
+            font-size: 11px;
+
+            font-weight: 500;
+
+            margin-top: 3px;
+        }
+
+
+        .issue-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            padding: 12px 20px;
+
+            border: none;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #123c57,
+                    #247da2
+                );
+
+            color: white;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            text-decoration: none;
+
+            transition: .25s;
+        }
+
+
+        .issue-btn:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(18,60,87,.25);
+        }
+
+
+        /* =========================================================
+           EMPTY READY
+        ========================================================= */
+
+        .empty-ready {
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,.08);
+
+            border:
+                1px solid
+                rgba(255,255,255,.15);
+
+            color:
+                rgba(255,255,255,.72);
+
+            text-align: center;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           TICKET CARD
+        ========================================================= */
+
+        .ticket-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 25px;
+
+            border-radius: 25px;
+
+            background:
+                rgba(255,255,255,.95);
+
+            border:
+                1px solid
+                rgba(255,255,255,.65);
+
+            box-shadow:
+                0 25px 70px
+                rgba(0,0,0,.20);
+
+            margin-bottom: 18px;
+
+            animation:
+                fadeUp .45s ease both;
+        }
+
+
+        .ticket-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 6px;
+
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    #5ac8f0,
+                    #123c57
+                );
+        }
+
+
+        .ticket-header {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding-bottom: 18px;
+
+            margin-bottom: 20px;
+
+            border-bottom:
+                1px dashed
+                #cbdce4;
+        }
+
+
+        .ticket-brand {
+
+            color: #123c57;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+        }
+
+
+        .ticket-number {
+
+            margin-top: 7px;
+
+            color: #126b91;
+
+            font-size: 19px;
+
+            font-weight: 900;
+        }
+
+
+        .issued {
+
+            padding: 8px 13px;
+
+            border-radius: 20px;
+
+            background: #e9f9f0;
+
+            border:
+                1px solid
+                #c7ebd5;
+
+            color: #287448;
+
+            font-size: 10px;
+
+            font-weight: 800;
+        }
+
+
+        .ticket-info {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .ticket-info-box {
+
+            padding: 15px;
+
+            border-radius: 15px;
+
+            background: #f7fbfd;
+
+            border:
+                1px solid
+                #dfebef;
+        }
+
+
+        .ticket-info-label {
+
+            color: #78909c;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .ticket-info-value {
+
+            color: #183b4d;
+
+            font-size: 13px;
+
+            font-weight: 800;
+        }
+
+
+        .ticket-footer {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding-top: 18px;
+
+            border-top:
+                1px solid
+                #edf2f4;
+        }
+
+
+        .issued-date {
+
+            color: #78909c;
+
+            font-size: 11px;
+        }
+
+
+        .download-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            padding: 11px 18px;
+
+            border-radius: 23px;
+
+            background: #123c57;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            transition: .25s;
+        }
+
+
+        .download-btn:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 10px 22px
+                rgba(18,60,87,.22);
+        }
+
+
+        /* =========================================================
+           EMPTY TICKET
+        ========================================================= */
+
+        .empty-ticket {
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,.08);
+
+            border:
+                1px solid
+                rgba(255,255,255,.15);
+
+            color:
+                rgba(255,255,255,.72);
+
+            text-align: center;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           ANIMATION
+        ========================================================= */
+
+        @keyframes fadeUp {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(15px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* =========================================================
+           BACK BUTTON
+        ========================================================= */
+
+        .back-wrapper {
+
+            margin-top: 10px;
+
+            margin-bottom: 40px;
+        }
+
+
+        .back-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            padding: 12px 20px;
+
+            border-radius: 25px;
+
+            background:
+                rgba(255,255,255,.10);
+
+            border:
+                1px solid
+                rgba(255,255,255,.20);
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            backdrop-filter: blur(12px);
+
+            -webkit-backdrop-filter: blur(12px);
+
+            transition: .25s;
+        }
+
+
+        .back-btn:hover {
+
+            background:
+                rgba(255,255,255,.18);
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(0,0,0,.18);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media(max-width:850px) {
+
+            .detail-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .ticket-info {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+
+        @media(max-width:700px) {
+
+            .navbar {
+
+                padding: 0 5%;
+            }
+
+
+            .role {
+
+                display: none;
+            }
+
+
+            .container {
+
+                width: 92%;
+
+                padding-top: 110px;
+            }
+
+
+            .ready-header,
+            .ticket-header {
+
+                flex-direction: column;
+            }
+
+
+            .detail-grid,
+            .ticket-info {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .ready-footer,
+            .ticket-footer {
+
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+
+            .issue-btn,
+            .download-btn {
+
+                width: 100%;
+            }
+        }
+
+    </style>
 
 </head>
 
+
 <body>
 
-```
-<!-- CLOUDS -->
 
-<div class="clouds">
-
-    <div class="cloud cloud-1">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <div class="cloud cloud-2">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <div class="cloud cloud-3">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <div class="cloud cloud-4">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-</div>
-
-
-<!-- NAVBAR -->
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
 
 <nav class="navbar">
 
-    <a href="/pegawai/dashboard" class="logo">
-        WISATA<span>.</span>
+    <a
+        href="{{ route('pegawai.dashboard') }}"
+        class="logo"
+    >
+        FAWZATA<span> TRAVEL</span>
     </a>
+
 
     <div class="nav-right">
 
@@ -640,11 +1038,18 @@
             PEGAWAI
         </div>
 
-        <form action="/logout" method="POST">
+
+        <form
+            action="{{ url('/logout') }}"
+            method="POST"
+        >
 
             @csrf
 
-            <button type="submit" class="logout">
+            <button
+                type="submit"
+                class="logout"
+            >
                 Logout
             </button>
 
@@ -655,50 +1060,282 @@
 </nav>
 
 
-<!-- CONTENT -->
+<!-- =========================================================
+     MAIN
+========================================================= -->
 
 <main class="container">
 
-    <div class="header">
 
-        <div class="small-title">
-            Travel Operations
-        </div>
-
-        <h1>
-            E-Ticket
-        </h1>
-
-        <p>
-            Menangani informasi e-ticket perjalanan
-            pelanggan dalam satu ruang kerja.
-        </p>
-
+    <div class="small-title">
+        FAWZATA TRAVEL • E-TICKET
     </div>
 
 
-    <div class="card">
+    <h1>
+        E-Ticket
+    </h1>
 
-        <!-- CARD HEADER -->
 
-        <div class="card-header">
+    <p class="description">
+        Periksa pembayaran yang telah disetujui dan terbitkan
+        E-Ticket untuk pelanggan.
+    </p>
 
-            <div>
 
-                <div class="card-title">
-                    Data E-Ticket
+    <!-- =====================================================
+         ALERT
+    ===================================================== -->
+
+    @if(session('success'))
+
+        <div class="alert alert-success">
+
+            ✓ {{ session('success') }}
+
+        </div>
+
+    @endif
+
+
+    @if(session('error'))
+
+        <div class="alert alert-error">
+
+            ⚠ {{ session('error') }}
+
+        </div>
+
+    @endif
+
+
+    <!-- =====================================================
+         PEMESANAN SIAP DITERBITKAN
+    ===================================================== -->
+
+    <section class="section">
+
+
+        <div class="section-heading">
+
+            <div class="section-title">
+                Siap Diterbitkan
+            </div>
+
+
+            <div class="section-badge">
+
+                {{ $pemesananSiapTerbit->count() }}
+                Pemesanan
+
+            </div>
+
+        </div>
+
+
+        @forelse(
+            $pemesananSiapTerbit
+            as $pesanan
+        )
+
+
+            <div class="ready-card">
+
+
+                <div class="ready-header">
+
+
+                    <div>
+
+                        <div class="package-name">
+
+                            {{ optional($pesanan->jadwalTour)->nama_jadwal
+                                ?? 'Paket Wisata' }}
+
+                        </div>
+
+
+                        <div class="booking-code">
+
+                            Kode Booking:
+
+                            <strong>
+                                {{ $pesanan->kode_booking }}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="ready-status">
+
+                        PEMBAYARAN DISETUJUI
+
+                    </div>
+
+
                 </div>
 
-                <div class="card-subtitle">
-                    Daftar e-ticket perjalanan pelanggan
+
+                <div class="detail-grid">
+
+
+                    <div class="detail">
+
+                        <div class="detail-label">
+                            Pelanggan
+                        </div>
+
+                        <div class="detail-value">
+
+                            {{ optional($pesanan->pelanggan)->nama_lengkap
+                                ?? '-' }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <div class="detail-label">
+                            Peserta
+                        </div>
+
+                        <div class="detail-value">
+
+                            {{ $pesanan->jumlah_peserta }}
+                            orang
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <div class="detail-label">
+                            Keberangkatan
+                        </div>
+
+                        <div class="detail-value">
+
+                            {{ optional($pesanan->jadwalTour)->tgl_keberangkatan
+                                ? \Carbon\Carbon::parse(
+                                    $pesanan->jadwalTour->tgl_keberangkatan
+                                )->format('d M Y')
+                                : '-' }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <div class="detail-label">
+                            Total Bayar
+                        </div>
+
+                        <div class="detail-value">
+
+                            Rp
+                            {{ number_format(
+                                $pesanan->total_bayar,
+                                0,
+                                ',',
+                                '.'
+                            ) }}
+
+                        </div>
+
+                    </div>
+
+
                 </div>
+
+
+                <div class="ready-footer">
+
+
+                    <div class="payment-approved">
+
+                        ✓ Pembayaran telah disetujui
+
+                        <span>
+                            Pesanan siap diterbitkan menjadi E-Ticket.
+                        </span>
+
+                    </div>
+
+
+                    <form
+                        action="{{ route(
+                            'pegawai.e-ticket.terbitkan',
+                            $pesanan->id_pemesanan
+                        ) }}"
+                        method="POST"
+                    >
+
+                        @csrf
+
+
+                        <button
+                            type="submit"
+                            class="issue-btn"
+                            onclick="
+                                return confirm(
+                                    'Terbitkan E-Ticket untuk pelanggan ini?'
+                                )
+                            "
+                        >
+
+                            Terbitkan E-Ticket
+
+                        </button>
+
+                    </form>
+
+
+                </div>
+
 
             </div>
 
 
-            <div class="total-ticket">
+        @empty
 
-                Total
+
+            <div class="empty-ready">
+
+                ✓ Tidak ada pemesanan yang menunggu penerbitan E-Ticket.
+
+            </div>
+
+
+        @endforelse
+
+
+    </section>
+
+
+    <!-- =====================================================
+         E-TICKET SUDAH DITERBITKAN
+    ===================================================== -->
+
+    <section class="section">
+
+
+        <div class="section-heading">
+
+            <div class="section-title">
+                E-Ticket Diterbitkan
+            </div>
+
+
+            <div class="section-badge">
+
                 {{ $eTickets->count() }}
                 Ticket
 
@@ -707,136 +1344,224 @@
         </div>
 
 
-        <!-- TABLE -->
-
-        <div class="table-wrapper">
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>
-                            ID Ticket
-                        </th>
-
-                        <th>
-                            ID Pemesanan
-                        </th>
-
-                        <th>
-                            Nomor Ticket
-                        </th>
-
-                        <th>
-                            Download
-                        </th>
-
-                        <th>
-                            Tanggal Terbit
-                        </th>
-
-                    </tr>
-
-                </thead>
+        @forelse(
+            $eTickets
+            as $ticket
+        )
 
 
-                <tbody>
-
-                    @forelse($eTickets as $item)
-
-                        <tr>
-
-                            <!-- ID TICKET -->
-
-                            <td>
-                                {{ $item->id_ticket }}
-                            </td>
+            <div class="ticket-card">
 
 
-                            <!-- ID PEMESANAN -->
-
-                            <td>
-                                {{ $item->id_pemesanan }}
-                            </td>
+                <div class="ticket-header">
 
 
-                            <!-- NOMOR TICKET -->
+                    <div>
 
-                            <td class="ticket">
-                                {{ $item->nomor_ticket }}
-                            </td>
-
-
-                            <!-- DOWNLOAD -->
-
-                            <td>
-
-                                <a
-                                    href="{{ route('pegawai.e-ticket.download', $item->id_ticket) }}"
-                                    class="download-btn"
-                                >
-
-                                    <span class="download-icon">
-                                        ↓
-                                    </span>
-
-                                    Lihat / Download PDF
-
-                                </a>
-
-                            </td>
+                        <div class="ticket-brand">
+                            FAWZATA TRAVEL
+                        </div>
 
 
-                            <!-- TANGGAL TERBIT -->
+                        <div class="ticket-number">
 
-                            <td class="date">
+                            {{ $ticket->nomor_ticket }}
 
-                                {{ $item->tgl_terbit
-                                    ? \Carbon\Carbon::parse($item->tgl_terbit)->format('d M Y')
-                                    : '-'
-                                }}
+                        </div>
 
-                            </td>
-
-                        </tr>
-
-                    @empty
-
-                        <tr>
-
-                            <td
-                                colspan="5"
-                                class="empty"
-                            >
-
-                                <div class="empty-title">
-                                    Belum Ada E-Ticket
-                                </div>
-
-                                <div class="empty-text">
-                                    E-ticket pelanggan
-                                    akan muncul di halaman ini.
-                                </div>
-
-                            </td>
-
-                        </tr>
-
-                    @endforelse
-
-                </tbody>
-
-            </table>
-
-        </div>
+                    </div>
 
 
-        <!-- BACK -->
+                    <div class="issued">
+
+                        ✓ DITERBITKAN
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="ticket-info">
+
+
+                    <div class="ticket-info-box">
+
+                        <div class="ticket-info-label">
+                            Pelanggan
+                        </div>
+
+                        <div class="ticket-info-value">
+
+                            {{ optional(
+                                $ticket->pemesanan->pelanggan
+                            )->nama_lengkap ?? '-' }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="ticket-info-box">
+
+                        <div class="ticket-info-label">
+                            Kode Booking
+                        </div>
+
+                        <div class="ticket-info-value">
+
+                            {{ $ticket->pemesanan->kode_booking
+                                ?? '-' }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="ticket-info-box">
+
+                        <div class="ticket-info-label">
+                            Jumlah Peserta
+                        </div>
+
+                        <div class="ticket-info-value">
+
+                            {{ $ticket->pemesanan->jumlah_peserta
+                                ?? 0 }}
+                            orang
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="ticket-info-box">
+
+                        <div class="ticket-info-label">
+                            Keberangkatan
+                        </div>
+
+                        <div class="ticket-info-value">
+
+                            {{ optional(
+                                $ticket->pemesanan->jadwalTour
+                            )->tgl_keberangkatan
+                                ? \Carbon\Carbon::parse(
+                                    $ticket->pemesanan
+                                        ->jadwalTour
+                                        ->tgl_keberangkatan
+                                )->format('d M Y')
+                                : '-' }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="ticket-info-box">
+
+                        <div class="ticket-info-label">
+                            Kepulangan
+                        </div>
+
+                        <div class="ticket-info-value">
+
+                            {{ optional(
+                                $ticket->pemesanan->jadwalTour
+                            )->tgl_kepulangan
+                                ? \Carbon\Carbon::parse(
+                                    $ticket->pemesanan
+                                        ->jadwalTour
+                                        ->tgl_kepulangan
+                                )->format('d M Y')
+                                : '-' }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="ticket-info-box">
+
+                        <div class="ticket-info-label">
+                            Status
+                        </div>
+
+                        <div class="ticket-info-value">
+
+                            Selesai
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="ticket-footer">
+
+
+                    <div class="issued-date">
+
+                        Diterbitkan:
+
+                        <strong>
+
+                            {{ $ticket->tgl_terbit
+                                ? \Carbon\Carbon::parse(
+                                    $ticket->tgl_terbit
+                                )->format('d M Y H:i')
+                                : '-' }}
+
+                        </strong>
+
+                    </div>
+
+
+                    <a
+                        href="{{ route(
+                            'pegawai.e-ticket.download',
+                            $ticket->id_ticket
+                        ) }}"
+                        class="download-btn"
+                    >
+
+                        ↓ Download E-Ticket
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+        @empty
+
+
+            <div class="empty-ticket">
+
+                Belum ada E-Ticket yang diterbitkan.
+
+            </div>
+
+
+        @endforelse
+
+
+    </section>
+
+
+    <!-- =====================================================
+         KEMBALI
+    ===================================================== -->
+
+    <div class="back-wrapper">
 
         <a
-            href="/pegawai/dashboard"
+            href="{{ route('pegawai.dashboard') }}"
             class="back-btn"
         >
 
@@ -846,8 +1571,9 @@
 
     </div>
 
+
 </main>
-```
+
 
 </body>
 

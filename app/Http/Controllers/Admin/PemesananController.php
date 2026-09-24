@@ -1,24 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Pegawai;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pemesanan;
 
-class DokumenController extends Controller
+class PemesananController extends Controller
 {
     public function index()
     {
         $pemesanan = Pemesanan::with([
             'pelanggan',
-            'jadwalTour',
-            'peserta',
+            'jadwalTour'
         ])
-            ->latest('created_at')
-            ->get();
+        ->latest('id_pemesanan')
+        ->get();
 
         return view(
-            'pegawai.dokumen.index',
+            'admin.pemesanan.index',
             compact('pemesanan')
         );
     }

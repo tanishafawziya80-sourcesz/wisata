@@ -5,10 +5,14 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Edit Paket Wisata - WISATA.</title>
+    <title>
+        Tambah Paket Wisata - WISATA.
+    </title>
 
 
     <style>
@@ -37,7 +41,6 @@
                     rgba(3, 35, 52, .70),
                     rgba(5, 48, 67, .82)
                 ),
-
                 url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=85");
 
             background-size: cover;
@@ -49,6 +52,7 @@
             padding: 40px 20px;
 
         }
+
 
 
         /* ===============================
@@ -64,6 +68,7 @@
             margin: auto;
 
         }
+
 
 
         /* ===============================
@@ -121,11 +126,14 @@
 
             text-decoration: none;
 
-            background: rgba(255,255,255,.12);
+            background:
+                rgba(255,255,255,.12);
 
-            border: 1px solid rgba(255,255,255,.22);
+            border:
+                1px solid rgba(255,255,255,.22);
 
-            backdrop-filter: blur(15px);
+            backdrop-filter:
+                blur(15px);
 
             transition: .3s;
 
@@ -134,14 +142,17 @@
 
         .back:hover {
 
-            transform: translateY(-3px);
+            transform:
+                translateY(-3px);
 
-            background: rgba(255,255,255,.22);
+            background:
+                rgba(255,255,255,.22);
 
             box-shadow:
                 0 10px 25px rgba(0,0,0,.18);
 
         }
+
 
 
         /* ===============================
@@ -214,6 +225,7 @@
         }
 
 
+
         /* ===============================
            ERROR
         =============================== */
@@ -239,31 +251,6 @@
 
         }
 
-
-        /* ===============================
-           SUCCESS
-        =============================== */
-
-        .success {
-
-            margin-bottom: 25px;
-
-            padding: 16px 18px;
-
-            border-radius: 16px;
-
-            background:
-                rgba(50,220,130,.15);
-
-            border:
-                1px solid rgba(100,255,170,.28);
-
-            color:
-                #dcffe9;
-
-            line-height: 1.7;
-
-        }
 
 
         /* ===============================
@@ -304,8 +291,7 @@
             padding: 14px 16px;
 
             border:
-                1px solid
-                rgba(255,255,255,.35);
+                1px solid rgba(255,255,255,.35);
 
             outline: none;
 
@@ -348,8 +334,9 @@
         }
 
 
+
         /* ===============================
-           FORM GRID
+           GRID
         =============================== */
 
         .form-grid {
@@ -364,8 +351,9 @@
         }
 
 
+
         /* ===============================
-           FOTO SECTION
+           FOTO
         =============================== */
 
         .photo-section {
@@ -388,93 +376,6 @@
 
         }
 
-
-        /* ===============================
-           CURRENT PHOTO
-        =============================== */
-
-        .current-photo {
-
-            position: relative;
-
-            width: 100%;
-
-            overflow: hidden;
-
-            border-radius: 22px;
-
-            background:
-                rgba(0,0,0,.20);
-
-            border:
-                1px solid
-                rgba(255,255,255,.20);
-
-            margin-bottom: 18px;
-
-        }
-
-
-        .current-photo img {
-
-            display: block;
-
-            width: 100%;
-
-            max-height: 420px;
-
-            object-fit: cover;
-
-        }
-
-
-        .current-photo-info {
-
-            position: absolute;
-
-            left: 15px;
-
-            right: 15px;
-
-            bottom: 15px;
-
-            padding: 12px 15px;
-
-            border-radius: 13px;
-
-            background:
-                rgba(0,0,0,.55);
-
-            backdrop-filter:
-                blur(10px);
-
-            font-size: 12px;
-
-        }
-
-
-        .current-label {
-
-            font-weight: 700;
-
-            margin-bottom: 4px;
-
-        }
-
-
-        .current-path {
-
-            color:
-                rgba(255,255,255,.65);
-
-            word-break: break-all;
-
-        }
-
-
-        /* ===============================
-           UPLOAD AREA
-        =============================== */
 
         .upload-area {
 
@@ -547,7 +448,8 @@
 
             justify-content: center;
 
-            margin: auto auto 14px;
+            margin:
+                auto auto 14px;
 
             border-radius: 20px;
 
@@ -587,24 +489,19 @@
 
 
         .upload-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+}
 
-            position: absolute;
-
-            inset: 0;
-
-            width: 100%;
-
-            height: 100%;
-
-            opacity: 0;
-
-            cursor: pointer;
-
-        }
 
 
         /* ===============================
-           NEW PHOTO PREVIEW
+           PREVIEW
         =============================== */
 
         .preview-wrapper {
@@ -683,14 +580,6 @@
         }
 
 
-        .change-photo {
-
-            color: #a7e2ff;
-
-            font-weight: 700;
-
-        }
-
 
         /* ===============================
            PRICE NOTE
@@ -706,6 +595,7 @@
                 rgba(255,255,255,.55);
 
         }
+
 
 
         /* ===============================
@@ -766,8 +656,9 @@
         }
 
 
+
         /* ===============================
-           CANCEL BUTTON
+           CANCEL
         =============================== */
 
         .cancel-btn {
@@ -811,6 +702,7 @@
         }
 
 
+
         /* ===============================
            ANIMATION
         =============================== */
@@ -838,6 +730,7 @@
         }
 
 
+
         /* ===============================
            RESPONSIVE
         =============================== */
@@ -863,7 +756,8 @@
 
             .header {
 
-                align-items: flex-start;
+                align-items:
+                    flex-start;
 
                 gap: 15px;
 
@@ -897,11 +791,21 @@
 
 
             .upload-area {
-
-                min-height: 200px;
-
-            }
-
+    position: relative;
+    width: 100%;
+    min-height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    border-radius: 22px;
+    background: rgba(255,255,255,.08);
+    border: 1px dashed rgba(255,255,255,.40);
+    cursor: pointer;
+    transition: .3s;
+    overflow: hidden;
+}
         }
 
     </style>
@@ -953,13 +857,13 @@
 
 
         <h1>
-            Edit Paket Wisata
+            Tambah Paket Wisata
         </h1>
 
 
         <p class="subtitle">
-            Perbarui informasi paket wisata
-            dan ganti foto destinasi jika diperlukan.
+            Tambahkan informasi paket wisata
+            baru ke dalam sistem WISATA.
         </p>
 
 
@@ -987,129 +891,105 @@
 
 
         <!-- ===============================
-             SUCCESS
-        =============================== -->
-
-        @if (session('success'))
-
-            <div class="success">
-
-                {{ session('success') }}
-
-            </div>
-
-        @endif
-
-
-
-        <!-- ===============================
              FORM
         =============================== -->
 
         <form
-    action="/admin/paket-wisata"
-    method="POST"
-    enctype="multipart/form-data"
->
-    @csrf
+            action="/admin/paket-wisata"
+            method="POST"
+            enctype="multipart/form-data"
+        >
 
-            @method('PUT')
+            @csrf
 
 
 
             <!-- ===============================
-                 FOTO LAMA
+                 FOTO PAKET
             =============================== -->
 
-            
+            <div class="photo-section">
 
-                <!-- ===============================
-     FOTO PAKET
-=============================== -->
+                <div class="photo-title">
+                    Foto Paket
+                </div>
 
-<div class="photo-section">
-
-    <div class="photo-title">
-        Foto Paket
-    </div>
-
-    <!-- UPLOAD FOTO -->
-
-    <div
-        class="upload-area"
-        id="uploadArea"
-    >
-
-        <!-- DEFAULT -->
-
-        <div
-            class="upload-content"
-            id="uploadContent"
-        >
-
-            <div class="upload-icon">
-                📸
-            </div>
-
-            <div class="upload-title">
-                Upload Foto Paket
-            </div>
-
-            <div class="upload-subtitle">
-                Klik untuk memilih foto
-                <br>
-                JPG, JPEG, PNG atau WEBP
-                • Maksimal 2 MB
-            </div>
-
-        </div>
-
-
-        <!-- PREVIEW -->
-
-        <div
-            class="preview-wrapper"
-            id="previewWrapper"
-        >
-
-            <img
-                src=""
-                alt="Preview Foto"
-                class="preview-image"
-                id="previewImage"
-            >
-
-            <div class="preview-info">
 
                 <div
-                    class="preview-label"
-                    id="fileName"
+                    class="upload-area"
+                    id="uploadArea"
                 >
-                    Foto baru
-                </div>
 
-                <div class="change-photo">
-                    Klik foto untuk mengganti
+
+                    <div
+                        class="upload-content"
+                        id="uploadContent"
+                    >
+
+                        <div class="upload-icon">
+                            📸
+                        </div>
+
+
+                        <div class="upload-title">
+                            Upload Foto Paket
+                        </div>
+
+
+                        <div class="upload-subtitle">
+
+                            Klik untuk memilih foto
+
+                            <br>
+
+                            JPG, JPEG, PNG atau WEBP
+                            • Maksimal 2 MB
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div
+                        class="preview-wrapper"
+                        id="previewWrapper"
+                    >
+
+                        <img
+                            src=""
+                            alt="Preview Foto"
+                            class="preview-image"
+                            id="previewImage"
+                        >
+
+
+                        <div class="preview-info">
+
+                            <div
+                                class="preview-label"
+                                id="fileName"
+                            >
+                                Foto baru
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <input
+                        type="file"
+                        name="foto_paket"
+                        id="foto_paket"
+                        class="upload-input"
+                        accept="image/jpeg,image/png,image/webp"
+                    >
+
                 </div>
 
             </div>
-
-        </div>
-
-
-        <!-- INPUT -->
-
-        <input
-            type="file"
-            name="foto_paket"
-            id="foto_paket"
-            class="upload-input"
-            accept="image/jpeg,image/png,image/webp"
-        >
-
-    </div>
-
-</div>
 
 
 
@@ -1319,7 +1199,7 @@
                 type="submit"
                 class="btn"
             >
-                ✓ Simpan Perubahan
+                ✓ Simpan Paket
             </button>
 
 
@@ -1341,49 +1221,34 @@
 
 
 
-<!-- ===============================
-     JAVASCRIPT
-=============================== -->
-
 <script>
 
-    const fotoInput =
-        document.getElementById('foto_paket');
-
-    const uploadArea =
-        document.getElementById('uploadArea');
-
-    const uploadContent =
-        document.getElementById('uploadContent');
-
-    const previewWrapper =
-        document.getElementById('previewWrapper');
-
-    const previewImage =
-        document.getElementById('previewImage');
-
-    const fileName =
-        document.getElementById('fileName');
+    const fotoInput = document.getElementById('foto_paket');
+    const uploadArea = document.getElementById('uploadArea');
+    const uploadContent = document.getElementById('uploadContent');
+    const previewWrapper = document.getElementById('previewWrapper');
+    const previewImage = document.getElementById('previewImage');
+    const fileName = document.getElementById('fileName');
 
 
-    /*
-    ==========================================
-    KLIK AREA FOTO
-    ==========================================
-    */
+    /* ==========================================
+       KLIK AREA UPLOAD
+    ========================================== */
 
-    uploadArea.addEventListener('click', function () {
+    uploadArea.addEventListener('click', function (event) {
 
-        fotoInput.click();
+        // Jangan jalankan dua kali kalau yang diklik
+        // adalah input file itu sendiri
+        if (event.target !== fotoInput) {
+            fotoInput.click();
+        }
 
     });
 
 
-    /*
-    ==========================================
-    PILIH FOTO
-    ==========================================
-    */
+    /* ==========================================
+       PILIH FOTO
+    ========================================== */
 
     fotoInput.addEventListener('change', function () {
 
@@ -1394,17 +1259,13 @@
         }
 
 
-        /*
-        ======================================
-        VALIDASI UKURAN
-        ======================================
-        */
+        /* ======================================
+           VALIDASI UKURAN
+        ====================================== */
 
         if (file.size > 2 * 1024 * 1024) {
 
-            alert(
-                'Ukuran foto maksimal 2 MB.'
-            );
+            alert('Ukuran foto maksimal 2 MB.');
 
             this.value = '';
 
@@ -1412,11 +1273,9 @@
         }
 
 
-        /*
-        ======================================
-        VALIDASI TIPE
-        ======================================
-        */
+        /* ======================================
+           VALIDASI FORMAT
+        ====================================== */
 
         const allowedTypes = [
             'image/jpeg',
@@ -1437,33 +1296,24 @@
         }
 
 
-        /*
-        ======================================
-        PREVIEW FOTO
-        ======================================
-        */
+        /* ======================================
+           PREVIEW FOTO
+        ====================================== */
 
-        const reader =
-            new FileReader();
+        const reader = new FileReader();
 
 
-        reader.onload =
-            function (event) {
+        reader.onload = function (event) {
 
-                previewImage.src =
-                    event.target.result;
+            previewImage.src = event.target.result;
 
-                fileName.textContent =
-                    file.name;
+            fileName.textContent = file.name;
 
-                uploadContent.style.display =
-                    'none';
+            uploadContent.style.display = 'none';
 
-                previewWrapper.classList.add(
-                    'show'
-                );
+            previewWrapper.classList.add('show');
 
-            };
+        };
 
 
         reader.readAsDataURL(file);
@@ -1471,6 +1321,94 @@
     });
 
 </script>
+
+
+            <script>
+            
+            /* VALIDASI UKURAN */
+            
+            
+            if (
+                file.size >
+                2 * 1024 * 1024
+            ) {
+
+                alert(
+                    'Ukuran foto maksimal 2 MB.'
+                );
+
+                this.value = '';
+
+                return;
+
+            }
+            </script>
+
+            <script>
+
+            /* VALIDASI TIPE */
+            
+            const allowedTypes = [
+
+                'image/jpeg',
+
+                'image/png',
+
+                'image/webp'
+
+            ];
+
+
+            if (
+                !allowedTypes.includes(
+                    file.type
+                )
+            ) {
+
+                alert(
+                    'Format foto harus JPG, JPEG, PNG, atau WEBP.'
+                );
+
+                this.value = '';
+
+                return;
+
+            }
+            </script>
+
+            <script>
+
+            /* PREVIEW */
+            
+            const reader =
+                new FileReader();
+
+
+            reader.onload =
+                function (event) {
+
+                    previewImage.src =
+                        event.target.result;
+
+                    fileName.textContent =
+                        file.name;
+
+                    uploadContent.style.display =
+                        'none';
+
+                    previewWrapper.classList.add(
+                        'show'
+                    );
+
+                };
+
+
+            reader.readAsDataURL(file);
+        }
+    );
+
+</script>
+
 
 </body>
 

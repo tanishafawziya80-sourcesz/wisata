@@ -2,11 +2,12 @@
 <html lang="id">
 
 <head>
-
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Edit Paket Wisata - WISATA.</title>
 
@@ -25,6 +26,7 @@
 
         body {
             min-height: 100vh;
+
             color: white;
 
             background:
@@ -42,9 +44,9 @@
         }
 
 
-        /* ===============================
+        /* =====================================
            CONTAINER
-        =============================== */
+        ===================================== */
 
         .container {
             width: 100%;
@@ -53,14 +55,15 @@
         }
 
 
-        /* ===============================
+        /* =====================================
            HEADER
-        =============================== */
+        ===================================== */
 
         .header {
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             margin-bottom: 30px;
         }
 
@@ -70,6 +73,7 @@
 
             font-size: 28px;
             font-weight: 800;
+
             letter-spacing: 2px;
         }
 
@@ -80,6 +84,7 @@
         .back {
             display: inline-flex;
             align-items: center;
+
             gap: 7px;
 
             padding: 11px 18px;
@@ -89,13 +94,15 @@
             color: white;
             text-decoration: none;
 
-            background: rgba(255,255,255,.12);
+            background:
+                rgba(255,255,255,.12);
 
             border:
                 1px solid
                 rgba(255,255,255,.22);
 
-            backdrop-filter: blur(15px);
+            backdrop-filter:
+                blur(15px);
 
             transition: .3s;
         }
@@ -112,9 +119,9 @@
         }
 
 
-        /* ===============================
+        /* =====================================
            CARD
-        =============================== */
+        ===================================== */
 
         .card {
             padding: 42px;
@@ -143,6 +150,10 @@
         }
 
 
+        /* =====================================
+           TITLE
+        ===================================== */
+
         .small-title {
             font-size: 12px;
 
@@ -155,7 +166,6 @@
             margin-bottom: 10px;
         }
 
-
         h1 {
             font-size:
                 clamp(32px, 5vw, 48px);
@@ -164,7 +174,6 @@
 
             margin-bottom: 10px;
         }
-
 
         .subtitle {
             color:
@@ -176,9 +185,9 @@
         }
 
 
-        /* ===============================
+        /* =====================================
            ERROR
-        =============================== */
+        ===================================== */
 
         .error {
             margin-bottom: 25px;
@@ -201,9 +210,9 @@
         }
 
 
-        /* ===============================
+        /* =====================================
            SUCCESS
-        =============================== */
+        ===================================== */
 
         .success {
             margin-bottom: 25px;
@@ -226,9 +235,9 @@
         }
 
 
-        /* ===============================
+        /* =====================================
            FORM
-        =============================== */
+        ===================================== */
 
         .form-group {
             margin-bottom: 23px;
@@ -249,11 +258,9 @@
                 rgba(255,255,255,.92);
         }
 
-
         input,
         textarea,
         select {
-
             width: 100%;
 
             padding: 14px 16px;
@@ -276,11 +283,9 @@
             transition: .25s;
         }
 
-
         input:focus,
         textarea:focus,
         select:focus {
-
             border-color:
                 rgba(157,220,255,.9);
 
@@ -289,9 +294,7 @@
                 rgba(157,220,255,.12);
         }
 
-
         textarea {
-
             min-height: 130px;
 
             resize: vertical;
@@ -300,12 +303,11 @@
         }
 
 
-        /* ===============================
+        /* =====================================
            FORM GRID
-        =============================== */
+        ===================================== */
 
         .form-grid {
-
             display: grid;
 
             grid-template-columns:
@@ -315,18 +317,15 @@
         }
 
 
-        /* ===============================
+        /* =====================================
            FOTO SECTION
-        =============================== */
+        ===================================== */
 
         .photo-section {
-
             margin-bottom: 30px;
         }
 
-
         .photo-title {
-
             font-size: 13px;
 
             font-weight: 700;
@@ -338,181 +337,16 @@
         }
 
 
-        /* ===============================
-           CURRENT PHOTO
-        =============================== */
-
-        .current-photo {
-
-            position: relative;
-
-            width: 100%;
-
-            overflow: hidden;
-
-            border-radius: 22px;
-
-            background:
-                rgba(0,0,0,.20);
-
-            border:
-                1px solid
-                rgba(255,255,255,.20);
-
-            margin-bottom: 18px;
-        }
-
-
-        .current-photo img {
-
-            display: block;
-
-            width: 100%;
-
-            max-height: 420px;
-
-            object-fit: cover;
-        }
-
-
-        .current-photo-info {
-
-            position: absolute;
-
-            left: 15px;
-            right: 15px;
-            bottom: 15px;
-
-            padding: 12px 15px;
-
-            border-radius: 13px;
-
-            background:
-                rgba(0,0,0,.55);
-
-            backdrop-filter:
-                blur(10px);
-
-            font-size: 12px;
-        }
-
-
-        .current-label {
-
-            font-weight: 700;
-
-            margin-bottom: 4px;
-        }
-
-
-        .current-path {
-
-            color:
-                rgba(255,255,255,.65);
-
-            word-break: break-all;
-        }
-
-
-        /* ===============================
-           NO PHOTO
-        =============================== */
-
-        .no-photo {
-
-            min-height: 230px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
-
-            padding: 25px;
-
-            border-radius: 22px;
-
-            background:
-                rgba(255,255,255,.08);
-
-            border:
-                1px dashed
-                rgba(255,255,255,.40);
-
-            margin-bottom: 18px;
-        }
-
-
-        .upload-content {
-
-            position: relative;
-
-            z-index: 2;
-        }
-
-
-        .upload-icon {
-
-            width: 64px;
-
-            height: 64px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            margin:
-                auto auto 14px;
-
-            border-radius: 20px;
-
-            background:
-                rgba(255,255,255,.13);
-
-            border:
-                1px solid
-                rgba(255,255,255,.20);
-
-            font-size: 30px;
-        }
-
-
-        .upload-title {
-
-            font-size: 16px;
-
-            font-weight: 700;
-
-            margin-bottom: 7px;
-        }
-
-
-        .upload-subtitle {
-
-            font-size: 12px;
-
-            color:
-                rgba(255,255,255,.58);
-
-            line-height: 1.6;
-        }
-
-
-        /* ===============================
+        /* =====================================
            UPLOAD AREA
-        =============================== */
+        ===================================== */
 
         .upload-area {
-
             position: relative;
 
             width: 100%;
 
-            min-height: 230px;
+            min-height: 280px;
 
             display: flex;
 
@@ -540,9 +374,7 @@
             overflow: hidden;
         }
 
-
         .upload-area:hover {
-
             background:
                 rgba(255,255,255,.14);
 
@@ -551,31 +383,98 @@
 
             transform:
                 translateY(-2px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(0,0,0,.12);
         }
 
 
-        .upload-input {
+        /* =====================================
+           UPLOAD CONTENT
+        ===================================== */
 
+        .upload-content {
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .upload-icon {
+            width: 70px;
+            height: 70px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin:
+                auto auto 15px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,.13);
+
+            border:
+                1px solid
+                rgba(255,255,255,.20);
+
+            font-size: 32px;
+
+            transition: .3s;
+        }
+
+        .upload-area:hover .upload-icon {
+            transform:
+                scale(1.08)
+                rotate(-3deg);
+        }
+
+        .upload-title {
+            font-size: 17px;
+
+            font-weight: 700;
+
+            margin-bottom: 7px;
+        }
+
+        .upload-subtitle {
+            font-size: 12px;
+
+            color:
+                rgba(255,255,255,.58);
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================
+           INPUT FILE
+        ===================================== */
+
+        .upload-input {
             position: absolute;
 
             inset: 0;
 
             width: 100%;
-
             height: 100%;
 
             opacity: 0;
 
             cursor: pointer;
+
+            z-index: 5;
         }
 
 
-        /* ===============================
-           NEW PHOTO PREVIEW
-        =============================== */
+        /* =====================================
+           PREVIEW FOTO BARU
+        ===================================== */
 
         .preview-wrapper {
-
             display: none;
 
             position: relative;
@@ -594,15 +493,11 @@
                 rgba(255,255,255,.20);
         }
 
-
         .preview-wrapper.show {
-
             display: block;
         }
 
-
         .preview-image {
-
             display: block;
 
             width: 100%;
@@ -610,18 +505,20 @@
             max-height: 400px;
 
             object-fit: cover;
+
+            transition: .5s;
         }
 
+        .preview-wrapper:hover .preview-image {
+            transform: scale(1.04);
+        }
 
         .preview-info {
-
             position: absolute;
 
             left: 15px;
-
-            bottom: 15px;
-
             right: 15px;
+            bottom: 15px;
 
             padding: 10px 14px;
 
@@ -634,31 +531,28 @@
                 blur(10px);
 
             font-size: 12px;
+
+            z-index: 3;
         }
 
-
         .preview-label {
-
             font-weight: 700;
 
             margin-bottom: 4px;
         }
 
-
         .change-photo {
-
             color: #a7e2ff;
 
             font-weight: 700;
         }
 
 
-        /* ===============================
+        /* =====================================
            PRICE NOTE
-        =============================== */
+        ===================================== */
 
         .price-note {
-
             margin-top: 7px;
 
             font-size: 11px;
@@ -668,12 +562,11 @@
         }
 
 
-        /* ===============================
+        /* =====================================
            BUTTON
-        =============================== */
+        ===================================== */
 
         .btn {
-
             width: 100%;
 
             margin-top: 10px;
@@ -702,9 +595,7 @@
                 rgba(0,0,0,.12);
         }
 
-
         .btn:hover {
-
             transform:
                 translateY(-3px);
 
@@ -715,20 +606,17 @@
                 rgba(0,0,0,.22);
         }
 
-
         .btn:active {
-
             transform:
                 scale(.98);
         }
 
 
-        /* ===============================
+        /* =====================================
            CANCEL BUTTON
-        =============================== */
+        ===================================== */
 
         .cancel-btn {
-
             display: block;
 
             width: 100%;
@@ -755,9 +643,7 @@
             transition: .3s;
         }
 
-
         .cancel-btn:hover {
-
             background:
                 rgba(255,255,255,.18);
 
@@ -766,14 +652,13 @@
         }
 
 
-        /* ===============================
+        /* =====================================
            ANIMATION
-        =============================== */
+        ===================================== */
 
         @keyframes fadeUp {
 
             from {
-
                 opacity: 0;
 
                 transform:
@@ -781,77 +666,60 @@
             }
 
             to {
-
                 opacity: 1;
 
                 transform:
                     translateY(0);
             }
+
         }
 
 
-        /* ===============================
+        /* =====================================
            RESPONSIVE
-        =============================== */
+        ===================================== */
 
         @media (max-width: 700px) {
 
             body {
-
                 padding:
                     25px 15px;
             }
 
-
             .card {
-
                 padding: 25px;
 
                 border-radius: 25px;
             }
 
-
             .header {
-
-                align-items: flex-start;
+                align-items:
+                    flex-start;
 
                 gap: 15px;
             }
 
-
             .logo {
-
                 font-size: 24px;
             }
 
-
             .back {
-
                 font-size: 12px;
 
                 padding:
                     9px 13px;
             }
 
-
             .form-grid {
-
                 grid-template-columns: 1fr;
 
                 gap: 0;
             }
 
-
             .upload-area {
-
-                min-height: 200px;
+                min-height: 230px;
             }
 
-
-            .current-photo img {
-
-                max-height: 300px;
-            }
         }
 
     </style>
@@ -861,13 +729,12 @@
 
 <body>
 
-
 <div class="container">
 
 
-    <!-- ===============================
+    <!-- =====================================
          HEADER
-    =============================== -->
+    ===================================== -->
 
     <div class="header">
 
@@ -889,13 +756,11 @@
     </div>
 
 
-
-    <!-- ===============================
+    <!-- =====================================
          CARD
-    =============================== -->
+    ===================================== -->
 
     <div class="card">
-
 
         <div class="small-title">
             Admin Management
@@ -908,17 +773,14 @@
 
 
         <p class="subtitle">
-
             Perbarui informasi paket wisata
             dan ganti foto destinasi jika diperlukan.
-
         </p>
 
 
-
-        <!-- ===============================
+        <!-- =====================================
              ERROR
-        =============================== -->
+        ===================================== -->
 
         @if ($errors->any())
 
@@ -937,26 +799,22 @@
         @endif
 
 
-
-        <!-- ===============================
+        <!-- =====================================
              SUCCESS
-        =============================== -->
+        ===================================== -->
 
         @if (session('success'))
 
             <div class="success">
-
                 {{ session('success') }}
-
             </div>
 
         @endif
 
 
-
-        <!-- ===============================
+        <!-- =====================================
              FORM
-        =============================== -->
+        ===================================== -->
 
         <form
             action="{{ url('/admin/paket-wisata/' . $paket->id_paket) }}"
@@ -969,95 +827,15 @@
             @method('PUT')
 
 
-
-            <!-- ===============================
-                 FOTO LAMA
-            =============================== -->
+            <!-- =====================================
+                 FOTO
+            ===================================== -->
 
             <div class="photo-section">
 
-
                 <div class="photo-title">
-
-                    Foto Paket Saat Ini
-
+                    Foto Paket
                 </div>
-
-
-                @if ($paket->foto_paket)
-
-                    <div class="current-photo">
-
-                        <img
-                            src="{{ asset('storage/' . $paket->foto_paket) }}"
-                            alt="Foto {{ $paket->nama_paket }}"
-                        >
-
-
-                        <div class="current-photo-info">
-
-                            <div class="current-label">
-
-                                Foto saat ini
-
-                            </div>
-
-
-                            <div class="current-path">
-
-                                {{ $paket->foto_paket }}
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                @else
-
-                    <div class="no-photo">
-
-                        <div class="upload-content">
-
-                            <div class="upload-icon">
-                                🖼️
-                            </div>
-
-
-                            <div class="upload-title">
-
-                                Belum Ada Foto
-
-                            </div>
-
-
-                            <div class="upload-subtitle">
-
-                                Paket ini belum memiliki foto.
-
-                                <br>
-
-                                Silakan upload foto baru di bawah.
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                @endif
-
-
-
-                <!-- ===============================
-                     UPLOAD FOTO BARU
-                =============================== -->
-
-                <label>
-
-                    Ganti Foto Paket
-
-                </label>
 
 
                 <div
@@ -1066,7 +844,7 @@
                 >
 
 
-                    <!-- DEFAULT -->
+                    <!-- DEFAULT UPLOAD -->
 
                     <div
                         class="upload-content"
@@ -1079,26 +857,22 @@
 
 
                         <div class="upload-title">
-
-                            Upload Foto Baru
-
+                            Upload / Ganti Foto Paket
                         </div>
 
 
                         <div class="upload-subtitle">
 
-                            Klik untuk memilih foto baru
+                            Klik untuk memilih foto
 
                             <br>
 
                             JPG, JPEG, PNG atau WEBP
-
                             • Maksimal 2 MB
 
                         </div>
 
                     </div>
-
 
 
                     <!-- PREVIEW FOTO BARU -->
@@ -1122,16 +896,12 @@
                                 class="preview-label"
                                 id="fileName"
                             >
-
                                 Foto baru
-
                             </div>
 
 
                             <div class="change-photo">
-
                                 Klik foto untuk mengganti
-
                             </div>
 
                         </div>
@@ -1139,6 +909,7 @@
                     </div>
 
 
+                    <!-- INPUT FOTO -->
 
                     <input
                         type="file"
@@ -1153,17 +924,14 @@
             </div>
 
 
-
-            <!-- ===============================
+            <!-- =====================================
                  NAMA PAKET
-            =============================== -->
+            ===================================== -->
 
             <div class="form-group">
 
                 <label for="nama_paket">
-
                     Nama Paket
-
                 </label>
 
 
@@ -1179,17 +947,14 @@
             </div>
 
 
-
-            <!-- ===============================
+            <!-- =====================================
                  DESKRIPSI
-            =============================== -->
+            ===================================== -->
 
             <div class="form-group">
 
                 <label for="deskripsi">
-
                     Deskripsi
-
                 </label>
 
 
@@ -1203,10 +968,9 @@
             </div>
 
 
-
-            <!-- ===============================
+            <!-- =====================================
                  AKOMODASI + ARMADA
-            =============================== -->
+            ===================================== -->
 
             <div class="form-grid">
 
@@ -1214,9 +978,7 @@
                 <div class="form-group">
 
                     <label for="akomodasi">
-
                         Akomodasi
-
                     </label>
 
 
@@ -1232,13 +994,10 @@
                 </div>
 
 
-
                 <div class="form-group">
 
                     <label for="armada_transport">
-
                         Armada Transport
-
                     </label>
 
 
@@ -1256,10 +1015,9 @@
             </div>
 
 
-
-            <!-- ===============================
+            <!-- =====================================
                  HARGA
-            =============================== -->
+            ===================================== -->
 
             <div class="form-grid">
 
@@ -1267,9 +1025,7 @@
                 <div class="form-group">
 
                     <label for="harga_normal">
-
                         Harga Normal
-
                     </label>
 
 
@@ -1285,21 +1041,16 @@
 
 
                     <div class="price-note">
-
                         Masukkan harga dalam Rupiah.
-
                     </div>
 
                 </div>
 
 
-
                 <div class="form-group">
 
                     <label for="harga_promo">
-
                         Harga Promo
-
                     </label>
 
 
@@ -1314,9 +1065,7 @@
 
 
                     <div class="price-note">
-
                         Kosongkan jika tidak ada promo.
-
                     </div>
 
                 </div>
@@ -1324,17 +1073,14 @@
             </div>
 
 
-
-            <!-- ===============================
+            <!-- =====================================
                  STATUS
-            =============================== -->
+            ===================================== -->
 
             <div class="form-group">
 
                 <label for="status">
-
                     Status
-
                 </label>
 
 
@@ -1345,9 +1091,7 @@
                 >
 
                     <option value="">
-
                         -- Pilih Status --
-
                     </option>
 
 
@@ -1355,9 +1099,7 @@
                         value="tersedia"
                         {{ old('status', $paket->status) == 'tersedia' ? 'selected' : '' }}
                     >
-
                         Tersedia
-
                     </option>
 
 
@@ -1365,9 +1107,7 @@
                         value="tidak tersedia"
                         {{ old('status', $paket->status) == 'tidak tersedia' ? 'selected' : '' }}
                     >
-
                         Tidak Tersedia
-
                     </option>
 
                 </select>
@@ -1375,18 +1115,15 @@
             </div>
 
 
-
-            <!-- ===============================
+            <!-- =====================================
                  BUTTON
-            =============================== -->
+            ===================================== -->
 
             <button
                 type="submit"
                 class="btn"
             >
-
                 ✓ Simpan Perubahan
-
             </button>
 
 
@@ -1394,11 +1131,8 @@
                 href="/admin/paket-wisata"
                 class="cancel-btn"
             >
-
                 Batal
-
             </a>
-
 
         </form>
 
@@ -1407,130 +1141,153 @@
 </div>
 
 
-
-<!-- ===============================
+<!-- =====================================
      JAVASCRIPT
-=============================== -->
+===================================== -->
 
 <script>
 
-    const fotoInput =
-        document.getElementById('foto_paket');
+document.addEventListener(
+    'DOMContentLoaded',
+    function () {
 
-    const uploadContent =
-        document.getElementById('uploadContent');
+        const fotoInput =
+            document.getElementById('foto_paket');
 
-    const previewWrapper =
-        document.getElementById('previewWrapper');
+        const uploadContent =
+            document.getElementById('uploadContent');
 
-    const previewImage =
-        document.getElementById('previewImage');
+        const previewWrapper =
+            document.getElementById('previewWrapper');
 
-    const fileName =
-        document.getElementById('fileName');
+        const previewImage =
+            document.getElementById('previewImage');
 
-
-    fotoInput.addEventListener(
-        'change',
-        function () {
-
-            const file =
-                this.files[0];
+        const fileName =
+            document.getElementById('fileName');
 
 
-            if (!file) {
-
-                return;
-
-            }
+        if (!fotoInput) {
+            return;
+        }
 
 
-            /* =========================
-               VALIDASI UKURAN
-            ========================= */
+        fotoInput.addEventListener(
+            'change',
+            function () {
 
-            if (
-                file.size >
-                2 * 1024 * 1024
-            ) {
-
-                alert(
-                    'Ukuran foto maksimal 2 MB.'
-                );
-
-                this.value = '';
-
-                return;
-
-            }
+                const file =
+                    this.files &&
+                    this.files[0];
 
 
-            /* =========================
-               VALIDASI TIPE
-            ========================= */
-
-            const allowedTypes = [
-
-                'image/jpeg',
-
-                'image/png',
-
-                'image/webp'
-
-            ];
+                if (!file) {
+                    return;
+                }
 
 
-            if (
-                !allowedTypes.includes(
-                    file.type
-                )
-            ) {
+                /* ============================
+                   VALIDASI TIPE
+                ============================ */
 
-                alert(
-                    'Format foto harus JPG, JPEG, PNG, atau WEBP.'
-                );
+                const allowedTypes = [
 
-                this.value = '';
+                    'image/jpeg',
+                    'image/png',
+                    'image/webp'
 
-                return;
-
-            }
+                ];
 
 
-            /* =========================
-               PREVIEW
-            ========================= */
+                if (
+                    !allowedTypes.includes(
+                        file.type
+                    )
+                ) {
 
-            const reader =
-                new FileReader();
-
-
-            reader.onload =
-                function (event) {
-
-                    previewImage.src =
-                        event.target.result;
-
-
-                    fileName.textContent =
-                        file.name;
-
-
-                    uploadContent.style.display =
-                        'none';
-
-
-                    previewWrapper.classList.add(
-                        'show'
+                    alert(
+                        'Format foto harus JPG, JPEG, PNG, atau WEBP.'
                     );
 
-                };
+                    this.value = '';
+
+                    return;
+                }
 
 
-            reader.readAsDataURL(file);
+                /* ============================
+                   VALIDASI UKURAN 2 MB
+                ============================ */
 
-        }
-    );
+                if (
+                    file.size >
+                    2 * 1024 * 1024
+                ) {
+
+                    alert(
+                        'Ukuran foto maksimal 2 MB.'
+                    );
+
+                    this.value = '';
+
+                    return;
+                }
+
+
+                /* ============================
+                   PREVIEW
+                ============================ */
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onload =
+                    function (event) {
+
+
+                        if (previewImage) {
+
+                            previewImage.src =
+                                event.target.result;
+
+                        }
+
+
+                        if (fileName) {
+
+                            fileName.textContent =
+                                file.name;
+
+                        }
+
+
+                        if (uploadContent) {
+
+                            uploadContent.style.display =
+                                'none';
+
+                        }
+
+
+                        if (previewWrapper) {
+
+                            previewWrapper.classList.add(
+                                'show'
+                            );
+
+                        }
+
+                    };
+
+
+                reader.readAsDataURL(file);
+
+            }
+        );
+
+    }
+);
 
 </script>
 

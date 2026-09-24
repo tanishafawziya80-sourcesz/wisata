@@ -5,677 +5,372 @@
 
     <meta charset="UTF-8">
 
-    <title>E-Ticket - FAWZATA TRAVEL</title>
+    <title>FAWZATA TRAVEL - E-Ticket</title>
 
     <style>
-
-        /*
-        =====================================================
-        PAGE PDF
-        =====================================================
-        */
-
-        @page {
-            size: A4 landscape;
-            margin: 0;
-        }
 
         * {
             box-sizing: border-box;
         }
 
-        html,
         body {
             margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        body {
-
-            font-family: DejaVu Sans, sans-serif;
-
-            background: #eef4f7;
-
+            padding: 35px;
+            background: #e9eef2;
+            font-family: DejaVu Sans, Arial, sans-serif;
             color: #183b4d;
-
-            font-size: 10px;
-
         }
 
 
-        /*
-        =====================================================
-        PAGE
-        =====================================================
-        */
-
-        .page {
-
-            width: 100%;
-
-            min-height: 100%;
-
-            padding: 22px;
-
-        }
-
-
-        /*
-        =====================================================
-        MAIN TICKET
-        =====================================================
-        */
+        /* =========================================================
+           TICKET WRAPPER
+        ========================================================= */
 
         .ticket {
-
             width: 100%;
-
+            max-width: 1050px;
+            margin: 0 auto;
             background: #ffffff;
-
-            border: 1px solid #dce8ed;
-
-            border-radius: 12px;
-
+            border-radius: 18px;
             overflow: hidden;
-
+            border: 1px solid #d8e3e8;
         }
 
 
-        /*
-        =====================================================
-        HEADER
-        =====================================================
-        */
+        /* =========================================================
+           HEADER
+        ========================================================= */
 
-        .brand-header {
-
-            width: 100%;
-
+        .header {
             background: #123c57;
-
+            padding: 25px 30px;
             color: white;
-
-            padding: 20px 24px;
-
         }
 
-
-        .brand-table {
-
-            width: 100%;
-
-            table-layout: fixed;
-
-            border-collapse: collapse;
-
-        }
-
-
-        .brand-table td {
-
-            padding: 0;
-
-            vertical-align: middle;
-
-        }
-
-
-        .brand-left {
-
-            width: 55%;
-
-            text-align: left;
-
-        }
-
-
-        .brand-right {
-
-            width: 45%;
-
-            text-align: right;
-
-        }
-
-
-        .brand-name {
-
-            font-size: 23px;
-
+        .brand {
+            font-size: 27px;
             font-weight: bold;
-
-            letter-spacing: 1.5px;
-
-            white-space: nowrap;
-
+            letter-spacing: 2px;
         }
 
-
-        .brand-name span {
-
-            color: #9ddcff;
-
+        .brand span {
+            color: #8fd8f4;
         }
 
-
-        .brand-subtitle {
-
+        .travel-label {
             margin-top: 5px;
-
-            font-size: 8px;
-
-            color: #cdebf8;
-
-            letter-spacing: 1.5px;
-
-            text-transform: uppercase;
-
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: #b8d9e7;
         }
 
 
-        .ticket-label {
+        /* =========================================================
+           TICKET TOP
+        ========================================================= */
 
-            font-size: 8px;
-
-            color: #bde6f7;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            white-space: nowrap;
-
+        .ticket-top {
+            padding: 25px 30px 20px;
+            border-bottom: 1px dashed #b9cbd4;
         }
-
 
         .ticket-title {
-
-            margin-top: 4px;
-
-            font-size: 19px;
-
+            font-size: 25px;
             font-weight: bold;
-
-            white-space: nowrap;
-
-        }
-
-
-        /*
-        =====================================================
-        STATUS
-        =====================================================
-        */
-
-        .status-area {
-
-            width: 100%;
-
-            padding: 14px 24px;
-
-            background: #f5fafc;
-
-            border-bottom: 1px solid #dce8ed;
-
-        }
-
-
-        .status-table {
-
-            width: 100%;
-
-            table-layout: fixed;
-
-            border-collapse: collapse;
-
-        }
-
-
-        .status-table td {
-
-            padding: 0 8px;
-
-            vertical-align: top;
-
-        }
-
-
-        .status-table td:first-child {
-
-            padding-left: 0;
-
-        }
-
-
-        .status-table td:last-child {
-
-            padding-right: 0;
-
-        }
-
-
-        .status-label {
-
-            color: #78909c;
-
-            font-size: 7px;
-
-            text-transform: uppercase;
-
-            letter-spacing: .7px;
-
-            margin-bottom: 4px;
-
-        }
-
-
-        .status-value {
-
-            font-size: 10px;
-
-            font-weight: bold;
-
-            color: #183b4d;
-
-            white-space: nowrap;
-
-        }
-
-
-        .status-paid {
-
-            display: inline-block;
-
-            padding: 4px 8px;
-
-            border-radius: 12px;
-
-            background: #e7f7ef;
-
-            color: #168451;
-
-            font-size: 7px;
-
-            font-weight: bold;
-
-        }
-
-
-        /*
-        =====================================================
-        TICKET NUMBER
-        =====================================================
-        */
-
-        .ticket-number-area {
-
-            width: 100%;
-
-            padding: 16px 24px;
-
-            border-bottom: 1px dashed #cbdce4;
-
-        }
-
-
-        .ticket-number-label {
-
-            font-size: 7px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            color: #78909c;
-
-            margin-bottom: 5px;
-
-        }
-
-
-        .ticket-number {
-
-            font-size: 19px;
-
-            font-weight: bold;
-
-            letter-spacing: 1.5px;
-
             color: #123c57;
+        }
 
+        .ticket-subtitle {
+            margin-top: 5px;
+            font-size: 11px;
+            color: #78909c;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 7px 15px;
+            border-radius: 20px;
+            background: #e8f7ee;
+            border: 1px solid #b9e3c9;
+            color: #237044;
+            font-size: 10px;
+            font-weight: bold;
         }
 
 
-        /*
-        =====================================================
-        CONTENT
-        =====================================================
-        */
+        /* =========================================================
+           MAIN INFORMATION
+        ========================================================= */
 
         .content {
-
-            width: 100%;
-
-            padding: 18px 24px;
-
+            padding: 25px 30px;
         }
-
 
         .section-title {
-
-            font-size: 8px;
-
-            font-weight: bold;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            color: #123c57;
-
-            margin-bottom: 8px;
-
-        }
-
-
-        /*
-        =====================================================
-        INFORMATION TABLE
-        =====================================================
-        */
-
-        .info-table {
-
-            width: 100%;
-
-            table-layout: fixed;
-
-            border-collapse: collapse;
-
-            margin-bottom: 15px;
-
-        }
-
-
-        .info-table td {
-
-            width: 50%;
-
-            padding: 9px;
-
-            vertical-align: top;
-
-            border: 1px solid #e4edf1;
-
-        }
-
-
-        .info-label {
-
-            font-size: 7px;
-
+            margin-bottom: 13px;
             color: #78909c;
-
-            text-transform: uppercase;
-
-            letter-spacing: .5px;
-
-            margin-bottom: 4px;
-
-        }
-
-
-        .info-value {
-
             font-size: 9px;
-
             font-weight: bold;
-
-            color: #183b4d;
-
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
 
-        /*
-        =====================================================
-        JOURNEY
-        =====================================================
-        */
+        /* =========================================================
+           PASSENGER
+        ========================================================= */
+
+        .passenger-box {
+            background: #f5f9fb;
+            border: 1px solid #dce8ed;
+            border-radius: 12px;
+            padding: 17px;
+            margin-bottom: 20px;
+        }
+
+        .passenger-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #123c57;
+        }
+
+        .passenger-role {
+            margin-top: 4px;
+            font-size: 10px;
+            color: #78909c;
+        }
+
+
+        /* =========================================================
+           JOURNEY
+        ========================================================= */
 
         .journey {
-
             width: 100%;
-
-            padding: 13px;
-
-            margin-bottom: 14px;
-
-            background: #f5fafc;
-
-            border: 1px solid #dce8ed;
-
-            border-radius: 8px;
-
+            margin-bottom: 20px;
         }
 
-
-        .journey-table {
-
-            width: 100%;
-
-            table-layout: fixed;
-
-            border-collapse: collapse;
-
+        .journey-left {
+            width: 36%;
+            vertical-align: top;
         }
 
-
-        .journey-table td {
-
-            vertical-align: middle;
-
-        }
-
-
-        .journey-point {
-
-            font-size: 13px;
-
-            font-weight: bold;
-
-            color: #123c57;
-
-        }
-
-
-        .journey-label {
-
-            font-size: 7px;
-
-            color: #78909c;
-
-            text-transform: uppercase;
-
-            letter-spacing: .5px;
-
-            margin-bottom: 2px;
-
-        }
-
-
-        .journey-arrow {
-
+        .journey-middle {
+            width: 28%;
             text-align: center;
+            vertical-align: middle;
+        }
 
-            font-size: 17px;
+        .journey-right {
+            width: 36%;
+            text-align: right;
+            vertical-align: top;
+        }
 
-            color: #77bddb;
+        .location-label {
+            font-size: 9px;
+            color: #78909c;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
+        .location-name {
+            margin-top: 5px;
+            font-size: 19px;
             font-weight: bold;
+            color: #123c57;
+        }
 
+        .date {
+            margin-top: 5px;
+            font-size: 11px;
+            color: #546e7a;
+        }
+
+        .route-line {
+            color: #3999bd;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .route-text {
+            margin-top: 3px;
+            font-size: 8px;
+            color: #90a4ae;
+            letter-spacing: 1px;
         }
 
 
-        /*
-        =====================================================
-        QR AREA
-        =====================================================
-        */
+        /* =========================================================
+           DETAILS
+        ========================================================= */
+
+        .details {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 8px;
+            margin-left: -8px;
+        }
+
+        .detail-card {
+            width: 25%;
+            padding: 13px;
+            background: #f8fbfc;
+            border: 1px solid #dce8ed;
+            border-radius: 10px;
+            vertical-align: top;
+        }
+
+        .detail-label {
+            font-size: 8px;
+            color: #78909c;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detail-value {
+            margin-top: 6px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #183b4d;
+        }
+
+
+        /* =========================================================
+           PRICE
+        ========================================================= */
+
+        .price-box {
+            margin-top: 12px;
+            padding: 16px;
+            background: #eef8fc;
+            border: 1px solid #c8e4ee;
+            border-radius: 11px;
+        }
+
+        .price-label {
+            font-size: 9px;
+            color: #78909c;
+        }
+
+        .price-value {
+            margin-top: 4px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #126b91;
+        }
+
+
+        /* =========================================================
+           QR + TICKET NUMBER
+        ========================================================= */
+
+        .bottom {
+            border-top: 1px dashed #b9cbd4;
+            padding: 22px 30px;
+        }
 
         .qr-section {
-
-            width: 100%;
-
+            width: 25%;
             text-align: center;
-
-            padding: 3px 0 12px;
-
+            vertical-align: middle;
         }
 
+        .qr-box {
+            padding: 10px;
+            background: white;
+            border: 1px solid #d7e3e8;
+            border-radius: 10px;
+            display: inline-block;
+        }
 
-        .qr-title {
+        .qr-image {
+            width: 115px;
+            height: 115px;
+        }
 
+        .qr-text {
+            margin-top: 7px;
             font-size: 8px;
-
-            font-weight: bold;
-
-            color: #123c57;
-
-            margin-bottom: 6px;
-
-        }
-
-
-        .qr-code {
-
-            width: 100px;
-
-            height: 100px;
-
-            display: block;
-
-            margin: 0 auto;
-
-        }
-
-
-        .qr-description {
-
-            margin-top: 6px;
-
-            font-size: 7px;
-
             color: #78909c;
-
         }
 
 
-        /*
-        =====================================================
-        DIVIDER
-        =====================================================
-        */
+        .ticket-info {
+            width: 75%;
+            padding-left: 25px;
+            vertical-align: middle;
+        }
 
-        .divider {
+        .number-label {
+            font-size: 8px;
+            color: #78909c;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-            width: calc(100% - 48px);
+        .number {
+            margin-top: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #123c57;
+        }
 
-            margin: 0 24px;
+        .booking {
+            margin-top: 15px;
+        }
 
-            border-top: 1px dashed #cbdce4;
+        .booking-label {
+            font-size: 8px;
+            color: #78909c;
+            text-transform: uppercase;
+        }
 
+        .booking-value {
+            margin-top: 4px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #183b4d;
         }
 
 
-        /*
-        =====================================================
-        FOOTER
-        =====================================================
-        */
+        /* =========================================================
+           FOOTER
+        ========================================================= */
 
         .footer {
-
-            width: 100%;
-
-            padding: 13px 24px 15px;
-
-            background: #fbfdfe;
-
+            background: #f4f8fa;
+            border-top: 1px solid #dce8ed;
+            padding: 16px 30px;
+            font-size: 8px;
+            color: #78909c;
+            line-height: 1.6;
         }
-
 
         .footer-title {
-
-            font-size: 8px;
-
-            font-weight: bold;
-
             color: #123c57;
-
-            margin-bottom: 5px;
-
-            text-transform: uppercase;
-
-            letter-spacing: .7px;
-
-        }
-
-
-        .footer-text {
-
-            font-size: 7px;
-
-            line-height: 1.55;
-
-            color: #78909c;
-
-        }
-
-
-        .footer-brand {
-
-            text-align: center;
-
-            margin-top: 9px;
-
-            font-size: 9px;
-
             font-weight: bold;
+            margin-bottom: 4px;
+        }
 
-            color: #123c57;
-
-            letter-spacing: 1px;
-
+        .footer-right {
+            text-align: right;
         }
 
 
-        .footer-brand span {
+        /* =========================================================
+           DECORATION
+        ========================================================= */
 
-            color: #69b9da;
-
-        }
-
-
-        /*
-        =====================================================
-        SMALL DECORATION
-        =====================================================
-        */
-
-        .header-line {
-
-            width: 55px;
-
-            height: 3px;
-
-            margin-top: 7px;
-
-            background: #9ddcff;
-
-            border-radius: 5px;
-
+        .circle {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #3999bd;
+            margin-right: 5px;
         }
 
     </style>
@@ -685,417 +380,265 @@
 
 <body>
 
-<div class="page">
+
+<div class="ticket">
 
 
-    <div class="ticket">
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
 
+    <div class="header">
 
-        <!-- =================================================
-             HEADER
-        ================================================= -->
-
-        <div class="brand-header">
-
-            <table class="brand-table">
-
-                <tr>
-
-                    <td class="brand-left">
-
-                        <div class="brand-name">
-
-                            FAWZATA<span> TRAVEL</span>
-
-                        </div>
-
-
-                        <div class="brand-subtitle">
-
-                            TRAVEL & TOURISM
-
-                        </div>
-
-
-                        <div class="header-line"></div>
-
-                    </td>
-
-
-                    <td class="brand-right">
-
-                        <div class="ticket-label">
-
-                            DOKUMEN PERJALANAN
-
-                        </div>
-
-
-                        <div class="ticket-title">
-
-                            E-TICKET
-
-                        </div>
-
-                    </td>
-
-                </tr>
-
-            </table>
-
+        <div class="brand">
+            FAWZATA<span> TRAVEL</span>
         </div>
 
-
-        <!-- =================================================
-             STATUS
-        ================================================= -->
-
-        <div class="status-area">
-
-            <table class="status-table">
-
-                <tr>
-
-                    <td width="33.33%">
-
-                        <div class="status-label">
-
-                            KODE BOOKING
-
-                        </div>
-
-
-                        <div class="status-value">
-
-                            {{ $ticket->pemesanan->kode_booking ?? '-' }}
-
-                        </div>
-
-                    </td>
-
-
-                    <td width="33.33%">
-
-                        <div class="status-label">
-
-                            STATUS PEMBAYARAN
-
-                        </div>
-
-
-                        @php
-
-                            $statusPembayaran =
-                                $ticket->pemesanan->pembayaran->status_pembayaran
-                                ?? '-';
-
-                        @endphp
-
-
-                        <span class="status-paid">
-
-                            {{ strtoupper($statusPembayaran) }}
-
-                        </span>
-
-                    </td>
-
-
-                    <td width="33.33%">
-
-                        <div class="status-label">
-
-                            TANGGAL TERBIT
-
-                        </div>
-
-
-                        <div class="status-value">
-
-                            {{ $ticket->tgl_terbit
-                                ? \Carbon\Carbon::parse($ticket->tgl_terbit)->format('d M Y')
-                                : '-'
-                            }}
-
-                        </div>
-
-                    </td>
-
-                </tr>
-
-            </table>
-
+        <div class="travel-label">
+            TOUR & TRAVEL EXPERIENCE
         </div>
 
+    </div>
 
-        <!-- =================================================
-             TICKET NUMBER
-        ================================================= -->
 
-        <div class="ticket-number-area">
+    <!-- =========================================================
+         TICKET TITLE
+    ========================================================= -->
 
-            <div class="ticket-number-label">
+    <div class="ticket-top">
 
-                NOMOR E-TICKET
+        <div class="ticket-title">
+            E-TICKET PERJALANAN WISATA
+        </div>
+
+        <div class="ticket-subtitle">
+            Dokumen perjalanan resmi pelanggan FAWZATA TRAVEL
+        </div>
+
+        <div class="status">
+            ✓ TIKET TELAH DITERBITKAN
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         CONTENT
+    ========================================================= -->
+
+    <div class="content">
+
+
+        <!-- PASSENGER -->
+
+        <div class="section-title">
+            Data Penumpang
+        </div>
+
+        <div class="passenger-box">
+
+            <div class="passenger-name">
+
+                {{ $ticket->pemesanan->pelanggan->nama_lengkap ?? '-' }}
 
             </div>
 
-
-            <div class="ticket-number">
-
-                {{ $ticket->nomor_ticket }}
-
+            <div class="passenger-role">
+                PESERTA PERJALANAN WISATA
             </div>
 
         </div>
 
 
-        <!-- =================================================
-             CONTENT
-        ================================================= -->
+        <!-- JOURNEY -->
 
-        <div class="content">
-
-
-            <!-- INFORMASI PEMESANAN -->
-
-            <div class="section-title">
-
-                INFORMASI PEMESANAN
-
-            </div>
-
-
-            <table class="info-table">
-
-                <tr>
-
-                    <td>
-
-                        <div class="info-label">
-
-                            NAMA PELANGGAN
-
-                        </div>
-
-
-                        <div class="info-value">
-
-                            {{ $ticket->pemesanan->pelanggan->nama_lengkap ?? '-' }}
-
-                        </div>
-
-                    </td>
-
-
-                    <td>
-
-                        <div class="info-label">
-
-                            ID PEMESANAN
-
-                        </div>
-
-
-                        <div class="info-value">
-
-                            {{ $ticket->id_pemesanan }}
-
-                        </div>
-
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
-
-                        <div class="info-label">
-
-                            ID TICKET
-
-                        </div>
-
-
-                        <div class="info-value">
-
-                            {{ $ticket->id_ticket }}
-
-                        </div>
-
-                    </td>
-
-
-                    <td>
-
-                        <div class="info-label">
-
-                            TANGGAL TERBIT
-
-                        </div>
-
-
-                        <div class="info-value">
-
-                            {{ $ticket->tgl_terbit
-                                ? \Carbon\Carbon::parse($ticket->tgl_terbit)->format('d M Y')
-                                : '-'
-                            }}
-
-                        </div>
-
-                    </td>
-
-                </tr>
-
-            </table>
-
-
-            <!-- =================================================
-                 DETAIL PERJALANAN
-            ================================================= -->
-
-            <div class="section-title">
-
-                DETAIL PERJALANAN
-
-            </div>
-
-
-            <div class="journey">
-
-                <table class="journey-table">
-
-                    <tr>
-
-                        <td width="42%">
-
-                            <div class="journey-label">
-
-                                STATUS PERJALANAN
-
-                            </div>
-
-
-                            <div class="journey-point">
-
-                                CONFIRMED
-
-                            </div>
-
-                        </td>
-
-
-                        <td width="16%" class="journey-arrow">
-
-                            →
-
-                        </td>
-
-
-                        <td
-                            width="42%"
-                            style="text-align:right;"
-                        >
-
-                            <div class="journey-label">
-
-                                STATUS TICKET
-
-                            </div>
-
-
-                            <div class="journey-point">
-
-                                VALID
-
-                            </div>
-
-                        </td>
-
-                    </tr>
-
-                </table>
-
-            </div>
-
-
-            <!-- =================================================
-                 QR CODE
-            ================================================= -->
-
-            <div class="qr-section">
-
-                <div class="qr-title">
-
-                    QR CODE E-TICKET
-
-                </div>
-
-
-                <img
-                    src="data:image/png;base64,{{ $qrCode }}"
-                    class="qr-code"
-                    alt="QR Code"
-                >
-
-
-                <div class="qr-description">
-
-                    Tunjukkan QR Code ini saat diperlukan
-                    untuk verifikasi e-ticket.
-
-                </div>
-
-            </div>
-
+        <div class="section-title">
+            Detail Perjalanan
         </div>
 
 
-        <!-- =================================================
-             DIVIDER
-        ================================================= -->
+        <table class="journey">
 
-        <div class="divider"></div>
+            <tr>
 
 
-        <!-- =================================================
-             FOOTER
-        ================================================= -->
+                <!-- KEBERANGKATAN -->
 
-        <div class="footer">
+                <td class="journey-left">
 
-            <div class="footer-title">
+                    <div class="location-label">
+                        Tanggal Keberangkatan
+                    </div>
 
-                INFORMASI PENTING
+                    <div class="location-name">
 
+                        @if(
+                            optional($ticket->pemesanan->jadwalTour)
+                            ->tgl_keberangkatan
+                        )
+
+                            {{ \Carbon\Carbon::parse(
+                                $ticket->pemesanan
+                                    ->jadwalTour
+                                    ->tgl_keberangkatan
+                            )->format('d M Y') }}
+
+                        @else
+
+                            -
+
+                        @endif
+
+                    </div>
+
+                    <div class="date">
+                        Jadwal perjalanan
+                    </div>
+
+                </td>
+
+
+                <!-- ROUTE -->
+
+                <td class="journey-middle">
+
+                    <div class="route-line">
+                        ✈ ───────── ✈
+                    </div>
+
+                    <div class="route-text">
+                        FAWZATA TRAVEL
+                    </div>
+
+                </td>
+
+
+                <!-- PAKET -->
+
+                <td class="journey-right">
+
+                    <div class="location-label">
+                        Paket Wisata
+                    </div>
+
+                    <div class="location-name">
+
+                        {{ $ticket->pemesanan->paketWisata->nama_paket
+                            ?? 'Paket Wisata' }}
+
+                    </div>
+
+                    <div class="date">
+                        Destinasi perjalanan
+                    </div>
+
+                </td>
+
+            </tr>
+
+        </table>
+
+
+        <!-- DETAIL CARDS -->
+
+        <table class="details">
+
+            <tr>
+
+                <td class="detail-card">
+
+                    <div class="detail-label">
+                        Kode Booking
+                    </div>
+
+                    <div class="detail-value">
+
+                        {{ $ticket->pemesanan->kode_booking ?? '-' }}
+
+                    </div>
+
+                </td>
+
+
+                <td class="detail-card">
+
+                    <div class="detail-label">
+                        Jumlah Peserta
+                    </div>
+
+                    <div class="detail-value">
+
+                        {{ $ticket->pemesanan->jumlah_peserta ?? 0 }}
+                        Orang
+
+                    </div>
+
+                </td>
+
+
+                <td class="detail-card">
+
+                    <div class="detail-label">
+                        Tanggal Pemesanan
+                    </div>
+
+                    <div class="detail-value">
+
+                        @if($ticket->pemesanan->tgl_pemesanan)
+
+                            {{ \Carbon\Carbon::parse(
+                                $ticket->pemesanan->tgl_pemesanan
+                            )->format('d M Y') }}
+
+                        @else
+
+                            -
+
+                        @endif
+
+                    </div>
+
+                </td>
+
+
+                <td class="detail-card">
+
+                    <div class="detail-label">
+                        Tanggal Terbit
+                    </div>
+
+                    <div class="detail-value">
+
+                        {{ $ticket->tgl_terbit
+                            ? $ticket->tgl_terbit->format('d M Y')
+                            : '-' }}
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        </table>
+
+
+        <!-- TOTAL -->
+
+        <div class="price-box">
+
+            <div class="price-label">
+                TOTAL PEMBAYARAN
             </div>
 
+            <div class="price-value">
 
-            <div class="footer-text">
-
-                • E-ticket ini merupakan bukti resmi pemesanan perjalanan.
-
-                <br>
-
-                • Pastikan data pada e-ticket sesuai dengan identitas pelanggan.
-
-                <br>
-
-                • Simpan e-ticket ini dan tunjukkan apabila diperlukan selama perjalanan.
-
-                <br>
-
-                • QR Code digunakan untuk membantu proses verifikasi e-ticket.
-
-            </div>
-
-
-            <div class="footer-brand">
-
-                FAWZATA<span> TRAVEL</span>
+                Rp
+                {{ number_format(
+                    $ticket->pemesanan->total_bayar ?? 0,
+                    0,
+                    ',',
+                    '.'
+                ) }}
 
             </div>
 
@@ -1104,7 +647,136 @@
 
     </div>
 
+
+    <!-- =========================================================
+         QR + TICKET NUMBER
+    ========================================================= -->
+
+    <div class="bottom">
+
+
+        <table width="100%">
+
+            <tr>
+
+
+                <!-- QR -->
+
+                <td class="qr-section">
+
+                    <div class="qr-box">
+
+                        <img
+                            src="data:image/svg+xml;base64,{{ $qrCode }}"
+                            class="qr-image"
+                        >
+
+                    </div>
+
+                    <div class="qr-text">
+                        Scan untuk verifikasi tiket
+                    </div>
+
+                </td>
+
+
+                <!-- TICKET INFORMATION -->
+
+                <td class="ticket-info">
+
+                    <div class="number-label">
+                        Nomor E-Ticket
+                    </div>
+
+                    <div class="number">
+
+                        {{ $ticket->nomor_ticket }}
+
+                    </div>
+
+
+                    <div class="booking">
+
+                        <div class="booking-label">
+                            Kode Booking
+                        </div>
+
+                        <div class="booking-value">
+
+                            {{ $ticket->pemesanan->kode_booking ?? '-' }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="booking">
+
+                        <div class="booking-label">
+                            Status
+                        </div>
+
+                        <div class="booking-value">
+
+                            TIKET AKTIF
+
+                        </div>
+
+                    </div>
+
+                </td>
+
+
+            </tr>
+
+        </table>
+
+
+    </div>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <div class="footer">
+
+        <table width="100%">
+
+            <tr>
+
+                <td>
+
+                    <div class="footer-title">
+                        <span class="circle"></span>
+                        Informasi Penting
+                    </div>
+
+                    Harap membawa E-Ticket ini saat mengikuti perjalanan.
+                    Tiket ini diterbitkan secara resmi oleh FAWZATA TRAVEL.
+
+                </td>
+
+
+                <td class="footer-right">
+
+                    FAWZATA TRAVEL<br>
+
+                    Tour & Travel<br>
+
+                    E-Ticket Digital
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+
 </div>
+
 
 </body>
 

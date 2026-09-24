@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Pegawai;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pembayaran;
-use App\Models\ETicket;
-use Illuminate\Support\Str;
 
 class PembayaranController extends Controller
 {
@@ -35,6 +33,12 @@ class PembayaranController extends Controller
     |--------------------------------------------------------------------------
     | SETUJUI PEMBAYARAN
     |--------------------------------------------------------------------------
+    |
+    | Pegawai hanya menyetujui pembayaran.
+    |
+    | TIDAK membuat E-Ticket di sini.
+    | E-Ticket akan diterbitkan melalui fitur E-Ticket.
+    |
     */
 
     public function setujui($id)
@@ -42,9 +46,11 @@ class PembayaranController extends Controller
         $pembayaran = Pembayaran::with('pemesanan')
             ->findOrFail($id);
 
+
         /*
-        | Jika sudah disetujui,
-        | jangan proses ulang.
+        |--------------------------------------------------------------------------
+        | CEK STATUS
+        |--------------------------------------------------------------------------
         */
 
         if ($pembayaran->status_pembayaran === 'disetujui') {
@@ -59,7 +65,9 @@ class PembayaranController extends Controller
 
 
         /*
-        | Update status pembayaran
+        |--------------------------------------------------------------------------
+        | UPDATE STATUS PEMBAYARAN
+        |--------------------------------------------------------------------------
         */
 
         $pembayaran->update([
@@ -68,7 +76,13 @@ class PembayaranController extends Controller
 
 
         /*
-        | Update status pemesanan
+        |--------------------------------------------------------------------------
+        | UPDATE STATUS PEMESANAN
+        |--------------------------------------------------------------------------
+        |
+        | Pembayaran sudah disetujui.
+        | E-Ticket belum diterbitkan.
+        |
         */
 
         if ($pembayaran->pemesanan) {
@@ -80,48 +94,19 @@ class PembayaranController extends Controller
 
 
         /*
-        | Cek apakah E-Ticket sudah ada
+        |--------------------------------------------------------------------------
+        | SELESAI
+        |--------------------------------------------------------------------------
+        |
+        | Tidak ada ETicket::create() di sini.
+        |
         */
-
-        $ticket = ETicket::where(
-            'id_pemesanan',
-            $pembayaran->id_pemesanan
-        )->first();
-
-
-        /*
-        | Jika belum ada, buat E-Ticket
-        */
-
-        if (!$ticket) {
-
-            ETicket::create([
-
-                'id_pemesanan' =>
-                    $pembayaran->id_pemesanan,
-
-                'nomor_ticket' =>
-                    'TICKET-' .
-                    strtoupper(
-                        Str::random(8)
-                    ),
-
-                'file_pdf' =>
-                    'ticket-' .
-                    $pembayaran->id_pemesanan .
-                    '.pdf',
-
-                'tgl_terbit' => now(),
-
-            ]);
-        }
-
 
         return redirect()
             ->route('pegawai.pembayaran')
             ->with(
                 'success',
-                'Pembayaran dan pemesanan berhasil disetujui. E-Ticket telah tersedia.'
+                'Pembayaran berhasil disetujui. E-Ticket belum diterbitkan.'
             );
     }
 
@@ -134,7 +119,15 @@ class PembayaranController extends Controller
 
     public function tolak($id)
     {
-        $pembayaran = Pembayaran::findOrFail($id);
+        $pembayaran = Pembayaran::with('pemesanan')
+            ->findOrFail($id);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | UPDATE STATUS PEMBAYARAN
+        |--------------------------------------------------------------------------
+        */
 
         $pembayaran->update([
             'status_pembayaran' => 'ditolak',
@@ -142,8 +135,9 @@ class PembayaranController extends Controller
 
 
         /*
-        | Jika pembayaran ditolak,
-        | status pemesanan juga ditolak.
+        |--------------------------------------------------------------------------
+        | UPDATE STATUS PEMESANAN
+        |--------------------------------------------------------------------------
         */
 
         if ($pembayaran->pemesanan) {
@@ -153,6 +147,12 @@ class PembayaranController extends Controller
             ]);
         }
 
+
+        /*
+        |--------------------------------------------------------------------------
+        | KEMBALI KE DATA PEMBAYARAN
+        |--------------------------------------------------------------------------
+        */
 
         return redirect()
             ->route('pegawai.pembayaran')
@@ -175,14 +175,12 @@ class PembayaranController extends Controller
 
 
         /*
-        | Pastikan bukti tersedia
+        |--------------------------------------------------------------------------
+        | CEK BUKTI
+        |--------------------------------------------------------------------------
         */
 
-        if (
-            empty(
-                $pembayaran->bukti_pembayaran
-            )
-        ) {
+        if (empty($pembayaran->bukti_pembayaran)) {
 
             abort(
                 404,
@@ -192,7 +190,9 @@ class PembayaranController extends Controller
 
 
         /*
-        | Ambil nama file
+        |--------------------------------------------------------------------------
+        | AMBIL NAMA FILE
+        |--------------------------------------------------------------------------
         */
 
         $filename = basename(
@@ -201,17 +201,20 @@ class PembayaranController extends Controller
 
 
         /*
-        | Lokasi file
+        |--------------------------------------------------------------------------
+        | LOKASI FILE
+        |--------------------------------------------------------------------------
         */
 
         $path = storage_path(
-            'app/public/bukti-pembayaran/' .
-            $filename
+            'app/public/bukti-pembayaran/' . $filename
         );
 
 
         /*
-        | Pastikan file benar-benar ada
+        |--------------------------------------------------------------------------
+        | CEK FILE
+        |--------------------------------------------------------------------------
         */
 
         if (!file_exists($path)) {
@@ -224,14 +227,18 @@ class PembayaranController extends Controller
 
 
         /*
-        | Tentukan MIME TYPE
+        |--------------------------------------------------------------------------
+        | MIME TYPE
+        |--------------------------------------------------------------------------
         */
 
         $mime = mime_content_type($path);
 
 
         /*
-        | Tampilkan file
+        |--------------------------------------------------------------------------
+        | TAMPILKAN BUKTI
+        |--------------------------------------------------------------------------
         */
 
         return response()->file(

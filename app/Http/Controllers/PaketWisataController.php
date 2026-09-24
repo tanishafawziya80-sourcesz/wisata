@@ -15,6 +15,16 @@ class PaketWisataController extends Controller
         return view('paket-wisata.index', compact('paketWisata'));
     }
 
+    // Tambahkan method create di sini (di luar method lain)
+    public function create()
+    {
+        // Pengecekan keamanan tambahan khusus admin (opsional jika middleware sudah ada)
+        if (auth()->user()->role !== 'admin') {
+            abort(403, 'Akses hanya untuk admin.');
+        }
+
+        return view('admin.paket-wisata.create'); 
+    }
 
     public function store(Request $request)
     {
@@ -22,7 +32,6 @@ class PaketWisataController extends Controller
         if (auth()->user()->role !== 'admin') {
             abort(403, 'Akses hanya untuk admin.');
         }
-
 
         $request->validate([
             'nama_paket' => 'required',
@@ -34,7 +43,6 @@ class PaketWisataController extends Controller
             'status' => 'required',
         ]);
 
-
         PaketWisata::create([
             'nama_paket' => $request->nama_paket,
             'deskripsi' => $request->deskripsi,
@@ -44,18 +52,8 @@ class PaketWisataController extends Controller
             'harga_promo' => $request->harga_promo,
             'status' => $request->status,
         ]);
-
-
+        
         return redirect('/paket-wisata')
             ->with('success', 'Paket wisata berhasil ditambahkan!');
     }
-
-    public function jadwalTour()
-{
-    return $this->hasMany(
-        JadwalTour::class,
-        'id_paket',
-        'id_paket'
-    );
-}
 }

@@ -1,4 +1,3 @@
-```php
 <!DOCTYPE html>
 <html lang="id">
 
@@ -6,9 +5,13 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Pembayaran - FAWZATA TRAVEL</title>
+
 
     <style>
 
@@ -19,16 +22,17 @@
             font-family: "Segoe UI", Arial, sans-serif;
         }
 
+
         body {
 
             min-height: 100vh;
 
-            color: white;
+            color: #183b4d;
 
             background:
                 linear-gradient(
-                    rgba(4, 35, 52, .72),
-                    rgba(7, 48, 67, .88)
+                    rgba(7,48,67,.80),
+                    rgba(18,60,87,.92)
                 ),
                 url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=90");
 
@@ -38,186 +42,19 @@
 
             background-attachment: fixed;
 
-            overflow-x: hidden;
+            padding-bottom: 80px;
         }
 
 
-        /* =====================================================
-           CLOUDS
-        ===================================================== */
-
-        .clouds {
-
-            position: fixed;
-
-            inset: 0;
-
-            width: 100%;
-
-            height: 100%;
-
-            overflow: hidden;
-
-            pointer-events: none;
-
-            z-index: 0;
-        }
-
-        .cloud {
-
-            position: absolute;
-
-            width: 150px;
-
-            height: 45px;
-
-            background: rgba(255,255,255,.20);
-
-            border-radius: 50px;
-
-            filter: blur(.5px);
-
-            opacity: .65;
-
-            animation:
-                cloudMove 45s linear infinite;
-        }
-
-        .cloud span {
-
-            position: absolute;
-
-            display: block;
-
-            background: rgba(255,255,255,.22);
-
-            border-radius: 50%;
-        }
-
-        .cloud span:nth-child(1) {
-
-            width: 55px;
-
-            height: 55px;
-
-            left: 20px;
-
-            bottom: 15px;
-        }
-
-        .cloud span:nth-child(2) {
-
-            width: 70px;
-
-            height: 70px;
-
-            left: 55px;
-
-            bottom: 10px;
-        }
-
-        .cloud span:nth-child(3) {
-
-            width: 48px;
-
-            height: 48px;
-
-            right: 15px;
-
-            bottom: 13px;
-        }
-
-        .cloud-1 {
-
-            top: 18%;
-
-            left: -200px;
-
-            transform: scale(.75);
-
-            animation-duration: 48s;
-        }
-
-        .cloud-2 {
-
-            top: 35%;
-
-            left: -230px;
-
-            transform: scale(1.15);
-
-            opacity: .35;
-
-            animation-duration: 60s;
-
-            animation-delay: -15s;
-        }
-
-        .cloud-3 {
-
-            top: 55%;
-
-            left: -180px;
-
-            transform: scale(.65);
-
-            opacity: .30;
-
-            animation-duration: 52s;
-
-            animation-delay: -25s;
-        }
-
-        .cloud-4 {
-
-            top: 75%;
-
-            left: -200px;
-
-            transform: scale(.9);
-
-            opacity: .25;
-
-            animation-duration: 65s;
-
-            animation-delay: -35s;
-        }
-
-        @keyframes cloudMove {
-
-            0% {
-
-                transform:
-                    translateX(0)
-                    translateY(0);
-            }
-
-            50% {
-
-                transform:
-                    translateX(55vw)
-                    translateY(-10px);
-            }
-
-            100% {
-
-                transform:
-                    translateX(115vw)
-                    translateY(5px);
-            }
-        }
-
-
-        /* =====================================================
+        /* =========================================================
            NAVBAR
-        ===================================================== */
+        ========================================================= */
 
         .navbar {
 
             position: fixed;
 
             top: 0;
-
             left: 0;
 
             width: 100%;
@@ -233,20 +70,19 @@
             justify-content: space-between;
 
             background:
-                rgba(255,255,255,.10);
+                rgba(18,60,87,.80);
 
-            backdrop-filter:
-                blur(20px);
+            backdrop-filter: blur(20px);
 
-            -webkit-backdrop-filter:
-                blur(20px);
+            -webkit-backdrop-filter: blur(20px);
 
             border-bottom:
                 1px solid
-                rgba(255,255,255,.18);
+                rgba(255,255,255,.15);
 
             z-index: 1000;
         }
+
 
         .logo {
 
@@ -254,26 +90,19 @@
 
             text-decoration: none;
 
-            font-size: 27px;
+            font-size: 25px;
 
             font-weight: 800;
 
             letter-spacing: 2px;
-
-            transition: .3s ease;
         }
 
-        .logo:hover {
-
-            transform: translateY(-2px);
-
-            letter-spacing: 3px;
-        }
 
         .logo span {
 
             color: #9ddcff;
         }
+
 
         .nav-right {
 
@@ -281,44 +110,40 @@
 
             align-items: center;
 
-            gap: 15px;
+            gap: 12px;
         }
+
 
         .role {
 
-            padding:
-                9px 17px;
-
-            border-radius: 30px;
-
-            background:
-                rgba(255,255,255,.12);
-
-            border:
-                1px solid
-                rgba(255,255,255,.20);
-
-            color:
-                rgba(255,255,255,.90);
-
-            font-size: 13px;
-
-            font-weight: 700;
-        }
-
-        .logout {
-
-            border:
-                1px solid
-                rgba(255,255,255,.20);
-
-            padding:
-                10px 18px;
+            padding: 9px 17px;
 
             border-radius: 25px;
 
             background:
-                rgba(255,255,255,.92);
+                rgba(255,255,255,.10);
+
+            border:
+                1px solid
+                rgba(255,255,255,.18);
+
+            color: white;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        .logout {
+
+            border: none;
+
+            padding: 10px 18px;
+
+            border-radius: 25px;
+
+            background: white;
 
             color: #123c57;
 
@@ -326,25 +151,23 @@
 
             cursor: pointer;
 
-            transition: .3s;
+            transition: .25s;
         }
+
 
         .logout:hover {
 
-            transform:
-                translateY(-2px);
+            transform: translateY(-2px);
 
             box-shadow:
-                0 10px 25px
-                rgba(0,0,0,.20);
-
-            background: white;
+                0 8px 20px
+                rgba(0,0,0,.15);
         }
 
 
-        /* =====================================================
+        /* =========================================================
            CONTAINER
-        ===================================================== */
+        ========================================================= */
 
         .container {
 
@@ -354,291 +177,140 @@
 
             width: 90%;
 
-            max-width: 1250px;
+            max-width: 1050px;
 
             margin: auto;
 
-            padding-top: 130px;
-
-            padding-bottom: 90px;
+            padding-top: 125px;
         }
 
-
-        /* =====================================================
-           HEADER
-        ===================================================== */
-
-        .header {
-
-            margin-bottom: 35px;
-
-            animation:
-                fadeUp .8s ease both;
-        }
 
         .small-title {
 
-            font-size: 12px;
+            color: #9ddcff;
+
+            font-size: 11px;
+
+            font-weight: 800;
 
             letter-spacing: 4px;
 
             text-transform: uppercase;
 
-            color: #a7e2ff;
-
-            margin-bottom: 12px;
-
-            font-weight: 700;
+            margin-bottom: 10px;
         }
 
-        .header h1 {
+
+        h1 {
+
+            color: white;
 
             font-size:
-                clamp(40px, 6vw, 62px);
+                clamp(38px,6vw,55px);
 
-            line-height: 1.05;
-
-            margin-bottom: 12px;
-
-            font-weight: 850;
+            margin-bottom: 10px;
         }
 
-        .header p {
 
-            max-width: 650px;
+        .description {
 
             color:
                 rgba(255,255,255,.72);
 
-            line-height: 1.7;
+            font-size: 14px;
 
-            font-size: 15px;
+            margin-bottom: 30px;
         }
 
 
-        /* =====================================================
-           MAIN CARD
-        ===================================================== */
+        /* =========================================================
+           ALERT
+        ========================================================= */
 
-        .card {
+        .alert {
 
-            position: relative;
+            padding: 14px 18px;
 
-            padding: 30px;
+            border-radius: 14px;
 
-            border-radius: 30px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(255,255,255,.14),
-                    rgba(255,255,255,.07)
-                );
-
-            backdrop-filter:
-                blur(22px);
-
-            -webkit-backdrop-filter:
-                blur(22px);
-
-            border:
-                1px solid
-                rgba(255,255,255,.20);
-
-            box-shadow:
-                0 30px 80px
-                rgba(0,0,0,.22);
-
-            animation:
-                fadeUp 1s ease both;
-
-            overflow: hidden;
-        }
-
-        .card::before {
-
-            content: "";
-
-            position: absolute;
-
-            width: 300px;
-
-            height: 300px;
-
-            top: -180px;
-
-            right: -100px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(150,230,255,.15),
-                    transparent 70%
-                );
-
-            pointer-events: none;
-        }
-
-
-        /* =====================================================
-           CARD HEADER
-        ===================================================== */
-
-        .card-header {
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            margin-bottom: 25px;
-
-            gap: 20px;
-        }
-
-        .card-title {
-
-            font-size: 21px;
-
-            font-weight: 800;
-        }
-
-        .card-subtitle {
-
-            margin-top: 5px;
-
-            color:
-                rgba(255,255,255,.55);
+            margin-bottom: 20px;
 
             font-size: 13px;
         }
 
-        .total-payment {
 
-            padding:
-                10px 16px;
+        .success {
 
-            border-radius: 20px;
+            background: #effbf4;
+
+            border: 1px solid #c8efd7;
+
+            color: #287448;
+        }
+
+
+        .error {
+
+            background: #fff1f1;
+
+            border: 1px solid #ffd0d0;
+
+            color: #a33b3b;
+        }
+
+
+        /* =========================================================
+           EMPTY
+        ========================================================= */
+
+        .empty {
+
+            padding: 40px;
+
+            border-radius: 25px;
 
             background:
                 rgba(255,255,255,.10);
 
             border:
                 1px solid
-                rgba(255,255,255,.16);
+                rgba(255,255,255,.18);
 
-            color:
-                #cceeff;
+            color: white;
 
-            font-size: 12px;
-
-            font-weight: 700;
-
-            white-space: nowrap;
+            text-align: center;
         }
 
 
-        /* =====================================================
-           ALERT
-        ===================================================== */
+        /* =========================================================
+           BOOKING CARD
+        ========================================================= */
 
-        .alert {
+        .booking-card {
 
-            padding:
-                13px 17px;
+            margin-bottom: 28px;
 
-            border-radius: 15px;
+            padding: 28px;
 
-            margin-bottom: 20px;
+            border-radius: 25px;
 
-            font-size: 13px;
-
-            line-height: 1.5;
+            background:
+                rgba(255,255,255,.94);
 
             border:
                 1px solid
-                rgba(255,255,255,.15);
-        }
-
-        .alert-success {
-
-            background:
-                rgba(70,190,130,.12);
-
-            color:
-                #b8f2d2;
-
-            border-color:
-                rgba(100,220,160,.20);
-        }
-
-        .alert-error {
-
-            background:
-                rgba(255,90,90,.12);
-
-            color:
-                #ffd0d0;
-
-            border-color:
-                rgba(255,120,120,.20);
-        }
-
-
-        /* =====================================================
-           PAYMENT CARD
-        ===================================================== */
-
-        .payment-list {
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 18px;
-        }
-
-        .payment-item {
-
-            position: relative;
-
-            padding: 24px;
-
-            border-radius: 22px;
-
-            background:
-                rgba(255,255,255,.075);
-
-            border:
-                1px solid
-                rgba(255,255,255,.14);
-
-            transition:
-                .3s ease;
-        }
-
-        .payment-item:hover {
-
-            transform:
-                translateY(-3px);
-
-            background:
-                rgba(255,255,255,.105);
+                rgba(255,255,255,.60);
 
             box-shadow:
-                0 15px 35px
-                rgba(0,0,0,.15);
+                0 25px 70px
+                rgba(0,0,0,.20);
+
+            animation:
+                fadeUp .45s ease both;
         }
 
 
-        /* =====================================================
-           PAYMENT TOP
-        ===================================================== */
-
-        .payment-top {
+        .booking-header {
 
             display: flex;
 
@@ -648,445 +320,674 @@
 
             gap: 20px;
 
-            margin-bottom: 20px;
+            margin-bottom: 22px;
+
+            padding-bottom: 18px;
+
+            border-bottom:
+                1px dashed
+                #cbdce4;
         }
 
-        .booking-label {
 
-            font-size: 10px;
+        .booking-title {
 
-            color:
-                rgba(255,255,255,.48);
+            color: #123c57;
 
-            text-transform: uppercase;
+            font-size: 20px;
 
-            letter-spacing: 1.5px;
-
-            margin-bottom: 6px;
+            font-weight: 800;
         }
+
+
+        .booking-customer {
+
+            margin-top: 7px;
+
+            color: #126b91;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
 
         .booking-code {
 
-            font-size: 21px;
+            margin-top: 5px;
 
-            font-weight: 800;
+            color: #78909c;
 
-            color: #cceeff;
-
-            letter-spacing: 1px;
+            font-size: 12px;
         }
 
 
-        /* =====================================================
-           STATUS BADGE
-        ===================================================== */
-
         .status {
 
-            display: inline-flex;
-
-            align-items: center;
-
-            padding:
-                7px 13px;
+            padding: 8px 14px;
 
             border-radius: 20px;
 
-            font-size: 10px;
+            background: #fff7df;
+
+            border: 1px solid #f2dfaa;
+
+            color: #856404;
+
+            font-size: 11px;
 
             font-weight: 800;
-
-            text-transform: uppercase;
 
             white-space: nowrap;
         }
 
-        .status-waiting {
 
-            background:
-                rgba(255,190,70,.13);
+        /* =========================================================
+           DETAIL GRID
+        ========================================================= */
 
-            color:
-                #ffd58a;
-
-            border:
-                1px solid
-                rgba(255,190,70,.20);
-        }
-
-        .status-paid {
-
-            background:
-                rgba(70,200,130,.13);
-
-            color:
-                #aef0ca;
-
-            border:
-                1px solid
-                rgba(70,200,130,.20);
-        }
-
-        .status-rejected {
-
-            background:
-                rgba(255,90,90,.13);
-
-            color:
-                #ffc0c0;
-
-            border:
-                1px solid
-                rgba(255,90,90,.20);
-        }
-
-        .status-default {
-
-            background:
-                rgba(255,255,255,.08);
-
-            color:
-                rgba(255,255,255,.70);
-
-            border:
-                1px solid
-                rgba(255,255,255,.12);
-        }
-
-
-        /* =====================================================
-           PAYMENT INFO
-        ===================================================== */
-
-        .payment-info {
+        .detail-grid {
 
             display: grid;
 
             grid-template-columns:
-                repeat(3, 1fr);
+                repeat(2, 1fr);
+
+            gap: 12px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .detail {
+
+            padding: 15px;
+
+            border-radius: 15px;
+
+            background: #f7fbfd;
+
+            border:
+                1px solid
+                #dfebef;
+        }
+
+
+        .detail-label {
+
+            color: #78909c;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .detail-value {
+
+            color: #183b4d;
+
+            font-size: 14px;
+
+            font-weight: 800;
+        }
+
+
+        /* =========================================================
+           TOTAL
+        ========================================================= */
+
+        .total {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 18px;
+
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef9fd,
+                    #e1f4fa
+                );
+
+            border:
+                1px solid
+                #c9e8f2;
+
+            margin-bottom: 25px;
+        }
+
+
+        .total-label {
+
+            color: #6d8795;
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+
+        .total-value {
+
+            color: #126b91;
+
+            font-size: 23px;
+
+            font-weight: 850;
+        }
+
+
+        /* =========================================================
+           PAYMENT
+        ========================================================= */
+
+        .payment-section {
+
+            padding-top: 22px;
+
+            border-top:
+                1px dashed
+                #cbdce4;
+        }
+
+
+        .payment-title {
+
+            color: #123c57;
+
+            font-size: 16px;
+
+            font-weight: 800;
+
+            margin-bottom: 17px;
+        }
+
+
+        .method-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
 
             gap: 12px;
 
             margin-bottom: 20px;
         }
 
-        .info-box {
 
-            padding:
-                13px 15px;
+        .method {
 
-            border-radius: 14px;
+            position: relative;
+        }
 
-            background:
-                rgba(255,255,255,.055);
+
+        .method input {
+
+            position: absolute;
+
+            opacity: 0;
+        }
+
+
+        .method label {
+
+            display: block;
+
+            min-height: 105px;
+
+            padding: 17px;
+
+            border-radius: 15px;
+
+            background: #f8fbfc;
 
             border:
                 1px solid
-                rgba(255,255,255,.09);
+                #dce9ee;
+
+            cursor: pointer;
+
+            transition: .25s;
         }
 
-        .info-label {
 
-            color:
-                rgba(255,255,255,.45);
+        .method label:hover {
+
+            border-color: #9acde0;
+
+            transform: translateY(-2px);
+        }
+
+
+        .method input:checked + label {
+
+            border-color: #3999bd;
+
+            background: #eef9fd;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(57,153,189,.10);
+        }
+
+
+        .method-name {
+
+            color: #123c57;
+
+            font-size: 14px;
+
+            font-weight: 800;
+        }
+
+
+        .method-description {
+
+            margin-top: 6px;
+
+            color: #78909c;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================================================
+           PAYMENT INFO
+        ========================================================= */
+
+        .payment-info {
+
+            display: none;
+
+            margin-bottom: 20px;
+
+            padding: 20px;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f1faff,
+                    #f8fcfe
+                );
+
+            border:
+                1px solid
+                #cfe8f1;
+
+            animation:
+                fadeUp .3s ease both;
+        }
+
+
+        .payment-info.active {
+
+            display: block;
+        }
+
+
+        .payment-info-title {
+
+            color: #123c57;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            margin-bottom: 8px;
+        }
+
+
+        .payment-info-text {
+
+            color: #78909c;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+        }
+
+
+        .payment-account {
+
+            margin-top: 14px;
+
+            padding: 14px;
+
+            border-radius: 13px;
+
+            background: white;
+
+            border:
+                1px solid
+                #dce9ee;
+        }
+
+
+        .payment-account-label {
+
+            color: #78909c;
 
             font-size: 9px;
 
+            font-weight: 800;
+
             text-transform: uppercase;
 
-            letter-spacing: .8px;
+            letter-spacing: 1px;
 
             margin-bottom: 5px;
         }
 
-        .info-value {
 
-            color:
-                rgba(255,255,255,.88);
+        .payment-account-value {
 
-            font-size: 13px;
+            color: #123c57;
 
-            font-weight: 700;
+            font-size: 16px;
+
+            font-weight: 800;
         }
 
 
-        /* =====================================================
-           UPLOAD AREA
-        ===================================================== */
+        /* =========================================================
+           QRIS PLACEHOLDER
+        ========================================================= */
 
-        .upload-area {
+        .qris-box {
 
-            padding-top: 18px;
+            display: none;
 
-            border-top:
+            margin-top: 15px;
+
+            padding: 18px;
+
+            border-radius: 15px;
+
+            background: white;
+
+            border:
                 1px dashed
-                rgba(255,255,255,.14);
+                #b9dce8;
+
+            text-align: center;
         }
 
-        .upload-title {
 
-            color:
-                rgba(255,255,255,.85);
+        .qris-box.active {
+
+            display: block;
+        }
+
+
+        .qris-placeholder {
+
+            width: 180px;
+
+            height: 180px;
+
+            margin: 0 auto 12px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background:
+                #f4f8fa;
+
+            border:
+                1px solid
+                #dce9ee;
+
+            color: #78909c;
 
             font-size: 12px;
 
             font-weight: 700;
-
-            margin-bottom: 10px;
         }
 
-        .upload-form {
 
-            display: flex;
+        .qris-note {
 
-            align-items: center;
+            color: #78909c;
 
-            gap: 10px;
+            font-size: 11px;
 
-            flex-wrap: wrap;
+            line-height: 1.5;
         }
+
+
+        /* =========================================================
+           UPLOAD
+        ========================================================= */
+
+        .upload-label {
+
+            display: block;
+
+            color: #546e7a;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            margin-bottom: 8px;
+        }
+
+
+        .upload-help {
+
+            margin-top: 7px;
+
+            color: #78909c;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+        }
+
 
         .file-input {
 
-            flex: 1;
+            width: 100%;
 
-            min-width: 240px;
+            padding: 12px;
 
-            padding:
-                10px 12px;
-
-            border-radius: 13px;
-
-            background:
-                rgba(255,255,255,.08);
+            border-radius: 12px;
 
             border:
                 1px solid
-                rgba(255,255,255,.14);
+                #d6e4e9;
 
-            color:
-                rgba(255,255,255,.70);
+            background: #fff;
 
-            font-size: 11px;
+            color: #546e7a;
+
+            cursor: pointer;
         }
 
-        .file-input::file-selector-button {
 
-            margin-right: 10px;
+        .file-input:focus {
+
+            outline: none;
+
+            border-color: #78bfdc;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(119,189,219,.13);
+        }
+
+
+        /* =========================================================
+           PAY BUTTON
+        ========================================================= */
+
+        .pay-btn {
+
+            width: 100%;
+
+            margin-top: 20px;
+
+            padding: 15px;
 
             border: none;
 
-            padding:
-                7px 11px;
-
-            border-radius: 10px;
+            border-radius: 17px;
 
             background:
-                rgba(157,220,255,.18);
-
-            color:
-                #d8f4ff;
-
-            cursor: pointer;
-
-            font-weight: 700;
-        }
-
-        .upload-btn {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 7px;
-
-            padding:
-                11px 17px;
-
-            border-radius: 22px;
-
-            background:
-                rgba(157,220,255,.14);
-
-            border:
-                1px solid
-                rgba(157,220,255,.28);
-
-            color:
-                #d8f4ff;
-
-            font-size: 11px;
-
-            font-weight: 750;
-
-            cursor: pointer;
-
-            transition:
-                .3s ease;
-        }
-
-        .upload-btn:hover {
-
-            background:
-                rgba(157,220,255,.27);
-
-            border-color:
-                rgba(180,235,255,.45);
-
-            transform:
-                translateY(-2px);
-
-            box-shadow:
-                0 10px 25px
-                rgba(0,0,0,.20);
-        }
-
-
-        /* =====================================================
-           PROOF
-        ===================================================== */
-
-        .proof {
-
-            margin-top: 16px;
-
-            padding:
-                12px 14px;
-
-            border-radius: 14px;
-
-            background:
-                rgba(70,200,130,.08);
-
-            border:
-                1px solid
-                rgba(70,200,130,.14);
-
-            color:
-                rgba(255,255,255,.70);
-
-            font-size: 11px;
-        }
-
-        .proof strong {
-
-            color:
-                #b8f2d2;
-        }
-
-
-        /* =====================================================
-           EMPTY
-        ===================================================== */
-
-        .empty {
-
-            text-align: center;
-
-            padding:
-                65px 20px;
-        }
-
-        .empty-icon {
-
-            width: 60px;
-
-            height: 60px;
-
-            margin:
-                0 auto 18px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border-radius: 50%;
-
-            background:
-                rgba(255,255,255,.08);
-
-            border:
-                1px solid
-                rgba(255,255,255,.12);
-
-            font-size: 25px;
-        }
-
-        .empty-title {
+                linear-gradient(
+                    135deg,
+                    #123c57,
+                    #247da2
+                );
 
             color: white;
 
-            font-size: 20px;
+            font-size: 14px;
 
-            font-weight: 700;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+
+        .pay-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 25px
+                rgba(18,60,87,.22);
+        }
+
+
+        /* =========================================================
+           SUCCESS PAYMENT
+        ========================================================= */
+
+        .payment-success {
+
+            padding: 18px;
+
+            border-radius: 17px;
+
+            background: #effbf4;
+
+            border:
+                1px solid
+                #c8efd7;
+        }
+
+
+        .payment-success-title {
+
+            color: #287448;
+
+            font-size: 16px;
+
+            font-weight: 800;
 
             margin-bottom: 7px;
         }
 
-        .empty-text {
+
+        .payment-success-text {
+
+            color: #4d7660;
 
             font-size: 13px;
 
-            color:
-                rgba(255,255,255,.50);
+            line-height: 1.6;
         }
 
 
-        /* =====================================================
+        /* =========================================================
+           REJECTED
+        ========================================================= */
+
+        .payment-rejected {
+
+            padding: 15px;
+
+            margin-bottom: 18px;
+
+            border-radius: 14px;
+
+            background: #fff3f3;
+
+            border:
+                1px solid
+                #f1cccc;
+
+            color: #a33b3b;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================================
            BACK BUTTON
-        ===================================================== */
+        ========================================================= */
 
         .back-btn {
 
-            display: inline-flex;
+            display: inline-block;
 
-            align-items: center;
+            margin-top: 18px;
 
-            gap: 8px;
-
-            margin-top: 25px;
-
-            padding:
-                12px 20px;
-
-            border-radius: 25px;
+            color: white;
 
             text-decoration: none;
 
-            background:
-                rgba(255,255,255,.92);
-
-            color: #123c57;
+            font-size: 13px;
 
             font-weight: 700;
 
-            transition: .3s;
+            opacity: .9;
 
-            box-shadow:
-                0 8px 25px
-                rgba(0,0,0,.10);
+            transition: .25s;
         }
+
 
         .back-btn:hover {
 
-            transform:
-                translateY(-3px);
+            opacity: 1;
 
-            box-shadow:
-                0 12px 30px
-                rgba(0,0,0,.20);
-
-            background: white;
+            transform: translateX(-3px);
         }
 
 
-        /* =====================================================
+        /* =========================================================
            ANIMATION
-        ===================================================== */
+        ========================================================= */
 
         @keyframes fadeUp {
 
@@ -1095,7 +996,7 @@
                 opacity: 0;
 
                 transform:
-                    translateY(25px);
+                    translateY(15px);
             }
 
             to {
@@ -1108,22 +1009,34 @@
         }
 
 
-        /* =====================================================
+        /* =========================================================
            RESPONSIVE
-        ===================================================== */
+        ========================================================= */
 
-        @media (max-width: 750px) {
+        @media(max-width:800px) {
+
+            .method-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+        }
+
+
+        @media(max-width:700px) {
 
             .navbar {
 
-                padding:
-                    0 5%;
+                padding: 0 5%;
             }
+
 
             .role {
 
                 display: none;
             }
+
 
             .container {
 
@@ -1132,49 +1045,41 @@
                 padding-top: 110px;
             }
 
-            .card {
 
-                padding: 18px;
+            .booking-card {
 
-                border-radius: 24px;
+                padding: 20px;
             }
 
-            .card-header {
+
+            .booking-header {
+
+                flex-direction: column;
+            }
+
+
+            .detail-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .total {
 
                 align-items: flex-start;
 
                 flex-direction: column;
             }
 
-            .payment-info {
 
-                grid-template-columns:
-                    1fr;
+            .qris-placeholder {
+
+                width: 150px;
+
+                height: 150px;
             }
 
-            .payment-top {
-
-                flex-direction: column;
-            }
-
-            .upload-form {
-
-                align-items: stretch;
-
-                flex-direction: column;
-            }
-
-            .file-input {
-
-                width: 100%;
-
-                min-width: 0;
-            }
-
-            .upload-btn {
-
-                width: 100%;
-            }
         }
 
     </style>
@@ -1186,49 +1091,16 @@
 
 
 <!-- =========================================================
-     ANIMATED CLOUDS
-========================================================= -->
-
-<div class="clouds">
-
-    <div class="cloud cloud-1">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <div class="cloud cloud-2">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <div class="cloud cloud-3">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <div class="cloud cloud-4">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-</div>
-
-
-<!-- =========================================================
      NAVBAR
 ========================================================= -->
 
 <nav class="navbar">
 
     <a
-        href="/pelanggan/dashboard"
+        href="{{ route('pelanggan.dashboard') }}"
         class="logo"
     >
-        WISATA<span>.</span>
+        FAWZATA<span> TRAVEL</span>
     </a>
 
 
@@ -1240,7 +1112,7 @@
 
 
         <form
-            action="/logout"
+            action="{{ url('/logout') }}"
             method="POST"
         >
 
@@ -1260,440 +1132,829 @@
 </nav>
 
 
+
 <!-- =========================================================
-     CONTENT
+     CONTAINER
 ========================================================= -->
 
-<main class="container">
+<div class="container">
 
 
-    <!-- HEADER -->
-
-    <div class="header">
-
-        <div class="small-title">
-            Travel Operations
-        </div>
-
-
-        <h1>
-            Pembayaran
-        </h1>
-
-
-        <p>
-            Kelola pembayaran perjalanan dan kirim
-            bukti pembayaran Anda dalam satu ruang kerja.
-        </p>
-
+    <div class="small-title">
+        FAWZATA TRAVEL • PAYMENT
     </div>
+
+
+    <h1>
+        Pembayaran
+    </h1>
+
+
+    <p class="description">
+        Pilih metode pembayaran dan kirim bukti pembayaran
+        untuk diproses oleh pegawai.
+    </p>
+
 
 
     <!-- =====================================================
-         MAIN CARD
-    ===================================================== -->
+         SUCCESS ALERT
+    ====================================================== -->
 
-    <div class="card">
+    @if(session('success'))
+
+        <div class="alert success">
+
+            {{ session('success') }}
+
+        </div>
+
+    @endif
 
 
-        <!-- CARD HEADER -->
 
-        <div class="card-header">
+    <!-- =====================================================
+         ERROR ALERT
+    ====================================================== -->
 
-            <div>
+    @if($errors->any())
 
-                <div class="card-title">
-                    Data Pembayaran
+        <div class="alert error">
+
+            @foreach($errors->all() as $error)
+
+                <div>
+                    {{ $error }}
                 </div>
 
-                <div class="card-subtitle">
-                    Daftar pembayaran pemesanan perjalanan Anda
+            @endforeach
+
+        </div>
+
+    @endif
+
+
+
+    <!-- =====================================================
+         DAFTAR PEMESANAN
+    ====================================================== -->
+
+    @forelse($pemesanan as $pesanan)
+
+
+        <div class="booking-card">
+
+
+            <!-- =================================================
+                 HEADER
+            ================================================== -->
+
+            <div class="booking-header">
+
+                <div>
+
+                    <div class="booking-title">
+
+                        {{ optional(
+                            optional($pesanan->jadwalTour)->paketWisata
+                        )->nama_paket ?? 'Paket Wisata' }}
+
+                    </div>
+
+
+                    <div class="booking-customer">
+
+                        Pemesan:
+
+                        <strong>
+                            {{ optional($pesanan->pelanggan)->nama_lengkap ?? '-' }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="booking-code">
+
+                        Kode Booking:
+
+                        <strong>
+                            {{ $pesanan->kode_booking }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="status">
+
+                    {{ ucfirst(
+                        $pesanan->pembayaran->status_pembayaran
+                        ?? 'Belum Bayar'
+                    ) }}
+
                 </div>
 
             </div>
 
 
-            <div class="total-payment">
 
-                Total
-                {{ $pemesanan->count() }}
-                Pemesanan
+            <!-- =================================================
+                 DETAIL PEMESANAN
+            ================================================== -->
+
+            <div class="detail-grid">
+
+
+                <div class="detail">
+
+                    <div class="detail-label">
+                        Jumlah Peserta
+                    </div>
+
+                    <div class="detail-value">
+
+                        {{ $pesanan->jumlah_peserta }}
+                        orang
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="detail">
+
+                    <div class="detail-label">
+                        Tanggal Pemesanan
+                    </div>
+
+                    <div class="detail-value">
+
+                        {{ $pesanan->tgl_pemesanan
+                            ? $pesanan->tgl_pemesanan->format('d M Y')
+                            : '-' }}
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="detail">
+
+                    <div class="detail-label">
+                        Keberangkatan
+                    </div>
+
+                    <div class="detail-value">
+
+                        {{ optional($pesanan->jadwalTour)->tgl_keberangkatan
+                            ? \Carbon\Carbon::parse(
+                                $pesanan->jadwalTour->tgl_keberangkatan
+                            )->format('d M Y')
+                            : '-' }}
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="detail">
+
+                    <div class="detail-label">
+                        Status Pesanan
+                    </div>
+
+                    <div class="detail-value">
+
+                        {{ ucfirst($pesanan->status_pemesanan) }}
+
+                    </div>
+
+                </div>
+
 
             </div>
+
+
+
+            <!-- =================================================
+                 TOTAL
+            ================================================== -->
+
+            <div class="total">
+
+                <div class="total-label">
+                    TOTAL PEMBAYARAN
+                </div>
+
+
+                <div class="total-value">
+
+                    Rp
+
+                    {{ number_format(
+                        $pesanan->total_bayar,
+                        0,
+                        ',',
+                        '.'
+                    ) }}
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FORM PEMBAYARAN
+            ================================================== -->
+
+            @if(
+                !$pesanan->pembayaran ||
+                $pesanan->pembayaran->status_pembayaran === 'ditolak'
+            )
+
+
+                <div class="payment-section">
+
+
+                    <div class="payment-title">
+                        Pilih Metode Pembayaran
+                    </div>
+
+
+
+                    @if(
+                        $pesanan->pembayaran &&
+                        $pesanan->pembayaran->status_pembayaran === 'ditolak'
+                    )
+
+                        <div class="payment-rejected">
+
+                            Pembayaran sebelumnya ditolak oleh pegawai.
+                            Silakan lakukan pembayaran kembali dan upload
+                            bukti pembayaran yang benar.
+
+                        </div>
+
+                    @endif
+
+
+
+                    <form
+                        action="{{ route('pelanggan.pembayaran.store') }}"
+                        method="POST"
+                        enctype="multipart/form-data"
+                    >
+
+                        @csrf
+
+
+
+                        <input
+                            type="hidden"
+                            name="id_pemesanan"
+                            value="{{ $pesanan->id_pemesanan }}"
+                        >
+
+
+
+                        <!-- =========================================
+                             METODE PEMBAYARAN
+                        ========================================== -->
+
+                        <div class="method-grid">
+
+
+                            <!-- TRANSFER BANK -->
+
+                            <div class="method">
+
+                                <input
+                                    type="radio"
+                                    id="bank{{ $pesanan->id_pemesanan }}"
+                                    name="metode_pembayaran"
+                                    value="transfer_bank"
+                                    required
+                                >
+
+
+                                <label
+                                    for="bank{{ $pesanan->id_pemesanan }}"
+                                >
+
+                                    <div class="method-name">
+                                        Transfer Bank
+                                    </div>
+
+
+                                    <div class="method-description">
+                                        Transfer melalui rekening bank
+                                        FAWZATA TRAVEL.
+                                    </div>
+
+                                </label>
+
+                            </div>
+
+
+
+                            <!-- QRIS -->
+
+                            <div class="method">
+
+                                <input
+                                    type="radio"
+                                    id="qris{{ $pesanan->id_pemesanan }}"
+                                    name="metode_pembayaran"
+                                    value="qris"
+                                    required
+                                    onchange="showPaymentInfo(
+                                        '{{ $pesanan->id_pemesanan }}',
+                                        'qris'
+                                    )"
+                                >
+
+
+                                <label
+                                    for="qris{{ $pesanan->id_pemesanan }}"
+                                >
+
+                                    <div class="method-name">
+                                        QRIS
+                                    </div>
+
+
+                                    <div class="method-description">
+                                        Bayar menggunakan QRIS,
+                                        lalu screenshot bukti transaksi.
+                                    </div>
+
+                                </label>
+
+                            </div>
+
+
+
+                            <!-- E-WALLET -->
+
+                            <div class="method">
+
+                                <input
+                                    type="radio"
+                                    id="ewallet{{ $pesanan->id_pemesanan }}"
+                                    name="metode_pembayaran"
+                                    value="e_wallet"
+                                    required
+                                    onchange="showPaymentInfo(
+                                        '{{ $pesanan->id_pemesanan }}',
+                                        'e_wallet'
+                                    )"
+                                >
+
+
+                                <label
+                                    for="ewallet{{ $pesanan->id_pemesanan }}"
+                                >
+
+                                    <div class="method-name">
+                                        E-Wallet
+                                    </div>
+
+
+                                    <div class="method-description">
+                                        Bayar melalui e-wallet,
+                                        lalu screenshot bukti transaksi.
+                                    </div>
+
+                                </label>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- =========================================
+                             INFO QRIS
+                        ========================================== -->
+
+                        <div
+                            id="qrisInfo{{ $pesanan->id_pemesanan }}"
+                            class="payment-info"
+                        >
+
+                            <div class="payment-info-title">
+                                Pembayaran QRIS
+                            </div>
+
+
+                            <div class="payment-info-text">
+
+                                Silakan lakukan pembayaran menggunakan
+                                QRIS FAWZATA TRAVEL.
+
+                                Setelah pembayaran berhasil,
+                                <strong>ambil screenshot bukti transaksi</strong>
+                                dari aplikasi pembayaran kamu.
+
+                            </div>
+
+
+                            <div class="qris-box active">
+
+                                <div class="qris-placeholder">
+
+                                    QRIS
+                                    <br>
+                                    FAWZATA TRAVEL
+
+                                </div>
+
+
+                                <div class="qris-note">
+
+                                    Tempatkan gambar QRIS asli
+                                    FAWZATA TRAVEL di bagian ini.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =========================================
+                             INFO E-WALLET
+                        ========================================== -->
+
+                        <div
+                            id="ewalletInfo{{ $pesanan->id_pemesanan }}"
+                            class="payment-info"
+                        >
+
+                            <div class="payment-info-title">
+                                Pembayaran E-Wallet
+                            </div>
+
+
+                            <div class="payment-info-text">
+
+                                Silakan lakukan pembayaran ke akun
+                                e-wallet FAWZATA TRAVEL.
+
+                                Setelah pembayaran berhasil,
+                                <strong>ambil screenshot bukti transaksi</strong>
+                                dari aplikasi e-wallet kamu.
+
+                            </div>
+
+
+                            <div class="payment-account">
+
+                                <div class="payment-account-label">
+                                    E-Wallet FAWZATA TRAVEL
+                                </div>
+
+
+                                <div class="payment-account-value">
+                                    Nomor / Akun E-Wallet
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =========================================
+                             UPLOAD BUKTI
+                        ========================================== -->
+
+                        <label class="upload-label">
+
+                            Upload Screenshot Bukti Pembayaran
+
+                        </label>
+
+
+                        <input
+                            type="file"
+                            name="bukti_pembayaran"
+                            class="file-input"
+                            accept=".jpg,.jpeg,.png,.pdf"
+                            required
+                        >
+
+
+                        <div class="upload-help">
+
+                            Upload screenshot bukti pembayaran
+                            setelah transaksi berhasil.
+                            Format: JPG, JPEG, PNG, atau PDF.
+                            Maksimal 5 MB.
+
+                        </div>
+
+
+
+                        <!-- =========================================
+                             BUTTON
+                        ========================================== -->
+
+                        <button
+                            type="submit"
+                            class="pay-btn"
+                        >
+
+                            Kirim Bukti Pembayaran
+
+                        </button>
+
+
+                    </form>
+
+
+                </div>
+
+
+
+            <!-- =================================================
+                 MENUNGGU
+            ================================================== -->
+
+            @elseif(
+                $pesanan->pembayaran->status_pembayaran === 'menunggu'
+            )
+
+
+                <div class="payment-section">
+
+
+                    <div class="payment-title">
+                        Pembayaran Sedang Diproses
+                    </div>
+
+
+                    <div class="payment-success">
+
+                        <div class="payment-success-title">
+
+                            Bukti Pembayaran Sudah Dikirim
+
+                        </div>
+
+
+                        <div class="payment-success-text">
+
+                            Bukti pembayaran sudah berhasil dikirim.
+                            Silakan tunggu pegawai memeriksa dan
+                            menyetujui pembayaran Anda.
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+            <!-- =================================================
+                 DISETUJUI
+            ================================================== -->
+
+            @elseif(
+                $pesanan->pembayaran->status_pembayaran === 'disetujui'
+            )
+
+
+                <div class="payment-section">
+
+
+                    <div class="payment-title">
+
+                        Pembayaran Berhasil
+
+                    </div>
+
+
+                    <div class="payment-success">
+
+                        <div class="payment-success-title">
+
+                            Pembayaran Telah Disetujui
+
+                        </div>
+
+
+                        <div class="payment-success-text">
+
+                            Pembayaran Anda telah diperiksa dan
+                            disetujui oleh pegawai.
+
+                            <br><br>
+
+                            Silakan menunggu proses penerbitan
+                            <strong>e-ticket</strong> oleh pegawai.
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            @endif
+
 
         </div>
 
 
-        <!-- =================================================
-             SUCCESS MESSAGE
-        ================================================= -->
+    @empty
 
-        @if(session('success'))
 
-            <div class="alert alert-success">
+        <div class="empty">
 
-                {{ session('success') }}
+            Belum ada pemesanan yang perlu dibayar.
 
-            </div>
+        </div>
 
-        @endif
 
+    @endforelse
 
-        <!-- =================================================
-             ERROR MESSAGE
-        ================================================= -->
 
-        @if(session('error'))
 
-            <div class="alert alert-error">
+    <!-- =========================================================
+         BACK
+    ========================================================== -->
 
-                {{ session('error') }}
+    <a
+        href="{{ route('pelanggan.pemesanan.index') }}"
+        class="back-btn"
+    >
 
-            </div>
+        Kembali ke Pemesanan
 
-        @endif
+    </a>
 
 
-        <!-- =================================================
-             VALIDATION ERROR
-        ================================================= -->
+</div>
 
-        @if($errors->any())
 
-            <div class="alert alert-error">
 
-                @foreach($errors->all() as $error)
+<!-- =============================================================
+     JAVASCRIPT
+============================================================= -->
 
-                    <div>
-                        {{ $error }}
-                    </div>
+<script>
 
-                @endforeach
+    function showPaymentInfo(
+        id,
+        method
+    )
+    {
 
-            </div>
+        const qrisInfo =
+            document.getElementById(
+                'qrisInfo' + id
+            );
 
-        @endif
 
+        const ewalletInfo =
+            document.getElementById(
+                'ewalletInfo' + id
+            );
 
-        <!-- =================================================
-             PAYMENT LIST
-        ================================================= -->
 
-        @if($pemesanan->count() > 0)
+        if (qrisInfo) {
 
+            qrisInfo.classList.remove(
+                'active'
+            );
 
-            <div class="payment-list">
+        }
 
 
-                @foreach($pemesanan as $item)
+        if (ewalletInfo) {
 
+            ewalletInfo.classList.remove(
+                'active'
+            );
 
-                    @php
+        }
 
-                        $pembayaran = $item->pembayaran;
 
-                        $status =
-                            strtolower(
-                                $pembayaran->status_pembayaran
-                                ?? 'belum dibayar'
-                            );
+        if (method === 'qris') {
 
-                    @endphp
+            if (qrisInfo) {
 
+                qrisInfo.classList.add(
+                    'active'
+                );
 
-                    <div class="payment-item">
+            }
 
+        }
 
-                        <!-- =================================================
-                             TOP
-                        ================================================= -->
 
-                        <div class="payment-top">
+        if (method === 'e_wallet') {
 
+            if (ewalletInfo) {
 
-                            <div>
+                ewalletInfo.classList.add(
+                    'active'
+                );
 
-                                <div class="booking-label">
-                                    Kode Booking
-                                </div>
+            }
 
+        }
 
-                                <div class="booking-code">
+    }
 
-                                    {{ $item->kode_booking ?? '-' }}
 
-                                </div>
+    /*
+    |--------------------------------------------------------------------------
+    | TRANSFER BANK
+    |--------------------------------------------------------------------------
+    |
+    | Jika transfer bank dipilih, informasi QRIS/E-Wallet disembunyikan.
+    |
+    */
 
-                            </div>
+    document.querySelectorAll(
+        'input[name="metode_pembayaran"]'
+    ).forEach(function(input) {
 
+        input.addEventListener(
+            'change',
+            function() {
 
-                            <!-- STATUS -->
+                const id =
+                    this.id.replace(
+                        'bank',
+                        ''
+                    )
+                    .replace(
+                        'qris',
+                        ''
+                    )
+                    .replace(
+                        'ewallet',
+                        ''
+                    );
 
-                            @if(
-                                str_contains($status, 'lunas') ||
-                                str_contains($status, 'dibayar') ||
-                                str_contains($status, 'terverifikasi') ||
-                                str_contains($status, 'berhasil')
-                            )
 
-                                <div class="status status-paid">
-                                    {{ strtoupper($status) }}
-                                </div>
+                if (
+                    this.value ===
+                    'transfer_bank'
+                ) {
 
-                            @elseif(
-                                str_contains($status, 'tolak') ||
-                                str_contains($status, 'gagal')
-                            )
+                    const qrisInfo =
+                        document.getElementById(
+                            'qrisInfo' + id
+                        );
 
-                                <div class="status status-rejected">
-                                    {{ strtoupper($status) }}
-                                </div>
 
-                            @elseif(
-                                str_contains($status, 'menunggu')
-                            )
+                    const ewalletInfo =
+                        document.getElementById(
+                            'ewalletInfo' + id
+                        );
 
-                                <div class="status status-waiting">
-                                    {{ strtoupper($status) }}
-                                </div>
 
-                            @else
+                    if (qrisInfo) {
 
-                                <div class="status status-default">
-                                    {{ strtoupper($status) }}
-                                </div>
+                        qrisInfo.classList.remove(
+                            'active'
+                        );
 
-                            @endif
+                    }
 
 
-                        </div>
+                    if (ewalletInfo) {
 
+                        ewalletInfo.classList.remove(
+                            'active'
+                        );
 
-                        <!-- =================================================
-                             INFO
-                        ================================================= -->
+                    }
 
-                        <div class="payment-info">
+                }
 
+            }
+        );
 
-                            <div class="info-box">
+    });
 
-                                <div class="info-label">
-                                    ID Pemesanan
-                                </div>
-
-                                <div class="info-value">
-
-                                    #{{ $item->id_pemesanan }}
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="info-box">
-
-                                <div class="info-label">
-                                    Tanggal Pemesanan
-                                </div>
-
-                                <div class="info-value">
-
-                                    {{ $item->created_at
-                                        ? \Carbon\Carbon::parse(
-                                            $item->created_at
-                                        )->format('d M Y')
-                                        : '-'
-                                    }}
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="info-box">
-
-                                <div class="info-label">
-                                    Status
-                                </div>
-
-                                <div class="info-value">
-
-                                    {{ strtoupper($status) }}
-
-                                </div>
-
-                            </div>
-
-
-                        </div>
-
-
-                        <!-- =================================================
-                             PAYMENT ACTION
-                        ================================================= -->
-
-                        <div class="upload-area">
-
-
-                            @if($pembayaran)
-
-
-                                @if(
-                                    !empty($pembayaran->bukti_pembayaran)
-                                )
-
-
-                                    <div class="proof">
-
-                                        <strong>
-                                            ✓ Bukti pembayaran sudah dikirim.
-                                        </strong>
-
-                                        <br>
-
-                                        Bukti pembayaran sedang diproses
-                                        oleh pegawai.
-
-                                    </div>
-
-
-                                @else
-
-
-                                    <div class="upload-title">
-
-                                        Upload Bukti Pembayaran
-
-                                    </div>
-
-
-                                    <form
-                                        action="{{ route('pelanggan.pembayaran.upload') }}"
-                                        method="POST"
-                                        enctype="multipart/form-data"
-                                        class="upload-form"
-                                    >
-
-                                        @csrf
-
-
-                                        <input
-                                            type="hidden"
-                                            name="id_pemesanan"
-                                            value="{{ $item->id_pemesanan }}"
-                                        >
-
-
-                                        <input
-                                            type="file"
-                                            name="bukti_pembayaran"
-                                            class="file-input"
-                                            accept=".jpg,.jpeg,.png,.pdf"
-                                            required
-                                        >
-
-
-                                        <button
-                                            type="submit"
-                                            class="upload-btn"
-                                        >
-
-                                            ↑
-                                            Upload Bukti
-
-                                        </button>
-
-                                    </form>
-
-
-                                @endif
-
-
-                            @else
-
-
-                                <div class="proof">
-
-                                    Bukti pembayaran belum dapat dikirim
-                                    karena data pembayaran belum tersedia.
-
-                                </div>
-
-
-                            @endif
-
-
-                        </div>
-
-
-                    </div>
-
-
-                @endforeach
-
-
-            </div>
-
-
-        @else
-
-
-            <!-- =================================================
-                 EMPTY
-            ================================================= -->
-
-            <div class="empty">
-
-
-                <div class="empty-icon">
-                    💳
-                </div>
-
-
-                <div class="empty-title">
-
-                    Belum Ada Pembayaran
-
-                </div>
-
-
-                <div class="empty-text">
-
-                    Data pembayaran pemesanan Anda
-                    akan muncul di halaman ini.
-
-                </div>
-
-
-            </div>
-
-
-        @endif
-
-
-        <!-- =================================================
-             BACK
-        ================================================= -->
-
-        <a
-            href="/pelanggan/dashboard"
-            class="back-btn"
-        >
-
-            ←
-            Kembali ke Dashboard
-
-        </a>
-
-
-    </div>
-
-
-</main>
+</script>
 
 
 </body>
 
 </html>
-

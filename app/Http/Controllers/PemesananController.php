@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\PaketWisata;
 use App\Models\Pemesanan;
 use App\Models\Pembayaran;
+use App\Models\JadwalTour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -21,7 +22,8 @@ class PemesananController extends Controller
     public function index()
     {
         $pemesanan = Pemesanan::with([
-            'paketWisata',
+            'pelanggan',
+            'jadwalTour',
             'pembayaran',
         ])
         ->where(
@@ -44,31 +46,92 @@ class PemesananController extends Controller
     |--------------------------------------------------------------------------
     */
 
-    public function create($id_paket)
+    public function create($id_paket, $id_jadwal = null)
     {
-        $paketWisata = PaketWisata::findOrFail($id_paket);
-
-        $pelanggan = Auth::user();
+        $paket = PaketWisata::findOrFail($id_paket);
 
         /*
         |--------------------------------------------------------------------------
-        | TENTUKAN HARGA
+        | AMBIL JADWAL
+        |--------------------------------------------------------------------------
+        */
+
+        if ($id_jadwal) {
+
+            $jadwal = JadwalTour::where(
+                'id_jadwal',
+                $id_jadwal
+            )
+            ->where(
+                'id_paket',
+                $id_paket
+            )
+            ->firstOrFail();
+
+        } else {
+
+            $jadwal = JadwalTour::where(
+                'id_paket',
+                $id_paket
+            )
+            ->where(
+                'tgl_keberangkatan',
+                '>=',
+                now()
+            )
+            ->orderBy(
+                'tgl_keberangkatan',
+                'asc'
+            )
+            ->first();
+
+            if (!$jadwal) {
+
+                return redirect()
+                    ->route('paket-wisata.index')
+                    ->with(
+                        'error',
+                        'Jadwal wisata belum tersedia.'
+                    );
+            }
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | HARGA
         |--------------------------------------------------------------------------
         */
 
         if (
-            $paketWisata->harga_promo !== null &&
-            $paketWisata->harga_promo > 0
+            $paket->harga_promo !== null &&
+            $paket->harga_promo > 0
         ) {
-            $harga = (float) $paketWisata->harga_promo;
+
+            $harga =
+                (float) $paket->harga_promo;
+
         } else {
-            $harga = (float) $paketWisata->harga_normal;
+
+            $harga =
+                (float) $paket->harga_normal;
         }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | PELANGGAN
+        |--------------------------------------------------------------------------
+        */
+
+        $pelanggan = Auth::user();
+
 
         return view(
             'pelanggan.pemesanan.create',
             compact(
-                'paketWisata',
+                'paket',
+                'jadwal',
                 'pelanggan',
                 'harga'
             )
@@ -86,14 +149,15 @@ class PemesananController extends Controller
     {
         /*
         |--------------------------------------------------------------------------
-        | VALIDASI
+        | VALIDASI DASAR
         |--------------------------------------------------------------------------
         */
 
         $request->validate([
-            'id_paket' => [
+
+            'id_jadwal' => [
                 'required',
-                'exists:paket_wisata,id_paket'
+                'exists:jadwal_tour,id_jadwal'
             ],
 
             'jumlah_peserta' => [
@@ -101,7 +165,59 @@ class PemesananController extends Controller
                 'integer',
                 'min:1'
             ],
+
+            'peserta' => [
+                'required',
+                'array',
+                'min:1'
+            ],
+
+            'peserta.*.nama_peserta' => [
+                'required',
+                'string',
+                'max:255'
+            ],
+
+            'peserta.*.nik' => [
+                'nullable',
+                'string',
+                'max:30'
+            ],
+
+            'peserta.*.usia' => [
+                'required',
+                'integer',
+                'min:1',
+                'max:100'
+            ],
+
+            'peserta.*.kategori' => [
+                'required',
+                'in:dewasa,anak'
+            ],
+
+            'peserta.*.jenis_kelamin' => [
+                'required',
+                'in:L,P'
+            ],
+
+            'catatan_revisi' => [
+                'nullable',
+                'string'
+            ],
+
         ]);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | AMBIL JADWAL
+        |--------------------------------------------------------------------------
+        */
+
+        $jadwal = JadwalTour::findOrFail(
+            $request->id_jadwal
+        );
 
 
         /*
@@ -111,24 +227,8 @@ class PemesananController extends Controller
         */
 
         $paketWisata = PaketWisata::findOrFail(
-            $request->id_paket
+            $jadwal->id_paket
         );
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | TENTUKAN HARGA YANG DIGUNAKAN
-        |--------------------------------------------------------------------------
-        */
-
-        if (
-            $paketWisata->harga_promo !== null &&
-            $paketWisata->harga_promo > 0
-        ) {
-            $hargaPerOrang = (float) $paketWisata->harga_promo;
-        } else {
-            $hargaPerOrang = (float) $paketWisata->harga_normal;
-        }
 
 
         /*
@@ -137,7 +237,82 @@ class PemesananController extends Controller
         |--------------------------------------------------------------------------
         */
 
-        $jumlahPeserta = (int) $request->jumlah_peserta;
+        $jumlahPeserta =
+            (int) $request->jumlah_peserta;
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | CEK DATA PESERTA
+        |--------------------------------------------------------------------------
+        */
+
+        $peserta =
+            $request->input(
+                'peserta',
+                []
+            );
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | PASTIKAN JUMLAH SESUAI
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            count($peserta)
+            != $jumlahPeserta
+        ) {
+
+            return back()
+                ->withInput()
+                ->with(
+                    'error',
+                    'Jumlah data peserta tidak sesuai dengan jumlah peserta.'
+                );
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | CEK KUOTA
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            $jumlahPeserta >
+            $jadwal->sisa_kuota
+        ) {
+
+            return back()
+                ->withInput()
+                ->with(
+                    'error',
+                    'Jumlah peserta melebihi sisa kuota.'
+                );
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | TENTUKAN HARGA
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            $paketWisata->harga_promo !== null &&
+            $paketWisata->harga_promo > 0
+        ) {
+
+            $hargaPerOrang =
+                (float) $paketWisata->harga_promo;
+
+        } else {
+
+            $hargaPerOrang =
+                (float) $paketWisata->harga_normal;
+        }
 
 
         /*
@@ -170,49 +345,103 @@ class PemesananController extends Controller
         |--------------------------------------------------------------------------
         */
 
-        $pemesanan = new Pemesanan();
+        $pemesanan =
+            new Pemesanan();
+
 
         $pemesanan->id_pelanggan =
             Auth::user()->id_user;
 
-        $pemesanan->id_paket =
-            $paketWisata->id_paket;
+
+        $pemesanan->id_jadwal =
+            $jadwal->id_jadwal;
+
 
         $pemesanan->kode_booking =
             $kodeBooking;
 
+
+        $pemesanan->tgl_pemesanan =
+            now();
+
+
         $pemesanan->jumlah_peserta =
             $jumlahPeserta;
 
-        $pemesanan->total_harga =
+
+        /*
+        |--------------------------------------------------------------------------
+        | SIMPAN SEMUA DATA PESERTA
+        |--------------------------------------------------------------------------
+        */
+
+        $pemesanan->data_peserta =
+            $peserta;
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | TOTAL BAYAR
+        |--------------------------------------------------------------------------
+        */
+
+        $pemesanan->total_bayar =
             $totalHarga;
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STATUS
+        |--------------------------------------------------------------------------
+        */
 
         $pemesanan->status_pemesanan =
             'menunggu pembayaran';
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | CATATAN
+        |--------------------------------------------------------------------------
+        */
+
+        $pemesanan->catatan_revisi =
+            $request->catatan_revisi;
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | SAVE
+        |--------------------------------------------------------------------------
+        */
 
         $pemesanan->save();
 
 
         /*
         |--------------------------------------------------------------------------
-        | BUAT DATA PEMBAYARAN
+        | BUAT PEMBAYARAN
         |--------------------------------------------------------------------------
         */
 
-        $pembayaran = new Pembayaran();
+        $pembayaran =
+            new Pembayaran();
+
 
         $pembayaran->id_pemesanan =
             $pemesanan->id_pemesanan;
 
+
         $pembayaran->status_pembayaran =
             'menunggu';
+
 
         $pembayaran->save();
 
 
         /*
         |--------------------------------------------------------------------------
-        | KEMBALI KE HALAMAN PEMBAYARAN
+        | KEMBALI
         |--------------------------------------------------------------------------
         */
 

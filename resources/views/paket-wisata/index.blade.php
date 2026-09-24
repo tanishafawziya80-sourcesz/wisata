@@ -1,4 +1,3 @@
-```php
 <!DOCTYPE html>
 <html lang="id">
 
@@ -22,6 +21,7 @@
 
         body {
             color: #17384d;
+
             background:
                 linear-gradient(
                     180deg,
@@ -29,6 +29,7 @@
                     #f7fbfc 45%,
                     #eef7fa 100%
                 );
+
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -61,8 +62,10 @@
         .logo {
             color: #123c57;
             text-decoration: none;
+
             font-size: 27px;
             font-weight: 800;
+
             letter-spacing: 2px;
         }
 
@@ -70,9 +73,17 @@
             color: #6db7d7;
         }
 
-        .back-btn {
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .back-btn,
+        .add-package-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 7px;
 
             padding: 10px 18px;
@@ -80,13 +91,6 @@
             border-radius: 25px;
 
             text-decoration: none;
-            color: #123c57;
-
-            background: rgba(255,255,255,.65);
-
-            border: 1px solid rgba(255,255,255,.9);
-
-            backdrop-filter: blur(12px);
 
             font-size: 13px;
             font-weight: 700;
@@ -94,12 +98,48 @@
             transition: .3s;
         }
 
+        .back-btn {
+            color: #123c57;
+
+            background: rgba(255,255,255,.65);
+
+            border: 1px solid rgba(255,255,255,.9);
+
+            backdrop-filter: blur(12px);
+        }
+
         .back-btn:hover {
             transform: translateY(-2px);
+
             background: white;
 
             box-shadow:
                 0 10px 25px rgba(27,71,93,.10);
+        }
+
+        .add-package-btn {
+            padding: 10px 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2d7699,
+                    #5aa9c8
+                );
+
+            color: white;
+
+            border: 1px solid rgba(255,255,255,.3);
+
+            box-shadow:
+                0 10px 25px rgba(67,145,177,.20);
+        }
+
+        .add-package-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 15px 30px rgba(67,145,177,.30);
         }
 
         /* ================= HEADER ================= */
@@ -257,7 +297,8 @@
 
             transition: .4s;
 
-            animation: fadeUp .7s ease both;
+            animation:
+                fadeUp .7s ease both;
         }
 
         .card:hover {
@@ -293,11 +334,13 @@
 
             object-fit: cover;
 
-            transition: .5s;
+            transition:
+                transform .6s ease,
+                filter .6s ease;
         }
 
         .card:hover .photo-wrapper img {
-            transform: scale(1.07);
+            transform: scale(1.08);
         }
 
         .photo-overlay {
@@ -495,6 +538,8 @@
             font-weight: 800;
 
             transition: .3s;
+
+            cursor: pointer;
         }
 
         .pesan-btn:hover {
@@ -599,22 +644,22 @@
         }
 
         .delete-btn {
-            border:
-                1px solid rgba(220,130,130,.28);
+            border: none;
 
-            background:
-                rgba(255,235,235,.75);
+            background: #b84c5c;
 
-            color: #a34c4c;
+            color: white;
 
             cursor: pointer;
         }
 
         .delete-btn:hover {
-            transform: translateY(-2px);
+            background: #a83d4d;
 
-            background:
-                rgba(255,220,220,.9);
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 25px rgba(184,76,92,.20);
         }
 
         /* ================= EMPTY ================= */
@@ -665,6 +710,7 @@
         /* ================= ANIMATION ================= */
 
         @keyframes fadeUp {
+
             from {
                 opacity: 0;
                 transform: translateY(25px);
@@ -717,11 +763,10 @@
                 padding: 23px;
             }
 
-            .back-btn {
+            .back-btn,
+            .add-package-btn {
                 font-size: 12px;
-
-                padding:
-                    9px 13px;
+                padding: 8px 12px;
             }
         }
     </style>
@@ -746,16 +791,32 @@
         </a>
 
 
-        <a
-            href="{{ auth()->user()->role === 'admin'
-                ? '/admin/dashboard'
-                : (auth()->user()->role === 'pegawai'
-                ? '/pegawai/dashboard'
-                : '/pelanggan/dashboard') }}"
-            class="back-btn"
-        >
-            ← Dashboard
-        </a>
+        <div class="nav-right">
+
+            @if(auth()->user()->role === 'admin')
+
+                <a
+                    href="/admin/paket-wisata/create"
+                    class="add-package-btn"
+                >
+                    + Tambah Paket
+                </a>
+
+            @endif
+
+
+            <a
+                href="{{ auth()->user()->role === 'admin'
+                    ? '/admin/dashboard'
+                    : (auth()->user()->role === 'pegawai'
+                    ? '/pegawai/dashboard'
+                    : '/pelanggan/dashboard') }}"
+                class="back-btn"
+            >
+                ← Dashboard
+            </a>
+
+        </div>
 
     </nav>
 
@@ -768,9 +829,11 @@
             Explore Our Destination
         </span>
 
+
         <h1>
             Paket Wisata
         </h1>
+
 
         <p>
             Temukan berbagai paket perjalanan dan destinasi
@@ -809,7 +872,7 @@
 
                                 <img
                                     src="{{ asset('storage/' . $paket->foto_paket) }}"
-                                    alt="{{ $paket->nama_paket }}"
+                                    alt="Foto {{ $paket->nama_paket }}"
                                 >
 
                             @else
@@ -849,18 +912,22 @@
                             <div class="info-box">
 
                                 <div class="info">
+
                                     <span>
                                         <strong>Akomodasi:</strong>
                                         {{ $paket->akomodasi }}
                                     </span>
+
                                 </div>
 
 
                                 <div class="info">
+
                                     <span>
                                         <strong>Transport:</strong>
                                         {{ $paket->armada_transport }}
                                     </span>
+
                                 </div>
 
                             </div>
@@ -874,10 +941,12 @@
                                     Mulai dari
                                 </div>
 
+
                                 @if($paket->harga_promo)
 
                                     <div class="price">
-                                        Rp {{ number_format(
+                                        Rp
+                                        {{ number_format(
                                             $paket->harga_promo,
                                             0,
                                             ',',
@@ -885,25 +954,32 @@
                                         ) }}
                                     </div>
 
+
                                     <div class="promo">
+
                                         Harga normal:
-                                        Rp {{ number_format(
+                                        Rp
+                                        {{ number_format(
                                             $paket->harga_normal,
                                             0,
                                             ',',
                                             '.'
                                         ) }}
+
                                     </div>
 
                                 @else
 
                                     <div class="price">
-                                        Rp {{ number_format(
+
+                                        Rp
+                                        {{ number_format(
                                             $paket->harga_normal,
                                             0,
                                             ',',
                                             '.'
                                         ) }}
+
                                     </div>
 
                                 @endif
@@ -942,6 +1018,8 @@
 
                                         @foreach($jadwalTersedia as $jadwal)
 
+                                            <!-- INFO JADWAL -->
+
                                             <div class="jadwal-info">
 
                                                 <strong>
@@ -955,6 +1033,7 @@
                                                 )->format('d M Y') }}
 
                                                 —
+
                                                 {{ \Carbon\Carbon::parse(
                                                     $jadwal->tgl_kepulangan
                                                 )->format('d M Y') }}
@@ -962,6 +1041,7 @@
                                                 <br>
 
                                                 Sisa kuota:
+
                                                 <strong>
                                                     {{ $jadwal->sisa_kuota }}
                                                     orang
@@ -970,8 +1050,16 @@
                                             </div>
 
 
+                                            <!-- TOMBOL PESAN -->
+
                                             <a
-                                                href="{{ url('/pelanggan/pemesanan/' . $jadwal->id_jadwal) }}"
+                                                href="{{ route(
+                                                    'pelanggan.pemesanan.create',
+                                                    [
+                                                        'id_paket' => $paket->id_paket,
+                                                        'id_jadwal' => $jadwal->id_jadwal
+                                                    ]
+                                                ) }}"
                                                 class="pesan-btn"
                                             >
                                                 Pesan Paket Ini →
@@ -1011,7 +1099,7 @@
 
 
                                     <form
-                                        action="/admin/paket-wisata/{{ $paket->id_paket }}"
+                                        action="{{ url('/admin/paket-wisata/' . $paket->id_paket) }}"
                                         method="POST"
                                         onsubmit="return confirm('Yakin ingin menghapus paket wisata ini?');"
                                     >
@@ -1019,6 +1107,7 @@
                                         @csrf
 
                                         @method('DELETE')
+
 
                                         <button
                                             type="submit"
@@ -1073,4 +1162,3 @@
 </body>
 
 </html>
-```

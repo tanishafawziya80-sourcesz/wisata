@@ -1,1420 +1,16 @@
 <!DOCTYPE html>
-
-<html lang="id">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Pemesanan - FAWZATA TRAVEL</title>
-
-<style>
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", Arial, sans-serif;
-    }
-
-    body {
-
-        min-height: 100vh;
-
-        color: #183b4d;
-
-        background:
-            linear-gradient(
-                rgba(7, 48, 67, .78),
-                rgba(18, 60, 87, .90)
-            ),
-            url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=90");
-
-        background-size: cover;
-
-        background-position: center;
-
-        background-attachment: fixed;
-
-        overflow-x: hidden;
-    }
-
-
-    /* =====================================================
-       BACKGROUND DECORATION
-    ===================================================== */
-
-    .background-decoration {
-
-        position: fixed;
-
-        inset: 0;
-
-        overflow: hidden;
-
-        pointer-events: none;
-
-        z-index: 0;
-    }
-
-
-    .circle {
-
-        position: absolute;
-
-        border-radius: 50%;
-
-        background: rgba(157,220,255,.10);
-
-        filter: blur(2px);
-    }
-
-
-    .circle-one {
-
-        width: 280px;
-
-        height: 280px;
-
-        top: 12%;
-
-        left: -100px;
-    }
-
-
-    .circle-two {
-
-        width: 350px;
-
-        height: 350px;
-
-        right: -140px;
-
-        bottom: 5%;
-
-        background: rgba(255,255,255,.07);
-    }
-
-
-    .circle-three {
-
-        width: 170px;
-
-        height: 170px;
-
-        right: 20%;
-
-        top: 15%;
-
-        background: rgba(157,220,255,.06);
-    }
-
-
-    /* =====================================================
-       NAVBAR
-    ===================================================== */
-
-    .navbar {
-
-        position: fixed;
-
-        top: 0;
-
-        left: 0;
-
-        width: 100%;
-
-        height: 78px;
-
-        padding: 0 7%;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: space-between;
-
-        background:
-            rgba(18,60,87,.78);
-
-        backdrop-filter: blur(20px);
-
-        -webkit-backdrop-filter: blur(20px);
-
-        border-bottom:
-            1px solid
-            rgba(255,255,255,.15);
-
-        box-shadow:
-            0 8px 30px
-            rgba(0,0,0,.15);
-
-        z-index: 1000;
-    }
-
-
-    .logo {
-
-        color: white;
-
-        text-decoration: none;
-
-        font-size: 27px;
-
-        font-weight: 800;
-
-        letter-spacing: 2px;
-    }
-
-
-    .logo span {
-
-        color: #9ddcff;
-    }
-
-
-    .nav-right {
-
-        display: flex;
-
-        align-items: center;
-
-        gap: 15px;
-    }
-
-
-    .role {
-
-        padding: 9px 17px;
-
-        border-radius: 30px;
-
-        background:
-            rgba(255,255,255,.10);
-
-        border:
-            1px solid
-            rgba(255,255,255,.18);
-
-        color: white;
-
-        font-size: 13px;
-
-        font-weight: 700;
-    }
-
-
-    .logout {
-
-        border:
-            1px solid
-            rgba(255,255,255,.18);
-
-        padding:
-            10px 18px;
-
-        border-radius: 25px;
-
-        background:
-            rgba(255,255,255,.94);
-
-        color: #123c57;
-
-        font-weight: 700;
-
-        cursor: pointer;
-
-        transition: .3s;
-    }
-
-
-    .logout:hover {
-
-        transform:
-            translateY(-2px);
-
-        background: white;
-
-        box-shadow:
-            0 8px 20px
-            rgba(0,0,0,.18);
-    }
-
-
-    /* =====================================================
-       CONTAINER
-    ===================================================== */
-
-    .container {
-
-        position: relative;
-
-        z-index: 2;
-
-        width: 90%;
-
-        max-width: 1000px;
-
-        margin: auto;
-
-        padding-top: 125px;
-
-        padding-bottom: 80px;
-    }
-
-
-    /* =====================================================
-       HEADER
-    ===================================================== */
-
-    .header {
-
-        margin-bottom: 28px;
-
-        animation:
-            fadeUp .8s ease both;
-    }
-
-
-    .small-title {
-
-        font-size: 11px;
-
-        letter-spacing: 3px;
-
-        text-transform: uppercase;
-
-        color: #9ddcff;
-
-        margin-bottom: 10px;
-
-        font-weight: 700;
-    }
-
-
-    .header h1 {
-
-        font-size:
-            clamp(38px, 6vw, 56px);
-
-        line-height: 1.05;
-
-        margin-bottom: 12px;
-
-        color: white;
-
-        font-weight: 850;
-
-        letter-spacing: -.5px;
-    }
-
-
-    .header p {
-
-        max-width: 650px;
-
-        color:
-            rgba(255,255,255,.72);
-
-        line-height: 1.7;
-
-        font-size: 14px;
-    }
-
-
-    /* =====================================================
-       MAIN CARD
-    ===================================================== */
-
-    .card {
-
-        position: relative;
-
-        padding: 30px;
-
-        border-radius: 26px;
-
-        background:
-            linear-gradient(
-                135deg,
-                rgba(255,255,255,.94),
-                rgba(245,250,252,.90)
-            );
-
-        border:
-            1px solid
-            rgba(255,255,255,.55);
-
-        box-shadow:
-            0 30px 80px
-            rgba(0,0,0,.25);
-
-        animation:
-            fadeUp 1s ease both;
-
-        overflow: hidden;
-    }
-
-
-    .card::before {
-
-        content: "";
-
-        position: absolute;
-
-        width: 180px;
-
-        height: 180px;
-
-        border-radius: 50%;
-
-        background:
-            rgba(157,220,255,.10);
-
-        right: -70px;
-
-        top: -70px;
-
-        pointer-events: none;
-    }
-
-
-    .card::after {
-
-        content: "";
-
-        position: absolute;
-
-        width: 120px;
-
-        height: 120px;
-
-        border-radius: 50%;
-
-        background:
-            rgba(18,60,87,.04);
-
-        left: -55px;
-
-        bottom: -55px;
-
-        pointer-events: none;
-    }
-
-
-    /* =====================================================
-       CARD HEADER
-    ===================================================== */
-
-    .card-header {
-
-        position: relative;
-
-        z-index: 2;
-
-        margin-bottom: 24px;
-
-        padding-bottom: 18px;
-
-        border-bottom:
-            1px dashed
-            #cbdce4;
-    }
-
-
-    .card-title {
-
-        font-size: 21px;
-
-        font-weight: 800;
-
-        color: #123c57;
-    }
-
-
-    .card-subtitle {
-
-        margin-top: 5px;
-
-        color:
-            #78909c;
-
-        font-size: 13px;
-    }
-
-
-    /* =====================================================
-       CUSTOMER NAME
-    ===================================================== */
-
-    .customer-box {
-
-        position: relative;
-
-        z-index: 2;
-
-        margin-bottom: 22px;
-
-        padding: 17px 18px;
-
-        border-radius: 16px;
-
-        background:
-            linear-gradient(
-                135deg,
-                #f1faff,
-                #f8fcfe
-            );
-
-        border:
-            1px solid
-            #d5e8f0;
-
-        box-shadow:
-            0 8px 20px
-            rgba(18,60,87,.05);
-    }
-
-
-    .customer-label {
-
-        color:
-            #78909c;
-
-        font-size: 9px;
-
-        text-transform: uppercase;
-
-        letter-spacing: 1.2px;
-
-        margin-bottom: 6px;
-
-        font-weight: 700;
-    }
-
-
-    .customer-name {
-
-        color: #123c57;
-
-        font-size: 18px;
-
-        font-weight: 800;
-    }
-
-
-    /* =====================================================
-       INFO GRID
-    ===================================================== */
-
-    .info-grid {
-
-        position: relative;
-
-        z-index: 2;
-
-        display: grid;
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        gap: 12px;
-
-        margin-bottom: 24px;
-    }
-
-
-    .info-box {
-
-        padding: 16px;
-
-        border-radius: 14px;
-
-        background:
-            #f8fbfc;
-
-        border:
-            1px solid
-            #e1edf1;
-
-        transition: .3s;
-    }
-
-
-    .info-box:hover {
-
-        transform:
-            translateY(-2px);
-
-        border-color:
-            #c5dfe9;
-
-        box-shadow:
-            0 8px 20px
-            rgba(18,60,87,.07);
-    }
-
-
-    .info-label {
-
-        color:
-            #78909c;
-
-        font-size: 8px;
-
-        text-transform: uppercase;
-
-        letter-spacing: .8px;
-
-        margin-bottom: 6px;
-
-        font-weight: 700;
-    }
-
-
-    .info-value {
-
-        color:
-            #183b4d;
-
-        font-size: 14px;
-
-        font-weight: 700;
-    }
-
-
-    /* =====================================================
-       FORM
-    ===================================================== */
-
-    .form-title {
-
-        position: relative;
-
-        z-index: 2;
-
-        padding-top: 20px;
-
-        border-top:
-            1px dashed
-            #cbdce4;
-
-        margin-bottom: 18px;
-
-        font-size: 11px;
-
-        font-weight: 800;
-
-        color: #123c57;
-
-        text-transform: uppercase;
-
-        letter-spacing: 1px;
-    }
-
-
-    .form-group {
-
-        position: relative;
-
-        z-index: 2;
-
-        margin-bottom: 18px;
-    }
-
-
-    .form-label {
-
-        display: block;
-
-        margin-bottom: 7px;
-
-        color:
-            #546e7a;
-
-        font-size: 11px;
-
-        font-weight: 700;
-    }
-
-
-    .form-control {
-
-        width: 100%;
-
-        padding:
-            13px 15px;
-
-        border-radius: 12px;
-
-        border:
-            1px solid
-            #d6e4e9;
-
-        background:
-            #ffffff;
-
-        color:
-            #183b4d;
-
-        outline: none;
-
-        font-size: 13px;
-
-        transition: .3s;
-    }
-
-
-    .form-control:focus {
-
-        border-color:
-            #78bfdc;
-
-        box-shadow:
-            0 0 0 3px
-            rgba(119,189,219,.13);
-    }
-
-
-    select.form-control option {
-
-        color: #183b4d;
-
-        background: white;
-    }
-
-
-    /* =====================================================
-       HIDDEN CUSTOMER ID
-    ===================================================== */
-
-    .customer-hidden {
-
-        display: none;
-    }
-
-
-    /* =====================================================
-       TOTAL
-    ===================================================== */
-
-    .total-box {
-
-        position: relative;
-
-        z-index: 2;
-
-        margin-top: 10px;
-
-        margin-bottom: 22px;
-
-        padding: 18px;
-
-        border-radius: 16px;
-
-        background:
-            linear-gradient(
-                135deg,
-                #f1faff,
-                #f8fcfe
-            );
-
-        border:
-            1px solid
-            #d5e8f0;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: space-between;
-
-        gap: 15px;
-    }
-
-
-    .total-label {
-
-        color:
-            #78909c;
-
-        font-size: 12px;
-
-        font-weight: 700;
-    }
-
-
-    .total-value {
-
-        color: #123c57;
-
-        font-size: 22px;
-
-        font-weight: 850;
-    }
-
-
-    /* =====================================================
-       BUTTON
-    ===================================================== */
-
-    .actions {
-
-        position: relative;
-
-        z-index: 2;
-
-        display: flex;
-
-        align-items: center;
-
-        gap: 12px;
-
-        flex-wrap: wrap;
-    }
-
-
-    .submit-btn {
-
-        border: none;
-
-        padding:
-            13px 22px;
-
-        border-radius: 25px;
-
-        background:
-            #123c57;
-
-        border:
-            1px solid
-            #123c57;
-
-        color: white;
-
-        font-size: 13px;
-
-        font-weight: 800;
-
-        cursor: pointer;
-
-        transition: .3s;
-
-        box-shadow:
-            0 8px 20px
-            rgba(18,60,87,.18);
-    }
-
-
-    .submit-btn:hover {
-
-        transform:
-            translateY(-3px);
-
-        background:
-            #194e6d;
-
-        box-shadow:
-            0 12px 28px
-            rgba(18,60,87,.25);
-    }
-
-
-    .back-btn {
-
-        display: inline-flex;
-
-        align-items: center;
-
-        padding:
-            13px 20px;
-
-        border-radius: 25px;
-
-        text-decoration: none;
-
-        background:
-            #ffffff;
-
-        color: #123c57;
-
-        border:
-            1px solid
-            #d4e3e8;
-
-        font-size: 13px;
-
-        font-weight: 700;
-
-        transition: .3s;
-    }
-
-
-    .back-btn:hover {
-
-        transform:
-            translateY(-3px);
-
-        background:
-            #f5fafc;
-
-        border-color:
-            #bcd8e2;
-    }
-
-
-    /* =====================================================
-       ALERT
-    ===================================================== */
-
-    .alert {
-
-        position: relative;
-
-        z-index: 2;
-
-        margin-bottom: 20px;
-
-        padding:
-            13px 16px;
-
-        border-radius: 12px;
-
-        font-size: 12px;
-
-        line-height: 1.5;
-    }
-
-
-    .alert-error {
-
-        background:
-            #fff3f3;
-
-        border:
-            1px solid
-            #f2d0d0;
-
-        color:
-            #a33a3a;
-    }
-
-
-    /* =====================================================
-       ANIMATION
-    ===================================================== */
-
-    @keyframes fadeUp {
-
-        from {
-
-            opacity: 0;
-
-            transform:
-                translateY(25px);
-        }
-
-        to {
-
-            opacity: 1;
-
-            transform:
-                translateY(0);
-        }
-    }
-
-
-    /* =====================================================
-       RESPONSIVE
-    ===================================================== */
-
-    @media (max-width: 700px) {
-
-        .navbar {
-
-            padding: 0 5%;
-        }
-
-
-        .logo {
-
-            font-size: 22px;
-        }
-
-
-        .role {
-
-            display: none;
-        }
-
-
-        .container {
-
-            width: 92%;
-
-            padding-top: 110px;
-        }
-
-
-        .card {
-
-            padding: 20px;
-
-            border-radius: 22px;
-        }
-
-
-        .info-grid {
-
-            grid-template-columns: 1fr;
-        }
-
-
-        .total-box {
-
-            align-items: flex-start;
-
-            flex-direction: column;
-        }
-
-
-        .actions {
-
-            flex-direction: column;
-
-            align-items: stretch;
-        }
-
-
-        .submit-btn,
-        .back-btn {
-
-            width: 100%;
-
-            justify-content: center;
-        }
-    }
-
-</style>
-
-</head>
-
-<body>
-
-<!-- =========================================================
-     BACKGROUND
-========================================================= -->
-
-<div class="background-decoration">
-
-<div class="circle circle-one"></div>
-
-<div class="circle circle-two"></div>
-
-<div class="circle circle-three"></div>
-
-</div>
-
-<!-- =========================================================
-     NAVBAR
-========================================================= -->
-
-<nav class="navbar">
-
-<a
-    href="/pelanggan/dashboard"
-    class="logo"
->
-    FAWZATA<span> TRAVEL</span>
-</a>
-
-
-<div class="nav-right">
-
-    <div class="role">
-        PELANGGAN
-    </div>
-
-
-    <form
-        action="/logout"
-        method="POST"
-    >
-
-        @csrf
-
-        <button
-            type="submit"
-            class="logout"
-        >
-            Logout
-        </button>
-
-    </form>
-
-</div>
-
-</nav>
-
-<!-- =========================================================
-     CONTENT
-========================================================= -->
-
-<main class="container">
-
-```
-<div class="header">
-
-    <div class="small-title">
-        FAWZATA TRAVEL
-    </div>
-
-    <h1>
-        Pemesanan
-    </h1>
-
-    <p>
-        Lengkapi data pemesanan perjalanan Anda
-        bersama FAWZATA TRAVEL.
-    </p>
-
-</div>
-
-
-<!-- =====================================================
-     CARD
-===================================================== -->
-
-<div class="card">
-
-
-    <div class="card-header">
-
-        <div class="card-title">
-            Detail Pemesanan
-        </div>
-
-        <div class="card-subtitle">
-            Pastikan data perjalanan Anda sudah benar.
-        </div>
-
-    </div>
-
-
-    @if($errors->any())
-
-        <div class="alert alert-error">
-
-            @foreach($errors->all() as $error)
-
-                <div>
-                    {{ $error }}
-                </div>
-
-            @endforeach
-
-        </div>
-
-    @endif
-
-
-    <!-- =================================================
-         NAMA PELANGGAN
-    ================================================= -->
-
-    <div class="customer-box">
-
-        <div class="customer-label">
-            Nama Pelanggan
-        </div>
-
-        <div class="customer-name">
-
-            {{ auth()->user()->nama_lengkap ?? '-' }}
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================================
-         INFO PAKET
-    ================================================= -->
-
-    <div class="info-grid">
-
-
-        <div class="info-box">
-
-            <div class="info-label">
-                Paket Wisata
-            </div>
-
-            <div class="info-value">
-
-                {{ $paketWisata->nama_paket ?? '-' }}
-
-            </div>
-
-        </div>
-
-
-        <div class="info-box">
-
-            <div class="info-label">
-                Harga
-            </div>
-
-            <div class="info-value">
-
-                Rp
-                {{ number_format(
-                    $paketWisata->harga ?? 0,
-                    0,
-                    ',',
-                    '.'
-                ) }}
-
-            </div>
-
-        </div>
-
-
-        @if(isset($jadwalTour))
-
-            <div class="info-box">
-
-                <div class="info-label">
-                    Jadwal Tour
-                </div>
-
-                <div class="info-value">
-
-                    {{ $jadwalTour->tanggal_tour ?? '-' }}
-
-                </div>
-
-            </div>
-
-
-            <div class="info-box">
-
-                <div class="info-label">
-                    Kuota Tersedia
-                </div>
-
-                <div class="info-value">
-
-                    {{ $jadwalTour->kuota ?? '-' }}
-
-                </div>
-
-            </div>
-
-        @endif
-
-
-    </div>
-
-
-    <!-- =================================================
-         FORM PEMESANAN
-    ================================================= -->
-
-    <form
-        action="{{ route('pelanggan.pemesanan.store') }}"
-        method="POST"
-    >
-
-        @csrf
-
-
-        <!--
-            ID PELANGGAN
-            Tidak perlu diketik oleh pelanggan.
-            Diambil otomatis dari akun yang sedang login.
-        -->
-
-        <input
-            type="hidden"
-            name="id_pelanggan"
-            value="{{ auth()->id() }}"
-        >
-
-
-        <!-- ID PAKET -->
-
-        <input
-            type="hidden"
-            name="id_paket_wisata"
-            value="{{ $paketWisata->id_paket_wisata }}"
-        >
-
-
-        <!-- ID JADWAL -->
-
-        @if(isset($jadwalTour))
-
-            <input
-                type="hidden"
-                name="id_jadwal"
-                value="{{ $jadwalTour->id_jadwal }}"
-            >
-
-        @endif
-
-
-        <div class="form-title">
-            Data Pemesanan
-        </div>
-
-
-        <!-- JUMLAH PESERTA -->
-
-        <div class="form-group">
-
-            <label
-                for="jumlah_peserta"
-                class="form-label"
-            >
-                Jumlah Peserta
-            </label>
-
-
-            <input
-                type="number"
-                id="jumlah_peserta"
-                name="jumlah_peserta"
-                class="form-control"
-                min="1"
-                value="{{ old('jumlah_peserta', 1) }}"
-                required
-            >
-
-        </div>
-
-
-        <!-- TOTAL -->
-
-        <div class="total-box">
-
-            <div class="total-label">
-                Total Pembayaran
-            </div>
-
-            <div
-                class="total-value"
-                id="totalHarga"
-            >
-
-                Rp
-                {{ number_format(
-                    $paketWisata->harga ?? 0,
-                    0,
-                    ',',
-                    '.'
-                ) }}
-
-            </div>
-
-        </div>
-
-
-        <!-- BUTTON -->
-
-        <div class="actions">
-
-
-            <button
-                type="submit"
-                class="submit-btn"
-            >
-
-                ✓
-                Pesan Sekarang
-
-            </button>
-
-
-            <a
-                href="/pelanggan/pemesanan"
-                class="back-btn"
-            >
-
-                ←
-                Kembali
-
-            </a>
-
-
-        </div>
-
-
-    </form>
-
-
-</div>
-```
-
-</main>
-
-<script>
-
-    const jumlahPeserta =
-        document.getElementById('jumlah_peserta');
-
-    const totalHarga =
-        document.getElementById('totalHarga');
-
-
-    const hargaPaket =
-        {{ $paketWisata->harga ?? 0 }};
-
-
-    function formatRupiah(angka)
-    {
-        return new Intl.NumberFormat(
-            'id-ID'
-        ).format(angka);
-    }
-
-
-    function updateTotal()
-    {
-        let jumlah =
-            parseInt(jumlahPeserta.value) || 1;
-
-        if (jumlah < 1) {
-
-            jumlah = 1;
-
-            jumlahPeserta.value = 1;
-        }
-
-
-        const total =
-            hargaPaket * jumlah;
-
-
-        totalHarga.innerText =
-            'Rp ' +
-            formatRupiah(total);
-    }
-<!DOCTYPE html>
 <html lang="id">
 
 <head>
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Pesan Paket - WISATA.</title>
+    <title>
+        Pemesanan - FAWZATA TRAVEL
+    </title>
+
 
     <style>
 
@@ -1425,17 +21,20 @@
             font-family: "Segoe UI", Arial, sans-serif;
         }
 
+
         body {
 
             min-height: 100vh;
 
-            color: white;
+            color: #183b4d;
 
             background:
+
                 linear-gradient(
-                    rgba(4,35,52,.78),
-                    rgba(7,48,67,.90)
+                    rgba(7,48,67,.78),
+                    rgba(18,60,87,.90)
                 ),
+
                 url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=90");
 
             background-size: cover;
@@ -1444,8 +43,15 @@
 
             background-attachment: fixed;
 
-            padding-top: 110px;
+            overflow-x: hidden;
+
+            padding-bottom: 80px;
         }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
 
         .navbar {
 
@@ -1455,6 +61,7 @@
             left: 0;
 
             width: 100%;
+
             height: 78px;
 
             padding: 0 7%;
@@ -1465,15 +72,24 @@
 
             justify-content: space-between;
 
-            background: rgba(255,255,255,.10);
+            background:
+                rgba(18,60,87,.82);
 
             backdrop-filter: blur(20px);
 
+            -webkit-backdrop-filter: blur(20px);
+
             border-bottom:
-                1px solid rgba(255,255,255,.18);
+                1px solid
+                rgba(255,255,255,.15);
+
+            box-shadow:
+                0 8px 30px
+                rgba(0,0,0,.15);
 
             z-index: 1000;
         }
+
 
         .logo {
 
@@ -1488,270 +104,867 @@
             letter-spacing: 2px;
         }
 
+
         .logo span {
+
             color: #9ddcff;
         }
 
-        .back {
+
+        .nav-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .role {
+
+            padding: 9px 17px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(255,255,255,.10);
+
+            border:
+                1px solid
+                rgba(255,255,255,.18);
 
             color: white;
 
-            text-decoration: none;
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        .logout {
 
             padding: 10px 18px;
 
             border-radius: 25px;
 
-            background: rgba(255,255,255,.12);
-
             border:
-                1px solid rgba(255,255,255,.20);
-        }
-
-        .container {
-
-            width: 90%;
-
-            max-width: 850px;
-
-            margin: auto;
-
-            padding-bottom: 80px;
-        }
-
-        .card {
-
-            padding: 35px;
-
-            border-radius: 30px;
+                1px solid
+                rgba(255,255,255,.18);
 
             background:
-                linear-gradient(
-                    135deg,
-                    rgba(255,255,255,.15),
-                    rgba(255,255,255,.07)
-                );
-
-            backdrop-filter: blur(22px);
-
-            border:
-                1px solid rgba(255,255,255,.20);
-
-            box-shadow:
-                0 30px 80px rgba(0,0,0,.25);
-        }
-
-        .small-title {
-
-            font-size: 11px;
-
-            letter-spacing: 4px;
-
-            color: #a7e2ff;
-
-            text-transform: uppercase;
-
-            margin-bottom: 10px;
-        }
-
-        h1 {
-
-            font-size: 38px;
-
-            margin-bottom: 25px;
-        }
-
-        .package {
-
-            padding: 25px;
-
-            border-radius: 22px;
-
-            background: rgba(255,255,255,.08);
-
-            border:
-                1px solid rgba(255,255,255,.15);
-
-            margin-bottom: 25px;
-        }
-
-        .package-name {
-
-            font-size: 26px;
-
-            font-weight: 800;
-
-            margin-bottom: 15px;
-        }
-
-        .description {
-
-            color: rgba(255,255,255,.68);
-
-            line-height: 1.7;
-
-            margin-bottom: 20px;
-        }
-
-        .price {
-
-            font-size: 28px;
-
-            font-weight: 800;
-
-            color: #cceeff;
-        }
-
-        .price-label {
-
-            font-size: 11px;
-
-            color: rgba(255,255,255,.50);
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            margin-bottom: 5px;
-        }
-
-        .form-group {
-
-            margin-bottom: 22px;
-        }
-
-        label {
-
-            display: block;
-
-            font-size: 13px;
-
-            font-weight: 700;
-
-            margin-bottom: 9px;
-        }
-
-        input {
-
-            width: 100%;
-
-            padding: 15px;
-
-            border-radius: 14px;
-
-            border:
-                1px solid rgba(255,255,255,.18);
-
-            background: rgba(255,255,255,.08);
-
-            color: white;
-
-            font-size: 16px;
-
-            outline: none;
-        }
-
-        input:focus {
-
-            border-color: #9ddcff;
-
-            background: rgba(255,255,255,.12);
-        }
-
-        .total {
-
-            margin-top: 20px;
-
-            padding: 20px;
-
-            border-radius: 18px;
-
-            background:
-                rgba(157,220,255,.12);
-
-            border:
-                1px solid rgba(157,220,255,.25);
-        }
-
-        .total-label {
-
-            font-size: 11px;
-
-            color: rgba(255,255,255,.55);
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            margin-bottom: 7px;
-        }
-
-        .total-value {
-
-            font-size: 30px;
-
-            font-weight: 850;
-
-            color: #cceeff;
-        }
-
-        .btn {
-
-            width: 100%;
-
-            margin-top: 25px;
-
-            padding: 15px;
-
-            border: none;
-
-            border-radius: 25px;
-
-            background: rgba(255,255,255,.95);
+                rgba(255,255,255,.95);
 
             color: #123c57;
 
-            font-size: 15px;
-
-            font-weight: 800;
+            font-weight: 700;
 
             cursor: pointer;
 
             transition: .3s;
         }
 
-        .btn:hover {
 
-            transform: translateY(-3px);
+        .logout:hover {
 
-            box-shadow:
-                0 15px 30px rgba(0,0,0,.25);
+            transform:
+                translateY(-2px);
+
+            background: white;
         }
 
-        .error {
+
+        /* =====================================================
+           CONTAINER
+        ===================================================== */
+
+        .container {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: 90%;
+
+            max-width: 1050px;
+
+            margin: auto;
+
+            padding-top: 125px;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .small-title {
+
+            color: #9ddcff;
+
+            font-size: 11px;
+
+            letter-spacing: 4px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+        }
+
+
+        .header h1 {
+
+            color: white;
+
+            font-size:
+                clamp(38px, 6vw, 58px);
+
+            line-height: 1;
+
+            margin-bottom: 15px;
+        }
+
+
+        .header p {
+
+            color:
+                rgba(255,255,255,.75);
+
+            font-size: 14px;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =====================================================
+           MAIN CARD
+        ===================================================== */
+
+        .card {
+
+            padding: 32px;
+
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,.95),
+                    rgba(245,250,252,.92)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,.60);
+
+            box-shadow:
+                0 30px 80px
+                rgba(0,0,0,.25);
+        }
+
+
+        .card-header {
+
+            padding-bottom: 20px;
+
+            margin-bottom: 22px;
+
+            border-bottom:
+                1px dashed
+                #cbdce4;
+        }
+
+
+        .card-title {
+
+            color: #123c57;
+
+            font-size: 22px;
+
+            font-weight: 800;
+        }
+
+
+        .card-subtitle {
+
+            color: #78909c;
+
+            font-size: 13px;
+
+            margin-top: 5px;
+        }
+
+
+        /* =====================================================
+           CUSTOMER
+        ===================================================== */
+
+        .customer-box {
+
+            padding: 17px;
 
             margin-bottom: 20px;
 
-            padding: 15px;
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f1faff,
+                    #f8fcfe
+                );
+
+            border:
+                1px solid
+                #d5e8f0;
+        }
+
+
+        .customer-label {
+
+            color: #78909c;
+
+            font-size: 9px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.2px;
+
+            margin-bottom: 6px;
+
+            font-weight: 800;
+        }
+
+
+        .customer-name {
+
+            color: #123c57;
+
+            font-size: 18px;
+
+            font-weight: 800;
+        }
+
+
+        /* =====================================================
+           INFO PAKET
+        ===================================================== */
+
+        .info-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2,1fr);
+
+            gap: 12px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .info-box {
+
+            padding: 16px;
 
             border-radius: 15px;
 
-            background: rgba(255,80,80,.12);
+            background: #f8fbfc;
 
             border:
-                1px solid rgba(255,100,100,.25);
-
-            color: #ffd0d0;
+                1px solid
+                #e1edf1;
         }
 
-        @media(max-width:600px) {
 
-            .card {
-                padding: 22px;
+        .info-label {
+
+            color: #78909c;
+
+            font-size: 8px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .8px;
+
+            margin-bottom: 6px;
+
+            font-weight: 800;
+        }
+
+
+        .info-value {
+
+            color: #183b4d;
+
+            font-size: 14px;
+
+            font-weight: 800;
+        }
+
+
+        /* =====================================================
+           SECTION
+        ===================================================== */
+
+        .section {
+
+            padding-top: 24px;
+
+            margin-top: 20px;
+
+            border-top:
+                1px dashed
+                #cbdce4;
+        }
+
+
+        .section-title {
+
+            color: #123c57;
+
+            font-size: 18px;
+
+            font-weight: 800;
+
+            margin-bottom: 5px;
+        }
+
+
+        .section-description {
+
+            color: #78909c;
+
+            font-size: 12px;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .form-group {
+
+            margin-bottom: 18px;
+        }
+
+
+        .form-label {
+
+            display: block;
+
+            color: #546e7a;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            margin-bottom: 7px;
+        }
+
+
+        .form-control {
+
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border-radius: 12px;
+
+            border:
+                1px solid
+                #d6e4e9;
+
+            background: white;
+
+            color: #183b4d;
+
+            outline: none;
+
+            font-size: 13px;
+
+            transition: .25s;
+        }
+
+
+        .form-control:focus {
+
+            border-color: #78bfdc;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(119,189,219,.13);
+        }
+
+
+        /* =====================================================
+           FILE IDENTITAS
+        ===================================================== */
+
+        .file-info {
+
+            color: #78909c;
+
+            font-size: 10px;
+
+            margin-top: 6px;
+
+            line-height: 1.5;
+        }
+
+
+        input[type="file"].form-control {
+
+            padding: 10px 12px;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           JUMLAH PESERTA
+        ===================================================== */
+
+        .jumlah-box {
+
+            padding: 20px;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef9fd,
+                    #f8fcfe
+                );
+
+            border:
+                1px solid
+                #d4eaf2;
+
+            margin-bottom: 25px;
+        }
+
+
+        .jumlah-info {
+
+            color: #78909c;
+
+            font-size: 12px;
+
+            margin-top: 5px;
+        }
+
+
+        /* =====================================================
+           PESERTA CARD
+        ===================================================== */
+
+        .peserta-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 18px;
+        }
+
+
+        .peserta-card {
+
+            padding: 22px;
+
+            border-radius: 20px;
+
+            background:
+                #f8fbfc;
+
+            border:
+                1px solid
+                #dcebef;
+
+            box-shadow:
+                0 8px 20px
+                rgba(18,60,87,.04);
+
+            animation:
+                fadeUp .35s ease both;
+        }
+
+
+        .peserta-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 18px;
+
+            padding-bottom: 12px;
+
+            border-bottom:
+                1px dashed
+                #d5e4e9;
+        }
+
+
+        .peserta-number {
+
+            color: #123c57;
+
+            font-size: 16px;
+
+            font-weight: 800;
+        }
+
+
+        .peserta-badge {
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            background:
+                #e4f5fb;
+
+            color: #24789b;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+        }
+
+
+        .peserta-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                2fr 1.5fr 1fr;
+
+            gap: 14px;
+        }
+
+
+        /* =====================================================
+           IDENTITAS FULL WIDTH
+        ===================================================== */
+
+        .identitas-group {
+
+            grid-column:
+                1 / -1;
+        }
+
+
+        /* =====================================================
+           TOTAL
+        ===================================================== */
+
+        .total-box {
+
+            margin-top: 25px;
+
+            padding: 22px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eaf8fd,
+                    #dff3fa
+                );
+
+            border:
+                1px solid
+                #c6e7f3;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        .total-label {
+
+            color: #658293;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+        }
+
+
+        .total-info {
+
+            color: #78909c;
+
+            font-size: 12px;
+
+            margin-top: 4px;
+        }
+
+
+        .total-value {
+
+            color: #123c57;
+
+            font-size: 25px;
+
+            font-weight: 900;
+        }
+
+
+        /* =====================================================
+           CATATAN
+        ===================================================== */
+
+        textarea.form-control {
+
+            min-height: 100px;
+
+            resize: vertical;
+        }
+
+
+        /* =====================================================
+           BUTTON
+        ===================================================== */
+
+        .actions {
+
+            display: flex;
+
+            gap: 12px;
+
+            margin-top: 25px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .submit-btn {
+
+            flex: 1;
+
+            min-width: 200px;
+
+            padding: 15px 22px;
+
+            border: none;
+
+            border-radius: 25px;
+
+            background:
+                #123c57;
+
+            color: white;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: .3s;
+
+            box-shadow:
+                0 8px 20px
+                rgba(18,60,87,.18);
+        }
+
+
+        .submit-btn:hover {
+
+            transform:
+                translateY(-3px);
+
+            background: #194e6d;
+        }
+
+
+        .back-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-width: 150px;
+
+            padding: 15px 22px;
+
+            border-radius: 25px;
+
+            background: white;
+
+            color: #123c57;
+
+            border:
+                1px solid
+                #d4e3e8;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            transition: .3s;
+        }
+
+
+        .back-btn:hover {
+
+            transform:
+                translateY(-3px);
+
+            background: #f5fafc;
+        }
+
+
+        /* =====================================================
+           ALERT
+        ===================================================== */
+
+        .alert {
+
+            padding: 14px 16px;
+
+            border-radius: 14px;
+
+            margin-bottom: 20px;
+
+            font-size: 12px;
+        }
+
+
+        .alert-error {
+
+            background: #fff2f2;
+
+            border:
+                1px solid
+                #f2d0d0;
+
+            color: #a33a3a;
+        }
+
+
+        /* =====================================================
+           ANIMATION
+        ===================================================== */
+
+        @keyframes fadeUp {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(15px);
             }
 
-            h1 {
-                font-size: 30px;
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media(max-width: 750px) {
+
+            .navbar {
+
+                padding: 0 5%;
+            }
+
+
+            .logo {
+
+                font-size: 21px;
+            }
+
+
+            .role {
+
+                display: none;
+            }
+
+
+            .container {
+
+                width: 92%;
+
+                padding-top: 110px;
+            }
+
+
+            .card {
+
+                padding: 20px;
+            }
+
+
+            .info-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .peserta-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .identitas-group {
+
+                grid-column: auto;
+            }
+
+
+            .total-box {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 10px;
+            }
+
+
+            .actions {
+
+                flex-direction: column;
+            }
+
+
+            .submit-btn,
+            .back-btn {
+
+                width: 100%;
             }
         }
 
@@ -1759,43 +972,113 @@
 
 </head>
 
+
 <body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
 
 <nav class="navbar">
 
     <a
-        href="{{ route('pelanggan.dashboard') }}"
+        href="/pelanggan/dashboard"
         class="logo"
     >
-        WISATA<span>.</span>
+        FAWZATA<span> TRAVEL</span>
     </a>
 
-    <a
-        href="{{ url('/paket-wisata') }}"
-        class="back"
-    >
-        ← Kembali
-    </a>
+
+    <div class="nav-right">
+
+        <div class="role">
+            PELANGGAN
+        </div>
+
+
+        <form
+            action="/logout"
+            method="POST"
+        >
+
+            @csrf
+
+            <button
+                type="submit"
+                class="logout"
+            >
+                Logout
+            </button>
+
+        </form>
+
+    </div>
 
 </nav>
 
 
-<div class="container">
+<!-- =========================================================
+     CONTENT
+========================================================= -->
 
-    <div class="card">
+<main class="container">
+
+
+    <div class="header">
 
         <div class="small-title">
-            Travel Booking
+            FAWZATA TRAVEL • PEMESANAN
         </div>
 
         <h1>
-            Pesan Paket Wisata
+            Pemesanan
         </h1>
+
+        <p>
+            Lengkapi data perjalanan dan peserta
+            yang akan mengikuti tour.
+        </p>
+
+    </div>
+
+
+    <!-- =====================================================
+         CARD
+    ===================================================== -->
+
+    <div class="card">
+
+
+        <div class="card-header">
+
+            <div class="card-title">
+                Detail Pemesanan
+            </div>
+
+            <div class="card-subtitle">
+                Pastikan data perjalanan Anda sudah benar.
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             ERROR
+        ================================================= -->
+
+        @if(session('error'))
+
+            <div class="alert alert-error">
+                {{ session('error') }}
+            </div>
+
+        @endif
 
 
         @if($errors->any())
 
-            <div class="error">
+            <div class="alert alert-error">
 
                 @foreach($errors->all() as $error)
 
@@ -1810,174 +1093,683 @@
         @endif
 
 
-        <div class="package">
+        <!-- =================================================
+             DATA PELANGGAN
+        ================================================= -->
 
-            <div class="package-name">
+        <div class="customer-box">
 
-                {{ $paketWisata->nama_paket }}
-
+            <div class="customer-label">
+                Nama Pelanggan
             </div>
 
+            <div class="customer-name">
 
-            <div class="description">
-
-                {{ $paketWisata->deskripsi }}
-
-            </div>
-
-
-            <div class="price-label">
-                Harga per orang
-            </div>
-
-
-            <div class="price">
-
-                Rp
-                {{ number_format(
-                    $harga,
-                    0,
-                    ',',
-                    '.'
-                ) }}
+                {{ auth()->user()->nama_lengkap ?? '-' }}
 
             </div>
 
         </div>
 
 
+        <!-- =================================================
+             INFO PAKET
+        ================================================= -->
+
+        <div class="info-grid">
+
+
+            <div class="info-box">
+
+                <div class="info-label">
+                    Paket Wisata
+                </div>
+
+                <div class="info-value">
+
+                    {{ $paket->nama_paket }}
+
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="info-label">
+                    Harga / Orang
+                </div>
+
+                <div class="info-value">
+
+                    Rp
+                    {{ number_format(
+                        $paket->harga_promo ?: $paket->harga_normal,
+                        0,
+                        ',',
+                        '.'
+                    ) }}
+
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="info-label">
+                    Keberangkatan
+                </div>
+
+                <div class="info-value">
+
+                    {{ \Carbon\Carbon::parse(
+                        $jadwal->tgl_keberangkatan
+                    )->format('d M Y') }}
+
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="info-label">
+                    Kepulangan
+                </div>
+
+                <div class="info-value">
+
+                    {{ \Carbon\Carbon::parse(
+                        $jadwal->tgl_kepulangan
+                    )->format('d M Y') }}
+
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="info-label">
+                    Sisa Kuota
+                </div>
+
+                <div class="info-value">
+
+                    {{ $jadwal->sisa_kuota }}
+                    peserta
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             FORM
+        ================================================= -->
+
         <form
             action="{{ route('pelanggan.pemesanan.store') }}"
             method="POST"
+            enctype="multipart/form-data"
+            id="formPemesanan"
         >
 
             @csrf
 
 
+            <!-- ID JADWAL -->
+
             <input
                 type="hidden"
-                name="id_paket"
-                value="{{ $paketWisata->id_paket }}"
+                name="id_jadwal"
+                value="{{ $jadwal->id_jadwal }}"
             >
 
 
-            <div class="form-group">
+            <!-- =================================================
+                 JUMLAH PESERTA
+            ================================================= -->
 
-                <label>
+            <div class="section">
+
+                <div class="section-title">
                     Jumlah Peserta
-                </label>
+                </div>
 
-                <input
-                    type="number"
-                    id="jumlah_peserta"
-                    name="jumlah_peserta"
-                    value="1"
-                    min="1"
-                    required
-                >
+                <div class="section-description">
+                    Tentukan jumlah orang yang akan mengikuti
+                    perjalanan ini.
+                </div>
+
+
+                <div class="jumlah-box">
+
+                    <div class="form-group">
+
+                        <label
+                            for="jumlah_peserta"
+                            class="form-label"
+                        >
+                            Jumlah Peserta
+                        </label>
+
+
+                        <input
+                            type="number"
+                            id="jumlah_peserta"
+                            name="jumlah_peserta"
+                            class="form-control"
+                            min="1"
+                            max="{{ $jadwal->sisa_kuota }}"
+                            value="{{ old('jumlah_peserta', 1) }}"
+                            required
+                        >
+
+
+                        <div class="jumlah-info">
+
+                            Maksimal
+                            {{ $jadwal->sisa_kuota }}
+                            peserta.
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
 
-            <div class="total">
+            <!-- =================================================
+                 DATA PESERTA
+            ================================================= -->
 
-                <div class="total-label">
-                    Total yang harus dibayar
+            <div class="section">
+
+                <div class="section-title">
+                    Data Peserta
                 </div>
+
+                <div class="section-description">
+                    Masukkan data setiap orang yang ikut
+                    dalam perjalanan.
+                </div>
+
+
+                <div
+                    class="peserta-list"
+                    id="pesertaList"
+                ></div>
+
+            </div>
+
+
+            <!-- =================================================
+                 CATATAN
+            ================================================= -->
+
+            <div class="section">
+
+                <div class="section-title">
+                    Catatan Pemesanan
+                </div>
+
+                <div class="section-description">
+                    Tambahkan informasi jika ada yang perlu
+                    diketahui oleh pihak travel.
+                </div>
+
+
+                <div class="form-group">
+
+                    <label
+                        for="catatan_revisi"
+                        class="form-label"
+                    >
+                        Catatan
+                    </label>
+
+
+                    <textarea
+                        id="catatan_revisi"
+                        name="catatan_revisi"
+                        class="form-control"
+                        placeholder="Contoh: membutuhkan kursi khusus, permintaan kamar, dan sebagainya..."
+                    >{{ old('catatan_revisi') }}</textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 TOTAL
+            ================================================= -->
+
+            <div class="total-box">
+
+                <div>
+
+                    <div class="total-label">
+                        Total Pembayaran
+                    </div>
+
+                    <div class="total-info">
+
+                        <span id="jumlahText">
+                            1
+                        </span>
+
+                        peserta × harga paket
+
+                    </div>
+
+                </div>
+
 
                 <div
                     class="total-value"
-                    id="totalHarga"
+                    id="totalBayar"
                 >
+
                     Rp
                     {{ number_format(
-                        $harga,
+                        $paket->harga_promo ?: $paket->harga_normal,
                         0,
                         ',',
                         '.'
                     ) }}
+
                 </div>
 
             </div>
 
 
-            <button
-                type="submit"
-                class="btn"
-            >
-                Pesan Sekarang
-            </button>
+            <!-- =================================================
+                 BUTTON
+            ================================================= -->
+
+            <div class="actions">
+
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                >
+
+                    ✓
+                    Pesan Sekarang
+
+                </button>
+
+
+                <a
+                    href="/paket-wisata"
+                    class="back-btn"
+                >
+
+                    ←
+                    Kembali
+
+                </a>
+
+
+            </div>
+
 
         </form>
 
+
     </div>
 
-</div>
+</main>
 
 
 <script>
+
+    /*
+    |--------------------------------------------------------------------------
+    | DATA DASAR
+    |--------------------------------------------------------------------------
+    */
 
     const jumlahInput =
         document.getElementById(
             'jumlah_peserta'
         );
 
-    const totalHarga =
+
+    const pesertaList =
         document.getElementById(
-            'totalHarga'
+            'pesertaList'
         );
 
+
+    const totalBayar =
+        document.getElementById(
+            'totalBayar'
+        );
+
+
+    const jumlahText =
+        document.getElementById(
+            'jumlahText'
+        );
+
+
     const hargaPerOrang =
-        {{ $harga }};
+        {{ $paket->harga_promo ?: $paket->harga_normal }};
 
 
-    function hitungTotal()
+    const maxPeserta =
+        {{ $jadwal->sisa_kuota }};
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | FORMAT RUPIAH
+    |--------------------------------------------------------------------------
+    */
+
+    function formatRupiah(angka)
     {
+        return new Intl.NumberFormat(
+            'id-ID'
+        ).format(angka);
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | BUAT FORM PESERTA
+    |--------------------------------------------------------------------------
+    */
+
+    function generatePeserta()
+    {
+
         let jumlah =
             parseInt(
                 jumlahInput.value
             ) || 1;
 
+
         if (jumlah < 1) {
+
             jumlah = 1;
+
             jumlahInput.value = 1;
         }
 
-        let total =
+
+        if (jumlah > maxPeserta) {
+
+            jumlah = maxPeserta;
+
+            jumlahInput.value =
+                maxPeserta;
+
+            alert(
+                'Jumlah peserta melebihi sisa kuota.'
+            );
+        }
+
+
+        pesertaList.innerHTML = '';
+
+
+        for (
+            let i = 0;
+            i < jumlah;
+            i++
+        ) {
+
+
+            const card =
+                document.createElement(
+                    'div'
+                );
+
+
+            card.className =
+                'peserta-card';
+
+
+            card.innerHTML = `
+
+                <div class="peserta-header">
+
+                    <div class="peserta-number">
+
+                        Peserta ${i + 1}
+
+                    </div>
+
+                    <div class="peserta-badge">
+
+                        Data Peserta
+
+                    </div>
+
+                </div>
+
+
+                <div class="peserta-grid">
+
+
+                    <div class="form-group">
+
+                        <label
+                            class="form-label"
+                        >
+                            Nama Lengkap
+                        </label>
+
+                        <input
+                            type="text"
+                            name="peserta[${i}][nama_peserta]"
+                            class="form-control"
+                            placeholder="Nama lengkap peserta"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label
+                            class="form-label"
+                        >
+                            NIK
+                        </label>
+
+                        <input
+                            type="text"
+                            name="peserta[${i}][nik]"
+                            class="form-control"
+                            placeholder="NIK peserta"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label
+                            class="form-label"
+                        >
+                            Usia
+                        </label>
+
+                        <input
+                            type="number"
+                            name="peserta[${i}][usia]"
+                            class="form-control"
+                            placeholder="Usia"
+                            min="1"
+                            max="100"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label
+                            class="form-label"
+                        >
+                            Kategori
+                        </label>
+
+                        <select
+                            name="peserta[${i}][kategori]"
+                            class="form-control"
+                            required
+                        >
+
+                            <option value="">
+                                Pilih kategori
+                            </option>
+
+                            <option value="dewasa">
+                                Dewasa
+                            </option>
+
+                            <option value="anak">
+                                Anak
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label
+                            class="form-label"
+                        >
+                            Jenis Kelamin
+                        </label>
+
+                        <select
+                            name="peserta[${i}][jenis_kelamin]"
+                            class="form-control"
+                            required
+                        >
+
+                            <option value="">
+                                Pilih jenis kelamin
+                            </option>
+
+                            <option value="L">
+                                Laki-laki
+                            </option>
+
+                            <option value="P">
+                                Perempuan
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- =========================================
+                         IDENTITAS PESERTA
+                    ========================================== -->
+
+                    <div class="form-group identitas-group">
+
+                        <label
+                            class="form-label"
+                        >
+                            Identitas / Tanda Pengenal
+                        </label>
+
+                        <input
+                            type="file"
+                            name="peserta[${i}][file_identitas]"
+                            class="form-control"
+                            accept=".jpg,.jpeg,.png,.pdf"
+                            required
+                        >
+
+                        <div class="file-info">
+
+                            Upload 1 identitas/tanda pengenal
+                            peserta.
+                            Format JPG, JPEG, PNG, atau PDF.
+                            Maksimal 2 MB.
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            `;
+
+
+            pesertaList.appendChild(
+                card
+            );
+
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | UPDATE TOTAL
+        |--------------------------------------------------------------------------
+        */
+
+        const total =
             hargaPerOrang * jumlah;
 
 
-        totalHarga.innerText =
+        totalBayar.innerText =
             'Rp ' +
-            new Intl.NumberFormat(
-                'id-ID'
-            ).format(total);
+            formatRupiah(total);
+
+
+        jumlahText.innerText =
+            jumlah;
+
     }
 
 
+    /*
+    |--------------------------------------------------------------------------
+    | JUMLAH PESERTA BERUBAH
+    |--------------------------------------------------------------------------
+    */
+
     jumlahInput.addEventListener(
         'input',
-        hitungTotal
+        generatePeserta
     );
 
 
-    hitungTotal();
+    /*
+    |--------------------------------------------------------------------------
+    | LOAD AWAL
+    |--------------------------------------------------------------------------
+    */
+
+    generatePeserta();
 
 </script>
 
-</body>
-
-</html>
-
-    jumlahPeserta.addEventListener(
-        'input',
-        updateTotal
-    );
-
-
-    updateTotal();
-
-</script>
 
 </body>
 

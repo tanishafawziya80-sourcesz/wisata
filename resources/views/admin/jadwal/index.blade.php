@@ -271,7 +271,7 @@
         <div class="actions">
 
             <div class="total">
-                📅 Total Jadwal:
+                Total Jadwal:
                 <strong>{{ $jadwal->count() }}</strong>
             </div>
 

@@ -3,133 +3,140 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Pemesanan extends Model
 {
-    /*
-    |--------------------------------------------------------------------------
-    | TABLE
-    |--------------------------------------------------------------------------
-    */
-
     protected $table = 'pemesanan';
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | PRIMARY KEY
-    |--------------------------------------------------------------------------
-    */
-
-    protected $primaryKey =
-        'id_pemesanan';
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | TIMESTAMPS
-    |--------------------------------------------------------------------------
-    */
-
-    public $timestamps = true;
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | MASS ASSIGNMENT
-    |--------------------------------------------------------------------------
-    */
+    protected $primaryKey = 'id_pemesanan';
 
     protected $fillable = [
-
-        'id_pelanggan',
-
-        'id_paket_wisata',
-
         'kode_booking',
-
+        'id_pelanggan',
+        'id_jadwal',
+        'tgl_pemesanan',
         'jumlah_peserta',
-
-        'total_harga',
-
+        'data_peserta',
+        'total_bayar',
         'status_pemesanan',
-
+        'catatan_revisi',
     ];
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | CAST
-    |--------------------------------------------------------------------------
-    */
 
     protected $casts = [
-
-        'jumlah_peserta' => 'integer',
-
-        'total_harga' => 'decimal:2',
-
+        'tgl_pemesanan' => 'datetime',
+        'total_bayar' => 'decimal:2',
+        'data_peserta' => 'array',
     ];
 
 
     /*
     |--------------------------------------------------------------------------
-    | PEMESANAN -> PELANGGAN
+    | RELASI PELANGGAN
     |--------------------------------------------------------------------------
     */
 
-    public function pelanggan(): BelongsTo
+    public function pelanggan()
     {
         return $this->belongsTo(
-
             User::class,
-
             'id_pelanggan',
-
             'id_user'
-
         );
     }
 
 
     /*
     |--------------------------------------------------------------------------
-    | PEMESANAN -> PAKET WISATA
+    | RELASI JADWAL TOUR
     |--------------------------------------------------------------------------
     */
 
-    public function paketWisata(): BelongsTo
+    public function jadwalTour()
     {
         return $this->belongsTo(
-
-            PaketWisata::class,
-
-            'id_paket_wisata',
-
-            'id_paket_wisata'
-
+            JadwalTour::class,
+            'id_jadwal',
+            'id_jadwal'
         );
     }
 
 
     /*
     |--------------------------------------------------------------------------
-    | PEMESANAN -> PEMBAYARAN
+    | RELASI PESERTA PEMESANAN
     |--------------------------------------------------------------------------
     */
 
-    public function pembayaran(): HasOne
+    public function peserta()
+    {
+        return $this->hasMany(
+            PesertaPemesanan::class,
+            'id_pemesanan',
+            'id_pemesanan'
+        );
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | RELASI PESERTA PEMESANAN - NAMA LAMA
+    |--------------------------------------------------------------------------
+    */
+
+    public function pesertaPemesanan()
+    {
+        return $this->hasMany(
+            PesertaPemesanan::class,
+            'id_pemesanan',
+            'id_pemesanan'
+        );
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | RELASI DOKUMEN PEMESANAN
+    |--------------------------------------------------------------------------
+    */
+
+    public function dokumenPemesanan()
+    {
+        return $this->hasMany(
+            DokumenPemesanan::class,
+            'id_pemesanan',
+            'id_pemesanan'
+        );
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | RELASI E-TICKET
+    |--------------------------------------------------------------------------
+    */
+
+    public function eTicket()
     {
         return $this->hasOne(
-
-            Pembayaran::class,
-
+            ETicket::class,
             'id_pemesanan',
-
             'id_pemesanan'
+        );
+    }
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | RELASI PEMBAYARAN
+    |--------------------------------------------------------------------------
+    */
+
+    public function pembayaran()
+    {
+        return $this->hasOne(
+            Pembayaran::class,
+            'id_pemesanan',
+            'id_pemesanan'
         );
     }
 }

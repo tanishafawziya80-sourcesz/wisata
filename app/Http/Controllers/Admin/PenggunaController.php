@@ -9,7 +9,9 @@ class PenggunaController extends Controller
 {
     public function index()
     {
-        $pengguna = User::orderBy('created_at', 'desc')->get();
+        $pengguna = User::orderByDesc('last_login_at')
+            ->orderByDesc('created_at')
+            ->get();
 
         return view('admin.pengguna.index', compact('pengguna'));
     }

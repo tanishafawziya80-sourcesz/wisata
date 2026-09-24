@@ -5,9 +5,15 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Dokumen Perjalanan - WISATA.</title>
+    <title>
+        Dokumen - FAWZATA TRAVEL
+    </title>
+
 
     <style>
 
@@ -15,12 +21,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Segoe UI", sans-serif;
-        }
-
-
-        html {
-            scroll-behavior: smooth;
+            font-family: "Segoe UI", Arial, sans-serif;
         }
 
 
@@ -28,15 +29,13 @@
 
             min-height: 100vh;
 
-            color: white;
-
-            overflow-x: hidden;
+            color: #183b4d;
 
             background:
 
                 linear-gradient(
-                    rgba(4, 42, 67, .72),
-                    rgba(5, 74, 91, .86)
+                    rgba(7,48,67,.82),
+                    rgba(18,60,87,.94)
                 ),
 
                 url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=90");
@@ -47,475 +46,103 @@
 
             background-attachment: fixed;
 
-        }
-
-
-        /* =========================================
-           BACKGROUND EFFECT
-        ========================================= */
-
-        body::before {
-
-            content: "";
-
-            position: fixed;
-
-            inset: 0;
-
-            pointer-events: none;
-
-            background:
-
-                radial-gradient(
-                    circle at 15% 20%,
-                    rgba(117, 224, 255, .16),
-                    transparent 30%
-                ),
-
-                radial-gradient(
-                    circle at 85% 75%,
-                    rgba(255, 255, 255, .10),
-                    transparent 30%
-                );
-
-            z-index: -1;
+            padding: 40px;
 
         }
 
-
-        /* =========================================
-           FLOATING LIGHT
-        ========================================= */
-
-        .light {
-
-            position: fixed;
-
-            width: 220px;
-
-            height: 220px;
-
-            border-radius: 50%;
-
-            background: rgba(150, 235, 255, .10);
-
-            filter: blur(35px);
-
-            pointer-events: none;
-
-            animation: floatingLight 8s ease-in-out infinite;
-
-        }
-
-
-        .light.one {
-
-            top: 120px;
-
-            left: -80px;
-
-        }
-
-
-        .light.two {
-
-            right: -80px;
-
-            bottom: 80px;
-
-            animation-delay: 3s;
-
-        }
-
-
-        @keyframes floatingLight {
-
-            0%,
-            100% {
-
-                transform:
-                    translateY(0)
-                    translateX(0);
-
-            }
-
-            50% {
-
-                transform:
-                    translateY(-35px)
-                    translateX(25px);
-
-            }
-
-        }
-
-
-        /* =========================================
-           NAVBAR
-        ========================================= */
-
-        .navbar {
-
-            position: fixed;
-
-            top: 0;
-
-            left: 0;
-
-            width: 100%;
-
-            height: 78px;
-
-            padding: 0 7%;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            background:
-                rgba(255,255,255,.10);
-
-            backdrop-filter:
-                blur(20px);
-
-            border-bottom:
-                1px solid rgba(255,255,255,.18);
-
-            z-index: 1000;
-
-        }
-
-
-        .logo {
-
-            color: white;
-
-            text-decoration: none;
-
-            font-size: 27px;
-
-            font-weight: 800;
-
-            letter-spacing: 2px;
-
-            transition: .3s;
-
-        }
-
-
-        .logo span {
-
-            color: #91ddff;
-
-        }
-
-
-        .logo:hover {
-
-            transform:
-                translateY(-2px);
-
-        }
-
-
-        .nav-right {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 15px;
-
-        }
-
-
-        .role {
-
-            padding: 9px 17px;
-
-            border-radius: 30px;
-
-            background:
-                rgba(255,255,255,.12);
-
-            border:
-                1px solid rgba(255,255,255,.22);
-
-            color: #e3f8ff;
-
-            font-size: 13px;
-
-            font-weight: 700;
-
-        }
-
-
-        .logout {
-
-            border: none;
-
-            padding: 10px 18px;
-
-            border-radius: 25px;
-
-            background:
-                rgba(255,255,255,.93);
-
-            color: #123c57;
-
-            font-weight: 700;
-
-            cursor: pointer;
-
-            transition: .3s;
-
-        }
-
-
-        .logout:hover {
-
-            transform:
-                translateY(-3px);
-
-            box-shadow:
-                0 10px 25px rgba(0,0,0,.22);
-
-        }
-
-
-        /* =========================================
-           CONTAINER
-        ========================================= */
 
         .container {
-
-            width: 88%;
 
             max-width: 1250px;
 
             margin: auto;
 
-            padding-top: 130px;
-
-            padding-bottom: 90px;
-
         }
 
 
-        /* =========================================
+        /* =====================================================
            HEADER
-        ========================================= */
+        ===================================================== */
 
         .header {
 
-            margin-bottom: 35px;
-
-            animation:
-                fadeUp .8s ease;
+            margin-bottom: 28px;
 
         }
 
 
         .small-title {
 
-            font-size: 12px;
+            color: #9ddcff;
 
-            letter-spacing: 4px;
+            font-size: 11px;
 
-            text-transform: uppercase;
+            letter-spacing: 3px;
 
-            color: #a9e8ff;
+            font-weight: 800;
 
-            margin-bottom: 12px;
+            margin-bottom: 8px;
 
         }
 
 
-        .header h1 {
+        h1 {
 
-            font-size:
-                clamp(38px, 6vw, 62px);
+            color: white;
 
-            line-height: 1.05;
+            font-size: 42px;
 
-            margin-bottom: 14px;
+            margin-bottom: 8px;
 
         }
 
 
         .header p {
 
-            max-width: 650px;
-
             color:
-                rgba(255,255,255,.73);
+                rgba(255,255,255,.72);
 
-            line-height: 1.7;
-
-        }
-
-
-        /* =========================================
-           STAT
-        ========================================= */
-
-        .stats {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 18px;
-
-            margin-bottom: 25px;
+            font-size: 13px;
 
         }
 
 
-        .stat-card {
-
-            padding: 23px;
-
-            border-radius: 24px;
-
-            background:
-                rgba(255,255,255,.11);
-
-            backdrop-filter:
-                blur(20px);
-
-            border:
-                1px solid rgba(255,255,255,.18);
-
-            box-shadow:
-                0 20px 55px rgba(0,0,0,.18);
-
-            transition:
-                .35s ease;
-
-            animation:
-                fadeUp .8s ease;
-
-        }
-
-
-        .stat-card:hover {
-
-            transform:
-                translateY(-7px);
-
-            background:
-                rgba(255,255,255,.16);
-
-        }
-
-
-        .stat-label {
-
-            color:
-                rgba(255,255,255,.58);
-
-            font-size: 11px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1.5px;
-
-            margin-bottom: 7px;
-
-        }
-
-
-        .stat-number {
-
-            font-size: 34px;
-
-            font-weight: 800;
-
-        }
-
-
-        .stat-line {
-
-            width: 45px;
-
-            height: 3px;
-
-            margin-top: 13px;
-
-            border-radius: 10px;
-
-            background: #94e2ff;
-
-            animation:
-                lineMove 2s ease-in-out infinite;
-
-        }
-
-
-        @keyframes lineMove {
-
-            0%,
-            100% {
-
-                width: 35px;
-
-            }
-
-            50% {
-
-                width: 70px;
-
-            }
-
-        }
-
-
-        /* =========================================
+        /* =====================================================
            MAIN CARD
-        ========================================= */
+        ===================================================== */
 
-        .document-card {
+        .card {
+
+            background:
+                rgba(255,255,255,.96);
+
+            border-radius: 26px;
 
             padding: 28px;
 
-            border-radius: 30px;
-
-            background:
-                rgba(255,255,255,.11);
-
-            backdrop-filter:
-                blur(24px);
-
-            border:
-                1px solid rgba(255,255,255,.19);
-
             box-shadow:
-                0 30px 80px rgba(0,0,0,.23);
-
-            animation:
-                fadeUp 1s ease;
+                0 25px 70px
+                rgba(0,0,0,.25);
 
         }
 
 
-        .card-head {
+        .card-header {
 
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
+            padding-bottom: 18px;
 
             margin-bottom: 22px;
+
+            border-bottom:
+                1px solid
+                #e2edf1;
 
         }
 
 
         .card-title {
+
+            color: #123c57;
 
             font-size: 21px;
 
@@ -526,205 +153,319 @@
 
         .card-subtitle {
 
-            color:
-                rgba(255,255,255,.52);
+            color: #78909c;
 
-            font-size: 13px;
+            font-size: 12px;
 
             margin-top: 5px;
 
         }
 
 
-        /* =========================================
-           DOCUMENT ITEM
-        ========================================= */
+        /* =====================================================
+           ALERT
+        ===================================================== */
 
-        .document-item {
+        .alert {
 
-            display: grid;
+            padding: 13px 15px;
 
-            grid-template-columns:
-                1.1fr 1.2fr 1fr auto;
+            border-radius: 13px;
 
-            gap: 18px;
+            margin-bottom: 18px;
+
+            font-size: 12px;
+
+        }
+
+
+        .alert-success {
+
+            background: #e8f7ed;
+
+            color: #267044;
+
+            border:
+                1px solid
+                #c9ead4;
+
+        }
+
+
+        .alert-error {
+
+            background: #fff0f0;
+
+            color: #a33a3a;
+
+            border:
+                1px solid
+                #f0d0d0;
+
+        }
+
+
+        /* =====================================================
+           BOOKING CARD
+        ===================================================== */
+
+        .booking-card {
+
+            border:
+                1px solid
+                #dcebef;
+
+            border-radius: 20px;
+
+            margin-bottom: 22px;
+
+            overflow: hidden;
+
+            background: #fbfdfe;
+
+            box-shadow:
+                0 8px 25px
+                rgba(18,60,87,.05);
+
+            animation:
+                fadeUp .35s ease both;
+
+        }
+
+
+        /* =====================================================
+           BOOKING HEADER
+        ===================================================== */
+
+        .booking-header {
+
+            padding: 19px 21px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef9fd,
+                    #f8fcfe
+                );
+
+            border-bottom:
+                1px solid
+                #dcebef;
+
+            display: flex;
+
+            justify-content: space-between;
 
             align-items: center;
 
-            padding: 20px;
+            gap: 15px;
 
-            margin-bottom: 13px;
-
-            border-radius: 22px;
-
-            background:
-                rgba(255,255,255,.07);
-
-            border:
-                1px solid rgba(255,255,255,.10);
-
-            transition:
-                .35s ease;
-
-            animation:
-                itemIn .7s ease both;
+            flex-wrap: wrap;
 
         }
 
 
-        .document-item:nth-child(2) {
-            animation-delay: .05s;
-        }
+        .booking-label {
 
-        .document-item:nth-child(3) {
-            animation-delay: .10s;
-        }
+            color: #78909c;
 
-        .document-item:nth-child(4) {
-            animation-delay: .15s;
-        }
+            font-size: 9px;
 
-        .document-item:nth-child(5) {
-            animation-delay: .20s;
-        }
+            text-transform: uppercase;
 
+            letter-spacing: 1.2px;
 
-        .document-item:hover {
+            font-weight: 800;
 
-            transform:
-                translateX(6px)
-                translateY(-2px);
-
-            background:
-                rgba(255,255,255,.13);
-
-            border-color:
-                rgba(155,230,255,.30);
-
-            box-shadow:
-                0 12px 30px rgba(0,0,0,.15);
-
-        }
-
-
-        @keyframes itemIn {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    translateY(18px);
-
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0);
-
-            }
+            margin-bottom: 5px;
 
         }
 
 
         .booking-code {
 
-            color: #a5e5ff;
+            color: #123c57;
 
-            font-size: 12px;
+            font-size: 18px;
 
-            font-weight: 800;
-
-            letter-spacing: 1px;
-
-            margin-bottom: 7px;
+            font-weight: 900;
 
         }
 
 
-        .customer {
-
-            font-size: 17px;
-
-            font-weight: 750;
-
-        }
-
-
-        .customer-email {
-
-            color:
-                rgba(255,255,255,.50);
-
-            font-size: 12px;
-
-            margin-top: 3px;
-
-        }
-
-
-        .info {
+        .booking-info {
 
             display: flex;
 
-            flex-direction: column;
+            gap: 10px;
 
-            gap: 5px;
-
-        }
-
-
-        .info-label {
-
-            color:
-                rgba(255,255,255,.43);
-
-            font-size: 10px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
+            flex-wrap: wrap;
 
         }
 
 
-        .info-value {
-
-            font-size: 14px;
-
-            font-weight: 650;
-
-        }
-
-
-        /* =========================================
-           DOCUMENT STATUS
-        ========================================= */
-
-        .document-status {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 7px;
+        .info-badge {
 
             padding: 7px 12px;
 
             border-radius: 20px;
 
-            background:
-                rgba(140,230,255,.12);
+            background: white;
 
             border:
-                1px solid rgba(140,230,255,.22);
+                1px solid
+                #d7e8ee;
 
-            color: #c9f4ff;
+            color: #527180;
 
-            font-size: 11px;
+            font-size: 10px;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =====================================================
+           CUSTOMER
+        ===================================================== */
+
+        .customer-box {
+
+            padding: 18px 21px;
+
+            border-bottom:
+                1px dashed
+                #d9e6ea;
+
+        }
+
+
+        .customer-label {
+
+            color: #78909c;
+
+            font-size: 9px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            font-weight: 800;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .customer-name {
+
+            color: #123c57;
+
+            font-size: 16px;
+
+            font-weight: 800;
+
+        }
+
+
+        /* =====================================================
+           PESERTA
+        ===================================================== */
+
+        .peserta-section {
+
+            padding: 21px;
+
+        }
+
+
+        .section-title {
+
+            color: #123c57;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .peserta-list {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 15px;
+
+        }
+
+
+        .peserta-card {
+
+            padding: 18px;
+
+            border-radius: 17px;
+
+            background: white;
+
+            border:
+                1px solid
+                #e0ecef;
+
+            box-shadow:
+                0 5px 15px
+                rgba(18,60,87,.04);
+
+        }
+
+
+        .peserta-top {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+            margin-bottom: 15px;
+
+            padding-bottom: 11px;
+
+            border-bottom:
+                1px dashed
+                #dce7eb;
+
+        }
+
+
+        .peserta-number {
+
+            color: #123c57;
+
+            font-size: 14px;
+
+            font-weight: 900;
+
+        }
+
+
+        .peserta-category {
+
+            padding: 5px 9px;
+
+            border-radius: 15px;
+
+            background: #e8f6fb;
+
+            color: #24789b;
+
+            font-size: 9px;
 
             font-weight: 800;
 
@@ -733,52 +474,128 @@
         }
 
 
-        .status-dot {
+        /* =====================================================
+           DATA PESERTA
+        ===================================================== */
 
-            width: 7px;
+        .data-grid {
 
-            height: 7px;
+            display: grid;
 
-            border-radius: 50%;
+            grid-template-columns:
+                repeat(2, 1fr);
 
-            background: #83e3ff;
-
-            box-shadow:
-                0 0 10px #83e3ff;
-
-            animation:
-                pulse 1.8s infinite;
+            gap: 10px;
 
         }
 
 
-        @keyframes pulse {
+        .data-box {
 
-            0%,
-            100% {
+            padding: 11px 12px;
 
-                transform: scale(1);
+            border-radius: 11px;
 
-                opacity: 1;
+            background: #f7fafb;
 
-            }
-
-            50% {
-
-                transform: scale(1.4);
-
-                opacity: .55;
-
-            }
+            border:
+                1px solid
+                #e7eff2;
 
         }
 
 
-        /* =========================================
-           BUTTON
-        ========================================= */
+        .data-label {
 
-        .view-btn {
+            color: #8a9ca5;
+
+            font-size: 8px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .8px;
+
+            font-weight: 800;
+
+            margin-bottom: 4px;
+
+        }
+
+
+        .data-value {
+
+            color: #284b5c;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            word-break: break-word;
+
+        }
+
+
+        /* =====================================================
+           IDENTITAS
+        ===================================================== */
+
+        .identitas-box {
+
+            margin-top: 13px;
+
+            padding: 13px;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef9fd,
+                    #f7fcfe
+                );
+
+            border:
+                1px solid
+                #d4eaf2;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+        }
+
+
+        .identitas-title {
+
+            color: #547080;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: .7px;
+
+            margin-bottom: 3px;
+
+        }
+
+
+        .identitas-file {
+
+            color: #78909c;
+
+            font-size: 10px;
+
+        }
+
+
+        .file-btn {
 
             display: inline-flex;
 
@@ -786,112 +603,124 @@
 
             justify-content: center;
 
-            padding: 10px 16px;
+            padding: 8px 13px;
 
-            border-radius: 18px;
+            border-radius: 20px;
+
+            background: #123c57;
+
+            color: white;
 
             text-decoration: none;
 
-            color: #dff9ff;
+            font-size: 10px;
 
-            background:
-                rgba(140,225,255,.13);
-
-            border:
-                1px solid rgba(140,225,255,.28);
-
-            font-size: 12px;
-
-            font-weight: 750;
-
-            transition: .3s;
+            font-weight: 800;
 
             white-space: nowrap;
 
+            transition: .25s;
+
         }
 
 
-        .view-btn:hover {
+        .file-btn:hover {
 
             transform:
-                translateY(-3px);
+                translateY(-2px);
 
-            background:
-                rgba(140,225,255,.24);
-
-            box-shadow:
-                0 10px 25px rgba(0,0,0,.18);
+            background: #194e6d;
 
         }
 
 
-        /* =========================================
+        .file-empty {
+
+            color: #a33a3a;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =====================================================
            EMPTY
-        ========================================= */
+        ===================================================== */
 
         .empty {
 
             text-align: center;
 
-            padding: 65px 20px;
+            padding: 55px 20px;
 
-            color:
-                rgba(255,255,255,.58);
+            color: #78909c;
+
+            font-size: 13px;
 
         }
 
 
-        .empty h2 {
+        .empty-icon {
+
+            font-size: 35px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        /* =====================================================
+           BACK
+        ===================================================== */
+
+        .back {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            margin-top: 22px;
+
+            padding: 11px 18px;
+
+            border-radius: 22px;
+
+            background:
+                rgba(255,255,255,.12);
+
+            border:
+                1px solid
+                rgba(255,255,255,.18);
 
             color: white;
 
-            margin-bottom: 8px;
-
-        }
-
-
-        /* =========================================
-           BACK
-        ========================================= */
-
-        .back-btn {
-
-            display: inline-block;
-
-            margin-top: 25px;
-
-            padding: 12px 20px;
-
-            border-radius: 25px;
-
             text-decoration: none;
 
-            background:
-                rgba(255,255,255,.93);
+            font-size: 12px;
 
-            color: #123c57;
+            font-weight: 700;
 
-            font-weight: 750;
-
-            transition: .3s;
+            transition: .25s;
 
         }
 
 
-        .back-btn:hover {
+        .back:hover {
+
+            background:
+                rgba(255,255,255,.20);
 
             transform:
-                translateY(-3px);
-
-            box-shadow:
-                0 12px 30px rgba(0,0,0,.20);
+                translateY(-2px);
 
         }
 
 
-        /* =========================================
+        /* =====================================================
            ANIMATION
-        ========================================= */
+        ===================================================== */
 
         @keyframes fadeUp {
 
@@ -900,7 +729,7 @@
                 opacity: 0;
 
                 transform:
-                    translateY(28px);
+                    translateY(12px);
 
             }
 
@@ -916,62 +745,72 @@
         }
 
 
-        /* =========================================
+        /* =====================================================
            RESPONSIVE
-        ========================================= */
+        ===================================================== */
 
-        @media(max-width: 900px) {
+        @media(max-width: 850px) {
 
-            .stats {
+            body {
 
-                grid-template-columns: 1fr;
-
-            }
-
-
-            .document-item {
-
-                grid-template-columns:
-                    1fr 1fr;
-
-            }
-
-        }
-
-
-        @media(max-width: 600px) {
-
-            .navbar {
-
-                padding: 0 5%;
+                padding: 25px 18px;
 
             }
 
 
-            .role {
+            h1 {
 
-                display: none;
-
-            }
-
-
-            .container {
-
-                width: 92%;
+                font-size: 32px;
 
             }
 
 
-            .document-card {
+            .card {
 
                 padding: 18px;
 
             }
 
 
-            .document-item {
+            .peserta-list {
 
                 grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        @media(max-width: 550px) {
+
+            .booking-header {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+
+            }
+
+
+            .data-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .identitas-box {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+
+            }
+
+
+            .file-btn {
+
+                width: 100%;
 
             }
 
@@ -985,290 +824,410 @@
 <body>
 
 
-    <div class="light one"></div>
-
-    <div class="light two"></div>
+<div class="container">
 
 
-    <!-- =========================================
-         NAVBAR
-    ========================================= -->
+    <!-- =====================================================
+         HEADER
+    ===================================================== -->
 
-    <nav class="navbar">
+    <div class="header">
 
-        <a
-            href="/pegawai/dashboard"
-            class="logo"
-        >
-            WISATA<span>.</span>
-        </a>
+        <div class="small-title">
 
-
-        <div class="nav-right">
-
-            <div class="role">
-                PEGAWAI
-            </div>
-
-
-            <form
-                action="/logout"
-                method="POST"
-            >
-
-                @csrf
-
-                <button
-                    type="submit"
-                    class="logout"
-                >
-                    Logout
-                </button>
-
-            </form>
-
-        </div>
-
-    </nav>
-
-
-    <!-- =========================================
-         CONTENT
-    ========================================= -->
-
-    <main class="container">
-
-
-        <div class="header">
-
-            <div class="small-title">
-                Travel Operations
-            </div>
-
-
-            <h1>
-                Dokumen Perjalanan
-            </h1>
-
-
-            <p>
-                Kelola dan periksa dokumen pelanggan
-                yang berkaitan dengan pemesanan perjalanan.
-            </p>
+            FAWZATA TRAVEL • PEGAWAI
 
         </div>
 
 
-        @php
+        <h1>
 
-            $totalDokumen = $dokumen->count();
+            Dokumen
 
-            $denganFile = $dokumen
-                ->whereNotNull('file_path')
-                ->count();
-
-            $tanpaFile = $totalDokumen - $denganFile;
-
-        @endphp
+        </h1>
 
 
-        <!-- =========================================
-             STATISTICS
-        ========================================= -->
+        <p>
 
-        <div class="stats">
+            Kelola dan periksa dokumen identitas peserta
+            dari setiap pemesanan pelanggan.
+
+        </p>
+
+    </div>
 
 
-            <div class="stat-card">
+    <!-- =====================================================
+         CARD
+    ===================================================== -->
 
-                <div class="stat-label">
-                    Total Dokumen
+    <div class="card">
+
+
+        <div class="card-header">
+
+            <div>
+
+                <div class="card-title">
+
+                    Dokumen Peserta
+
                 </div>
 
-                <div class="stat-number">
-                    {{ $totalDokumen }}
-                </div>
 
-                <div class="stat-line"></div>
+                <div class="card-subtitle">
+
+                    Periksa identitas setiap peserta berdasarkan
+                    nomor booking.
+
+                </div>
 
             </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-label">
-                    Dokumen Tersedia
-                </div>
-
-                <div class="stat-number">
-                    {{ $denganFile }}
-                </div>
-
-                <div class="stat-line"></div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-label">
-                    Belum Tersedia
-                </div>
-
-                <div class="stat-number">
-                    {{ $tanpaFile }}
-                </div>
-
-                <div class="stat-line"></div>
-
-            </div>
-
 
         </div>
 
 
-        <!-- =========================================
-             DOCUMENT CARD
-        ========================================= -->
+        <!-- =================================================
+             ALERT
+        ================================================= -->
 
-        <div class="document-card">
+        @if(session('success'))
 
+            <div class="alert alert-success">
 
-            <div class="card-head">
-
-                <div>
-
-                    <div class="card-title">
-                        Daftar Dokumen
-                    </div>
-
-                    <div class="card-subtitle">
-                        Dokumen pelanggan berdasarkan pemesanan
-                    </div>
-
-                </div>
+                {{ session('success') }}
 
             </div>
 
-
-            @forelse($dokumen as $item)
-
-
-                <div class="document-item">
+        @endif
 
 
-                    <!-- CUSTOMER -->
+        @if(session('error'))
 
-                    <div>
+            <div class="alert alert-error">
 
-                        <div class="booking-code">
+                {{ session('error') }}
 
-                            {{ $item->pemesanan->kode_booking ?? '-' }}
+            </div>
+
+        @endif
+
+
+        <!-- =================================================
+             DATA PEMESANAN
+        ================================================= -->
+
+        @if($pemesanan->count())
+
+
+            @foreach($pemesanan as $item)
+
+
+                <div class="booking-card">
+
+
+                    <!-- =====================================
+                         BOOKING HEADER
+                    ====================================== -->
+
+                    <div class="booking-header">
+
+
+                        <div>
+
+                            <div class="booking-label">
+
+                                Kode Booking
+
+                            </div>
+
+
+                            <div class="booking-code">
+
+                                {{ $item->kode_booking ?? '-' }}
+
+                            </div>
 
                         </div>
 
 
-                        <div class="customer">
+                        <div class="booking-info">
 
-                            {{ $item->pemesanan->pelanggan->nama_lengkap ?? 'Pelanggan' }}
+
+                            <div class="info-badge">
+
+                                Paket:
+
+                                {{ $item->jadwalTour->paketWisata->nama_paket ?? '-' }}
+
+                            </div>
+
+
+                            <div class="info-badge">
+
+                                Peserta:
+
+                                {{ $item->jumlah_peserta ?? 0 }}
+
+                            </div>
+
 
                         </div>
 
-
-                        <div class="customer-email">
-
-                            {{ $item->pemesanan->pelanggan->email ?? '-' }}
-
-                        </div>
 
                     </div>
 
 
-                    <!-- DOCUMENT -->
+                    <!-- =====================================
+                         PELANGGAN
+                    ====================================== -->
 
-                    <div class="info">
-
-                        <div class="info-label">
-                            Jenis Dokumen
-                        </div>
+                    <div class="customer-box">
 
 
-                        <div class="info-value">
+                        <div class="customer-label">
 
-                            {{ $item->jenis_dokumen ?? '-' }}
+                            Nama Pelanggan
 
                         </div>
 
 
-                        <div class="info-label">
-                            ID Dokumen
-                        </div>
+                        <div class="customer-name">
 
-
-                        <div class="info-value">
-
-                            #{{ $item->id_dokumen }}
+                            {{ $item->pelanggan->nama_lengkap ?? '-' }}
 
                         </div>
+
 
                     </div>
 
 
-                    <!-- STATUS -->
+                    <!-- =====================================
+                         DATA PESERTA
+                    ====================================== -->
 
-                    <div>
+                    <div class="peserta-section">
 
-                        @if($item->file_path)
 
-                            <span class="document-status">
+                        <div class="section-title">
 
-                                <span class="status-dot"></span>
+                            Data Peserta
 
-                                Tersedia
+                        </div>
 
-                            </span>
+
+                        @if($item->peserta && $item->peserta->count())
+
+
+                            <div class="peserta-list">
+
+
+                                @foreach($item->peserta as $index => $peserta)
+
+
+                                    <div class="peserta-card">
+
+
+                                        <div class="peserta-top">
+
+
+                                            <div class="peserta-number">
+
+                                                Peserta
+                                                {{ $index + 1 }}
+
+                                            </div>
+
+
+                                            <div class="peserta-category">
+
+                                                {{ $peserta->kategori ?? '-' }}
+
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <div class="data-grid">
+
+
+                                            <div class="data-box">
+
+
+                                                <div class="data-label">
+
+                                                    Nama Lengkap
+
+                                                </div>
+
+
+                                                <div class="data-value">
+
+                                                    {{ $peserta->nama_peserta ?? '-' }}
+
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="data-box">
+
+
+                                                <div class="data-label">
+
+                                                    NIK
+
+                                                </div>
+
+
+                                                <div class="data-value">
+
+                                                    {{ $peserta->nik ?? '-' }}
+
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="data-box">
+
+
+                                                <div class="data-label">
+
+                                                    Usia
+
+                                                </div>
+
+
+                                                <div class="data-value">
+
+                                                    {{ $peserta->usia ?? '-' }}
+                                                    tahun
+
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="data-box">
+
+
+                                                <div class="data-label">
+
+                                                    Jenis Kelamin
+
+                                                </div>
+
+
+                                                <div class="data-value">
+
+                                                    @if($peserta->jenis_kelamin === 'L')
+
+                                                        Laki-laki
+
+                                                    @elseif($peserta->jenis_kelamin === 'P')
+
+                                                        Perempuan
+
+                                                    @else
+
+                                                        -
+
+                                                    @endif
+
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <!-- =========================
+                                             FILE IDENTITAS
+                                        ========================== -->
+
+                                        <div class="identitas-box">
+
+
+                                            <div>
+
+                                                <div class="identitas-title">
+
+                                                    Identitas / Tanda Pengenal
+
+                                                </div>
+
+
+                                                @if($peserta->file_identitas)
+
+                                                    <div class="identitas-file">
+
+                                                        Dokumen identitas tersedia.
+
+                                                    </div>
+
+                                                @else
+
+                                                    <div class="file-empty">
+
+                                                        Dokumen identitas belum diunggah.
+
+                                                    </div>
+
+                                                @endif
+
+                                            </div>
+
+
+                                            @if($peserta->file_identitas)
+
+                                                <a
+                                                    href="{{ asset('storage/' . $peserta->file_identitas) }}"
+                                                    target="_blank"
+                                                    class="file-btn"
+                                                >
+
+                                                    Lihat Identitas
+
+                                                </a>
+
+                                            @endif
+
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                @endforeach
+
+
+                            </div>
+
 
                         @else
 
-                            <span class="document-status">
 
-                                <span class="status-dot"></span>
+                            <div class="empty">
 
-                                Belum Tersedia
+                                <div class="empty-icon">
 
-                            </span>
+                                    📄
 
-                        @endif
-
-                    </div>
+                                </div>
 
 
-                    <!-- ACTION -->
+                                Belum ada data peserta
+                                pada pemesanan ini.
 
-                    <div>
+                            </div>
 
-                        @if($item->file_path)
-
-                            <a
-                                href="{{ asset('storage/' . $item->file_path) }}"
-                                target="_blank"
-                                class="view-btn"
-                            >
-                                Lihat Dokumen
-                            </a>
-
-                        @else
-
-                            <span
-                                style="
-                                    color:rgba(255,255,255,.40);
-                                    font-size:12px;
-                                "
-                            >
-                                Tidak tersedia
-                            </span>
 
                         @endif
+
 
                     </div>
 
@@ -1276,35 +1235,48 @@
                 </div>
 
 
-            @empty
+            @endforeach
 
 
-                <div class="empty">
+        @else
 
-                    <h2>
-                        Belum Ada Dokumen
-                    </h2>
 
-                    <p>
-                        Dokumen pelanggan akan muncul
-                        di halaman ini setelah tersedia.
-                    </p>
+            <div class="empty">
+
+                <div class="empty-icon">
+
+                    📄
 
                 </div>
 
 
-            @endforelse
+                Belum ada pemesanan yang memiliki
+                data dokumen peserta.
+
+            </div>
 
 
-        </div>
+        @endif
 
 
-        <a href="/pegawai/dashboard#operasional" class="back-btn">
-    Kembali ke Dashboard
-</a>
+    </div>
 
 
-    </main>
+    <!-- =====================================================
+         BACK
+    ===================================================== -->
+
+    <a
+        href="/pegawai/dashboard"
+        class="back"
+    >
+
+        ← Kembali ke Dashboard Pegawai
+
+    </a>
+
+
+</div>
 
 
 </body>

@@ -5,11 +5,19 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Sistem - WISATA.</title>
 
+
     <style>
+
+        /* =================================================
+           RESET
+        ================================================= */
 
         * {
             margin: 0;
@@ -18,448 +26,1208 @@
             font-family: "Segoe UI", sans-serif;
         }
 
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        /* =================================================
+           BODY
+        ================================================= */
+
         body {
 
             min-height: 100vh;
 
-            color: white;
+            color: #17384d;
+
+            overflow-x: hidden;
 
             background:
                 linear-gradient(
-                    rgba(3, 35, 52, .72),
-                    rgba(5, 48, 67, .84)
-                ),
-                url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=85");
-
-            background-size: cover;
-
-            background-position: center;
-
-            background-attachment: fixed;
-
-            padding: 40px;
+                    180deg,
+                    #dff5fc 0%,
+                    #eaf8fc 40%,
+                    #f5fbfd 100%
+                );
 
         }
 
 
-        /* =========================
+        /* =================================================
+           BACKGROUND LANGIT
+        ================================================= */
+
+        .page-background {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: -10;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #d7f1fa 0%,
+                    #e8f8fc 48%,
+                    #f6fbfd 100%
+                );
+
+        }
+
+
+        /* =================================================
+           CAHAYA LANGIT
+        ================================================= */
+
+        .page-background::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+
+            height: 500px;
+
+            top: -210px;
+
+            right: 10%;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.55);
+
+            filter:
+                blur(10px);
+
+        }
+
+
+        /* =================================================
+           AWAN 1
+        ================================================= */
+
+        .cloud-one {
+
+            position: absolute;
+
+            width: 480px;
+
+            height: 150px;
+
+            top: 80px;
+
+            left: 12%;
+
+            opacity: .78;
+
+            filter: blur(2px);
+
+            animation:
+                cloudMove 28s
+                ease-in-out
+                infinite
+                alternate;
+
+        }
+
+
+        .cloud-one::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+
+            height: 100px;
+
+            left: 80px;
+
+            bottom: 10px;
+
+            border-radius: 100px;
+
+            background:
+                rgba(255,255,255,.90);
+
+            box-shadow:
+
+                95px 18px 0
+                rgba(255,255,255,.90),
+
+                165px 25px 0
+                rgba(255,255,255,.88),
+
+                235px 38px 0
+                rgba(255,255,255,.82);
+
+        }
+
+
+        .cloud-one::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 120px;
+
+            height: 100px;
+
+            left: 160px;
+
+            bottom: 35px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.94);
+
+        }
+
+
+        /* =================================================
+           AWAN 2
+        ================================================= */
+
+        .cloud-two {
+
+            position: absolute;
+
+            width: 560px;
+
+            height: 170px;
+
+            top: 420px;
+
+            right: -80px;
+
+            opacity: .62;
+
+            filter: blur(3px);
+
+            animation:
+                cloudMoveReverse 34s
+                ease-in-out
+                infinite
+                alternate;
+
+        }
+
+
+        .cloud-two::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 190px;
+
+            height: 105px;
+
+            left: 80px;
+
+            bottom: 10px;
+
+            border-radius: 100px;
+
+            background:
+                rgba(255,255,255,.88);
+
+            box-shadow:
+
+                100px 20px 0
+                rgba(255,255,255,.88),
+
+                180px 30px 0
+                rgba(255,255,255,.84),
+
+                260px 42px 0
+                rgba(255,255,255,.78);
+
+        }
+
+
+        .cloud-two::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 135px;
+
+            height: 110px;
+
+            left: 180px;
+
+            bottom: 40px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.90);
+
+        }
+
+
+        /* =================================================
+           AWAN 3
+        ================================================= */
+
+        .cloud-three {
+
+            position: absolute;
+
+            width: 500px;
+
+            height: 150px;
+
+            left: -130px;
+
+            bottom: 130px;
+
+            opacity: .58;
+
+            filter: blur(3px);
+
+            animation:
+                cloudMove 38s
+                ease-in-out
+                infinite
+                alternate;
+
+        }
+
+
+        .cloud-three::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 170px;
+
+            height: 90px;
+
+            left: 70px;
+
+            bottom: 5px;
+
+            border-radius: 100px;
+
+            background:
+                rgba(255,255,255,.82);
+
+            box-shadow:
+
+                90px 18px 0
+                rgba(255,255,255,.84),
+
+                170px 28px 0
+                rgba(255,255,255,.80),
+
+                240px 38px 0
+                rgba(255,255,255,.76);
+
+        }
+
+
+        /* =================================================
+           ANIMASI AWAN
+        ================================================= */
+
+        @keyframes cloudMove {
+
+            from {
+                transform:
+                    translateX(-25px);
+            }
+
+            to {
+                transform:
+                    translateX(55px);
+            }
+
+        }
+
+
+        @keyframes cloudMoveReverse {
+
+            from {
+                transform:
+                    translateX(45px);
+            }
+
+            to {
+                transform:
+                    translateX(-40px);
+            }
+
+        }
+
+
+        /* =================================================
            CONTAINER
-        ========================== */
+        ================================================= */
 
         .container {
 
+            width: 90%;
+
             max-width: 1250px;
 
-            margin: auto;
+            margin:
+                0 auto;
+
+            padding:
+                45px 0 70px;
 
         }
 
 
-        /* =========================
+        /* =================================================
            HEADER
-        ========================== */
+        ================================================= */
 
         .header {
 
             display: flex;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
-            align-items: center;
+            align-items:
+                center;
 
-            margin-bottom: 30px;
+            margin-bottom:
+                30px;
 
         }
 
 
+        /* =================================================
+           LOGO
+        ================================================= */
+
         .logo {
 
-            color: white;
+            color:
+                #123c57;
 
-            text-decoration: none;
+            text-decoration:
+                none;
 
-            font-size: 30px;
+            font-size:
+                30px;
 
-            font-weight: 800;
+            font-weight:
+                800;
 
-            letter-spacing: 2px;
+            letter-spacing:
+                2px;
 
         }
 
 
         .logo span {
 
-            color: #9ddcff;
+            color:
+                #62b8dc;
 
         }
 
 
+        /* =================================================
+           BACK BUTTON
+        ================================================= */
+
         .back {
 
-            padding: 12px 20px;
+            display:
+                inline-flex;
 
-            border-radius: 25px;
+            align-items:
+                center;
 
-            color: white;
+            justify-content:
+                center;
 
-            text-decoration: none;
+            padding:
+                11px 19px;
 
-            background: rgba(255,255,255,.13);
+            border-radius:
+                22px;
 
-            border: 1px solid rgba(255,255,255,.25);
+            color:
+                #31566b;
 
-            backdrop-filter: blur(15px);
+            text-decoration:
+                none;
 
-            transition: .3s;
+            background:
+                rgba(255,255,255,.62);
+
+            border:
+                1px solid
+                rgba(255,255,255,.90);
+
+            backdrop-filter:
+                blur(15px);
+
+            -webkit-backdrop-filter:
+                blur(15px);
+
+            font-weight:
+                700;
+
+            font-size:
+                13px;
+
+            transition:
+                .3s;
+
+            box-shadow:
+                0 10px 30px
+                rgba(27,71,93,.07);
 
         }
 
 
         .back:hover {
 
-            transform: translateY(-3px);
+            transform:
+                translateY(-3px);
 
-            background: rgba(255,255,255,.22);
+            background:
+                rgba(255,255,255,.88);
+
+            box-shadow:
+                0 15px 35px
+                rgba(27,71,93,.12);
 
         }
 
 
-        /* =========================
-           MAIN CARD
-        ========================== */
+        /* =================================================
+           SYSTEM CARD
+        ================================================= */
 
         .system-card {
 
-            padding: 40px;
+            position:
+                relative;
 
-            border-radius: 30px;
+            overflow:
+                hidden;
 
-            background: rgba(255,255,255,.13);
+            padding:
+                45px;
 
-            border: 1px solid rgba(255,255,255,.25);
+            border-radius:
+                32px;
 
-            backdrop-filter: blur(22px);
+            background:
+                rgba(255,255,255,.58);
+
+            border:
+                1px solid
+                rgba(255,255,255,.88);
+
+            backdrop-filter:
+                blur(24px);
+
+            -webkit-backdrop-filter:
+                blur(24px);
 
             box-shadow:
-                0 30px 80px rgba(0,0,0,.25);
+                0 30px 80px
+                rgba(27,71,93,.10);
+
+            animation:
+                fadeUp .7s ease both;
+
+        }
+
+
+        .system-card::before {
+
+            content: "";
+
+            position:
+                absolute;
+
+            width:
+                280px;
+
+            height:
+                280px;
+
+            right:
+                -110px;
+
+            top:
+                -120px;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(111,190,218,.18);
+
+        }
+
+
+        .system-card::after {
+
+            content: "";
+
+            position:
+                absolute;
+
+            width:
+                220px;
+
+            height:
+                220px;
+
+            left:
+                -100px;
+
+            bottom:
+                -120px;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(133,205,228,.12);
+
+        }
+
+
+        /* =================================================
+           SYSTEM HEADER
+        ================================================= */
+
+        .system-header {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            margin-bottom:
+                38px;
 
         }
 
 
         .small-title {
 
-            color: #a7e2ff;
+            color:
+                #4e91b2;
 
-            font-size: 12px;
+            font-size:
+                11px;
 
-            letter-spacing: 4px;
+            font-weight:
+                800;
 
-            text-transform: uppercase;
+            letter-spacing:
+                3px;
 
-            margin-bottom: 10px;
+            text-transform:
+                uppercase;
+
+            margin-bottom:
+                10px;
 
         }
 
 
         h1 {
 
-            font-size: 42px;
+            font-size:
+                clamp(30px, 4vw, 43px);
 
-            margin-bottom: 10px;
+            color:
+                #123c57;
+
+            margin-bottom:
+                10px;
+
+            font-weight:
+                800;
+
+            line-height:
+                1.15;
 
         }
 
 
         .subtitle {
 
-            color: rgba(255,255,255,.72);
+            color:
+                #6c8490;
 
-            line-height: 1.7;
+            line-height:
+                1.7;
 
-            margin-bottom: 35px;
+            font-size:
+                14px;
 
         }
 
 
-        /* =========================
+        /* =================================================
            STATISTICS
-        ========================== */
+        ================================================= */
 
         .statistics {
 
-            display: grid;
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            display:
+                grid;
 
             grid-template-columns:
                 repeat(4, 1fr);
 
-            gap: 18px;
+            gap:
+                18px;
 
-            margin-bottom: 35px;
+            margin-bottom:
+                38px;
 
         }
 
 
         .stat-card {
 
-            padding: 25px;
+            position:
+                relative;
 
-            border-radius: 24px;
+            overflow:
+                hidden;
 
-            background: rgba(255,255,255,.12);
+            padding:
+                25px;
+
+            min-height:
+                125px;
+
+            border-radius:
+                23px;
+
+            background:
+                rgba(255,255,255,.65);
 
             border:
-                1px solid rgba(255,255,255,.18);
+                1px solid
+                rgba(255,255,255,.92);
 
-            backdrop-filter: blur(15px);
+            backdrop-filter:
+                blur(18px);
 
-            transition: .3s;
+            -webkit-backdrop-filter:
+                blur(18px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(27,71,93,.06);
+
+            transition:
+                .35s;
+
+        }
+
+
+        .stat-card::after {
+
+            content: "";
+
+            position:
+                absolute;
+
+            width:
+                90px;
+
+            height:
+                90px;
+
+            right:
+                -35px;
+
+            bottom:
+                -35px;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(105,183,216,.13);
 
         }
 
 
         .stat-card:hover {
 
-            transform: translateY(-6px);
+            transform:
+                translateY(-6px);
 
-            background: rgba(255,255,255,.17);
+            background:
+                rgba(255,255,255,.82);
 
-        }
-
-
-        .stat-icon {
-
-            width: 52px;
-
-            height: 52px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border-radius: 17px;
-
-            background: rgba(157,220,255,.18);
-
-            font-size: 25px;
-
-            margin-bottom: 18px;
+            box-shadow:
+                0 22px 45px
+                rgba(27,71,93,.10);
 
         }
 
 
         .stat-number {
 
-            font-size: 32px;
+            position:
+                relative;
 
-            font-weight: 800;
+            z-index:
+                2;
 
-            margin-bottom: 5px;
+            font-size:
+                30px;
+
+            font-weight:
+                800;
+
+            color:
+                #123c57;
+
+            margin-bottom:
+                6px;
 
         }
 
 
         .stat-name {
 
-            color: rgba(255,255,255,.68);
+            position:
+                relative;
 
-            font-size: 14px;
+            z-index:
+                2;
+
+            color:
+                #6c8490;
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                1.5px;
 
         }
 
 
-        /* =========================
+        /* =================================================
            INFORMATION
-        ========================== */
+        ================================================= */
 
         .information {
 
-            display: grid;
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            display:
+                grid;
 
             grid-template-columns:
                 1fr 1fr;
 
-            gap: 20px;
+            gap:
+                22px;
 
         }
 
 
+        /* =================================================
+           INFO CARD
+        ================================================= */
+
         .info-card {
 
-            padding: 30px;
+            padding:
+                30px;
 
-            border-radius: 25px;
+            border-radius:
+                26px;
 
-            background: rgba(255,255,255,.11);
+            background:
+                rgba(255,255,255,.60);
 
             border:
-                1px solid rgba(255,255,255,.18);
+                1px solid
+                rgba(255,255,255,.90);
 
-            backdrop-filter: blur(15px);
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+            box-shadow:
+                0 18px 40px
+                rgba(27,71,93,.06);
+
+            transition:
+                .35s;
+
+        }
+
+
+        .info-card:hover {
+
+            transform:
+                translateY(-4px);
+
+            background:
+                rgba(255,255,255,.74);
 
         }
 
 
         .info-card h2 {
 
-            font-size: 21px;
+            font-size:
+                20px;
 
-            margin-bottom: 22px;
+            color:
+                #123c57;
+
+            margin-bottom:
+                20px;
+
+            font-weight:
+                800;
 
         }
 
 
+        /* =================================================
+           INFO ROW
+        ================================================= */
+
         .info-row {
 
-            display: flex;
+            display:
+                flex;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
-            align-items: center;
+            align-items:
+                center;
 
-            gap: 20px;
+            gap:
+                20px;
 
-            padding: 14px 0;
+            padding:
+                14px 0;
 
             border-bottom:
-                1px solid rgba(255,255,255,.10);
+                1px solid
+                rgba(45,118,153,.10);
 
         }
 
 
         .info-row:last-child {
 
-            border-bottom: none;
+            border-bottom:
+                none;
 
         }
 
 
         .info-label {
 
-            color: rgba(255,255,255,.68);
+            color:
+                #718893;
+
+            font-size:
+                13px;
 
         }
 
 
         .info-value {
 
-            font-weight: 700;
+            font-weight:
+                800;
+
+            color:
+                #24566f;
+
+            font-size:
+                13px;
 
         }
 
 
-        /* =========================
-           ROLE
-        ========================== */
+        /* =================================================
+           ROLE LIST
+        ================================================= */
 
         .role-list {
 
-            display: flex;
+            display:
+                flex;
 
-            flex-direction: column;
+            flex-direction:
+                column;
 
-            gap: 12px;
+            gap:
+                10px;
 
         }
 
 
         .role-item {
 
-            display: flex;
+            display:
+                flex;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
-            align-items: center;
+            align-items:
+                center;
 
-            padding: 13px 15px;
+            padding:
+                13px 16px;
 
-            border-radius: 15px;
+            border-radius:
+                17px;
 
-            background: rgba(255,255,255,.08);
+            background:
+                rgba(240,249,252,.70);
+
+            border:
+                1px solid
+                rgba(255,255,255,.90);
+
+            transition:
+                .3s;
+
+        }
+
+
+        .role-item:hover {
+
+            transform:
+                translateX(5px);
+
+            background:
+                rgba(255,255,255,.82);
 
         }
 
 
         .role-name {
 
-            font-weight: 700;
+            font-weight:
+                800;
+
+            color:
+                #24566f;
+
+            font-size:
+                13px;
 
         }
 
 
         .role-access {
 
-            color: #c8efff;
+            color:
+                #367f9e;
 
-            font-size: 13px;
+            font-size:
+                12px;
+
+            font-weight:
+                800;
 
         }
 
 
-        /* =========================
-           DATABASE
-        ========================== */
+        /* =================================================
+           DATABASE STATUS
+        ================================================= */
 
         .database-status {
 
-            margin-top: 25px;
+            position:
+                relative;
 
-            padding: 18px 22px;
+            z-index:
+                2;
 
-            border-radius: 20px;
+            margin-top:
+                24px;
 
-            display: flex;
+            padding:
+                18px 22px;
 
-            align-items: center;
+            border-radius:
+                20px;
 
-            gap: 12px;
+            display:
+                flex;
 
-            background: rgba(103, 214, 151, .12);
+            align-items:
+                center;
+
+            gap:
+                13px;
+
+            background:
+                rgba(237,251,243,.72);
 
             border:
-                1px solid rgba(103, 214, 151, .25);
+                1px solid
+                rgba(187,247,208,.80);
+
+            backdrop-filter:
+                blur(12px);
+
+            -webkit-backdrop-filter:
+                blur(12px);
 
         }
 
 
         .status-dot {
 
-            width: 11px;
+            width:
+                10px;
 
-            height: 11px;
+            height:
+                10px;
 
-            border-radius: 50%;
+            flex-shrink:
+                0;
 
-            background: #62df99;
+            border-radius:
+                50%;
+
+            background:
+                #22c55e;
 
             box-shadow:
-                0 0 12px rgba(98,223,153,.8);
+                0 0 0 4px
+                rgba(34,197,94,.12);
 
         }
 
 
         .database-status strong {
 
-            color: #d8ffe8;
+            color:
+                #166534;
+
+            font-size:
+                13px;
 
         }
 
 
         .database-status span {
 
-            color: rgba(255,255,255,.70);
+            color:
+                #15803d;
 
-            font-size: 13px;
+            font-size:
+                12px;
 
         }
 
 
-        /* =========================
-           RESPONSIVE
-        ========================== */
+        /* =================================================
+           FOOTER
+        ================================================= */
 
-        @media (max-width: 950px) {
+        .footer {
+
+            padding:
+                30px 0 5px;
+
+            text-align:
+                center;
+
+            color:
+                #66808d;
+
+            font-size:
+                12px;
+
+        }
+
+
+        /* =================================================
+           ANIMATION
+        ================================================= */
+
+        @keyframes fadeUp {
+
+            from {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(25px);
+
+            }
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(0);
+
+            }
+
+        }
+
+
+        /* =================================================
+           RESPONSIVE
+        ================================================= */
+
+        @media (max-width: 1000px) {
 
             .statistics {
 
@@ -470,44 +1238,106 @@
 
             .information {
 
-                grid-template-columns: 1fr;
+                grid-template-columns:
+                    1fr;
 
             }
 
         }
 
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
 
-            body {
+            .container {
 
-                padding: 20px;
+                width:
+                    92%;
+
+                padding-top:
+                    25px;
 
             }
+
 
             .header {
 
-                align-items: flex-start;
+                align-items:
+                    flex-start;
 
-                gap: 15px;
+                flex-direction:
+                    column;
+
+                gap:
+                    15px;
 
             }
 
-            h1 {
-
-                font-size: 32px;
-
-            }
 
             .system-card {
 
-                padding: 25px;
+                padding:
+                    28px 22px;
+
+                border-radius:
+                    26px;
 
             }
 
+
             .statistics {
 
-                grid-template-columns: 1fr;
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .information {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .logo {
+
+                font-size:
+                    25px;
+
+            }
+
+
+            .back {
+
+                width:
+                    100%;
+
+            }
+
+
+            .info-row {
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+
+                gap:
+                    5px;
+
+            }
+
+
+            .database-status {
+
+                align-items:
+                    flex-start;
 
             }
 
@@ -521,255 +1351,287 @@
 <body>
 
 
-<div class="container">
+    <!-- =================================================
+         BACKGROUND
+    ================================================= -->
 
+    <div class="page-background">
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+        <div class="cloud-one"></div>
 
-    <div class="header">
+        <div class="cloud-two"></div>
 
-        <a
-            href="/admin/dashboard"
-            class="logo"
-        >
-            WISATA<span>.</span>
-        </a>
-
-
-        <a
-            href="/admin/dashboard"
-            class="back"
-        >
-            ← Kembali ke Dashboard
-        </a>
+        <div class="cloud-three"></div>
 
     </div>
 
 
 
-    <!-- =========================
-         SYSTEM
-    ========================== -->
+    <!-- =================================================
+         MAIN CONTAINER
+    ================================================= -->
 
-    <div class="system-card">
-
-
-        <div class="small-title">
-            SYSTEM INFORMATION
-        </div>
+    <div class="container">
 
 
-        <h1>
-            ⚙️ Sistem WISATA.
-        </h1>
+        <!-- =================================================
+             HEADER
+        ================================================= -->
+
+        <div class="header">
+
+            <a
+                href="/admin/dashboard"
+                class="logo"
+            >
+                WISATA<span>.</span>
+            </a>
 
 
-        <p class="subtitle">
-            Informasi dan kondisi sistem perjalanan wisata
-        </p>
-
-
-
-        <!-- =========================
-             STATISTICS
-        ========================== -->
-
-        <div class="statistics">
-
-
-            <!-- PENGGUNA -->
-
-            <div class="stat-card">
-
-                <div class="stat-icon">
-                    👥
-                </div>
-
-                <div class="stat-number">
-                    {{ $totalPengguna }}
-                </div>
-
-                <div class="stat-name">
-                    Pengguna
-                </div>
-
-            </div>
-
-
-
-            <!-- PAKET -->
-
-            <div class="stat-card">
-
-                <div class="stat-icon">
-                    🌴
-                </div>
-
-                <div class="stat-number">
-                    {{ $totalPaket }}
-                </div>
-
-                <div class="stat-name">
-                    Paket Wisata
-                </div>
-
-            </div>
-
-
-
-            <!-- JADWAL -->
-
-            <div class="stat-card">
-
-                <div class="stat-icon">
-                    📅
-                </div>
-
-                <div class="stat-number">
-                    {{ $totalJadwal }}
-                </div>
-
-                <div class="stat-name">
-                    Jadwal Tour
-                </div>
-
-            </div>
-
-
-
-            <!-- PEMESANAN -->
-
-            <div class="stat-card">
-
-                <div class="stat-icon">
-                    🎫
-                </div>
-
-                <div class="stat-number">
-                    {{ $totalPemesanan }}
-                </div>
-
-                <div class="stat-name">
-                    Pesanan
-                </div>
-
-            </div>
-
+            <a
+                href="/admin/dashboard"
+                class="back"
+            >
+                ← Kembali ke Dashboard
+            </a>
 
         </div>
 
 
 
-        <!-- =========================
-             INFORMATION
-        ========================== -->
+        <!-- =================================================
+             SYSTEM CARD
+        ================================================= -->
 
-        <div class="information">
-
-
-            <!-- INFORMASI SISTEM -->
-
-            <div class="info-card">
-
-                <h2>
-                    ℹ️ Informasi Sistem
-                </h2>
+        <div class="system-card">
 
 
-                <div class="info-row">
+            <!-- SYSTEM HEADER -->
 
-                    <span class="info-label">
-                        Nama Sistem
-                    </span>
+            <div class="system-header">
 
-                    <span class="info-value">
-                        WISATA.
-                    </span>
-
+                <div class="small-title">
+                    SYSTEM INFORMATION
                 </div>
 
 
-                <div class="info-row">
-
-                    <span class="info-label">
-                        Status
-                    </span>
-
-                    <span class="info-value">
-                        Aktif
-                    </span>
-
-                </div>
+                <h1>
+                    Sistem WISATA.
+                </h1>
 
 
-                <div class="info-row">
-
-                    <span class="info-label">
-                        Versi
-                    </span>
-
-                    <span class="info-value">
-                        1.0
-                    </span>
-
-                </div>
+                <p class="subtitle">
+                    Informasi dan kondisi sistem perjalanan wisata
+                </p>
 
             </div>
 
 
 
-            <!-- HAK AKSES -->
+            <!-- =================================================
+                 STATISTICS
+            ================================================= -->
 
-            <div class="info-card">
-
-                <h2>
-                    🔐 Hak Akses
-                </h2>
+            <div class="statistics">
 
 
-                <div class="role-list">
+                <div class="stat-card">
+
+                    <div class="stat-number">
+                        {{ $totalPengguna }}
+                    </div>
+
+                    <div class="stat-name">
+                        Pengguna
+                    </div>
+
+                </div>
 
 
-                    <div class="role-item">
 
-                        <span class="role-name">
-                            ADMIN
+                <div class="stat-card">
+
+                    <div class="stat-number">
+                        {{ $totalPaket }}
+                    </div>
+
+                    <div class="stat-name">
+                        Paket Wisata
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-number">
+                        {{ $totalJadwal }}
+                    </div>
+
+                    <div class="stat-name">
+                        Jadwal Tour
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-number">
+                        {{ $totalPemesanan }}
+                    </div>
+
+                    <div class="stat-name">
+                        Pesanan
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 INFORMATION
+            ================================================= -->
+
+            <div class="information">
+
+
+                <!-- INFORMASI SISTEM -->
+
+                <div class="info-card">
+
+                    <h2>
+                        Informasi Sistem
+                    </h2>
+
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            Nama Sistem
                         </span>
 
-                        <span class="role-access">
-                            Kelola
+                        <span class="info-value">
+                            WISATA.
                         </span>
 
                     </div>
 
 
-                    <div class="role-item">
+                    <div class="info-row">
 
-                        <span class="role-name">
-                            PEGAWAI
+                        <span class="info-label">
+                            Status
                         </span>
 
-                        <span class="role-access">
-                            Operasional
-                        </span>
-
-                    </div>
-
-
-                    <div class="role-item">
-
-                        <span class="role-name">
-                            PELANGGAN
-                        </span>
-
-                        <span class="role-access">
-                            Pemesanan
+                        <span class="info-value">
+                            Aktif
                         </span>
 
                     </div>
 
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            Versi
+                        </span>
+
+                        <span class="info-value">
+                            1.0
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- HAK AKSES -->
+
+                <div class="info-card">
+
+                    <h2>
+                        Hak Akses
+                    </h2>
+
+
+                    <div class="role-list">
+
+
+                        <div class="role-item">
+
+                            <span class="role-name">
+                                ADMIN
+                            </span>
+
+                            <span class="role-access">
+                                Kelola
+                            </span>
+
+                        </div>
+
+
+                        <div class="role-item">
+
+                            <span class="role-name">
+                                PEGAWAI
+                            </span>
+
+                            <span class="role-access">
+                                Operasional
+                            </span>
+
+                        </div>
+
+
+                        <div class="role-item">
+
+                            <span class="role-name">
+                                PELANGGAN
+                            </span>
+
+                            <span class="role-access">
+                                Pemesanan
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DATABASE STATUS
+            ================================================= -->
+
+            <div class="database-status">
+
+                <div class="status-dot"></div>
+
+
+                <div>
+
+                    <strong>
+                        Database Terhubung
+                    </strong>
+
+                    <br>
+
+                    <span>
+                        Sistem berhasil terhubung dengan database WISATA.
+                    </span>
 
                 </div>
 
@@ -780,35 +1642,19 @@
 
 
 
-        <!-- =========================
-             DATABASE
-        ========================== -->
+        <!-- =================================================
+             FOOTER
+        ================================================= -->
 
-        <div class="database-status">
+        <footer class="footer">
 
-            <div class="status-dot"></div>
+            © {{ date('Y') }} WISATA.
+            All Rights Reserved.
 
-            <div>
-
-                <strong>
-                    Database Terhubung
-                </strong>
-
-                <br>
-
-                <span>
-                    Sistem berhasil terhubung dengan database WISATA.
-                </span>
-
-            </div>
-
-        </div>
+        </footer>
 
 
     </div>
-
-
-</div>
 
 
 </body>

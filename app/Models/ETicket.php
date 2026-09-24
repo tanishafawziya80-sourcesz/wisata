@@ -17,7 +17,6 @@ class ETicket extends Model
         'tgl_terbit',
     ];
 
-
     protected $casts = [
         'tgl_terbit' => 'date',
     ];
@@ -25,7 +24,7 @@ class ETicket extends Model
 
     /*
     |--------------------------------------------------------------------------
-    | PEMESANAN
+    | RELASI PEMESANAN
     |--------------------------------------------------------------------------
     */
 
