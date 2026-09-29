@@ -1,16 +1,19 @@
 <!DOCTYPE html>
+
 <html lang="id">
 
 <head>
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>
         Pemesanan - FAWZATA TRAVEL
     </title>
-
 
     <style>
 
@@ -21,949 +24,685 @@
             font-family: "Segoe UI", Arial, sans-serif;
         }
 
-
         body {
-
             min-height: 100vh;
-
             color: #183b4d;
 
             background:
-
                 linear-gradient(
-                    rgba(7,48,67,.78),
-                    rgba(18,60,87,.90)
-                ),
+                    135deg,
+                    #e8f7ff 0%,
+                    #f7fbff 45%,
+                    #dff5ff 100%
+                );
 
-                url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=90");
-
-            background-size: cover;
-
-            background-position: center;
-
-            background-attachment: fixed;
-
-            overflow-x: hidden;
-
-            padding-bottom: 80px;
+            padding: 40px 20px;
         }
 
-
-        /* =====================================================
-           NAVBAR
-        ===================================================== */
-
-        .navbar {
-
-            position: fixed;
-
-            top: 0;
-            left: 0;
-
+        .container {
             width: 100%;
+            max-width: 1100px;
+            margin: auto;
+        }
 
-            height: 78px;
+        .glass {
+            background: rgba(
+                255,
+                255,
+                255,
+                0.72
+            );
 
-            padding: 0 7%;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
 
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            background:
-                rgba(18,60,87,.82);
-
-            backdrop-filter: blur(20px);
-
-            -webkit-backdrop-filter: blur(20px);
-
-            border-bottom:
+            border:
                 1px solid
-                rgba(255,255,255,.15);
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.8
+                );
 
             box-shadow:
-                0 8px 30px
-                rgba(0,0,0,.15);
+                0 20px 50px
+                rgba(
+                    40,
+                    100,
+                    130,
+                    0.12
+                );
 
-            z-index: 1000;
+            border-radius: 24px;
         }
 
-
-        .logo {
-
-            color: white;
-
-            text-decoration: none;
-
-            font-size: 27px;
-
-            font-weight: 800;
-
-            letter-spacing: 2px;
-        }
-
-
-        .logo span {
-
-            color: #9ddcff;
-        }
-
-
-        .nav-right {
+        .header {
+            padding: 30px;
+            margin-bottom: 25px;
 
             display: flex;
-
+            justify-content: space-between;
             align-items: center;
-
-            gap: 12px;
+            gap: 20px;
         }
 
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-        .role {
+        .brand-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
 
-            padding: 9px 17px;
-
-            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             background:
-                rgba(255,255,255,.10);
-
-            border:
-                1px solid
-                rgba(255,255,255,.18);
+                linear-gradient(
+                    135deg,
+                    #2c9bc7,
+                    #166987
+                );
 
             color: white;
-
-            font-size: 12px;
-
+            font-size: 23px;
             font-weight: 700;
+
+            box-shadow:
+                0 8px 20px
+                rgba(
+                    22,
+                    105,
+                    135,
+                    0.25
+                );
         }
 
+        .brand h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #164e66;
+        }
 
-        .logout {
+        .brand p {
+            margin-top: 4px;
+            font-size: 13px;
+            color: #6b8794;
+        }
 
-            padding: 10px 18px;
+        .back-btn {
+            text-decoration: none;
 
-            border-radius: 25px;
+            padding: 11px 18px;
+            border-radius: 12px;
+
+            background: rgba(
+                255,
+                255,
+                255,
+                0.75
+            );
+
+            color: #17627d;
+            font-size: 14px;
+            font-weight: 600;
 
             border:
                 1px solid
-                rgba(255,255,255,.18);
+                rgba(
+                    30,
+                    120,
+                    150,
+                    0.12
+                );
 
-            background:
-                rgba(255,255,255,.95);
-
-            color: #123c57;
-
-            font-weight: 700;
-
-            cursor: pointer;
-
-            transition: .3s;
+            transition: 0.25s;
         }
 
-
-        .logout:hover {
-
-            transform:
-                translateY(-2px);
-
+        .back-btn:hover {
+            transform: translateY(-2px);
             background: white;
         }
 
-
-        /* =====================================================
-           CONTAINER
-        ===================================================== */
-
-        .container {
-
-            position: relative;
-
-            z-index: 2;
-
-            width: 90%;
-
-            max-width: 1050px;
-
-            margin: auto;
-
-            padding-top: 125px;
-        }
-
-
-        /* =====================================================
-           HEADER
-        ===================================================== */
-
-        .small-title {
-
-            color: #9ddcff;
-
-            font-size: 11px;
-
-            letter-spacing: 4px;
-
-            font-weight: 800;
-
-            text-transform: uppercase;
-
-            margin-bottom: 10px;
-        }
-
-
-        .header h1 {
-
-            color: white;
-
-            font-size:
-                clamp(38px, 6vw, 58px);
-
-            line-height: 1;
-
-            margin-bottom: 15px;
-        }
-
-
-        .header p {
-
-            color:
-                rgba(255,255,255,.75);
-
-            font-size: 14px;
-
-            margin-bottom: 30px;
-        }
-
-
-        /* =====================================================
-           MAIN CARD
-        ===================================================== */
-
         .card {
-
             padding: 32px;
-
-            border-radius: 28px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(255,255,255,.95),
-                    rgba(245,250,252,.92)
-                );
-
-            border:
-                1px solid
-                rgba(255,255,255,.60);
-
-            box-shadow:
-                0 30px 80px
-                rgba(0,0,0,.25);
-        }
-
-
-        .card-header {
-
-            padding-bottom: 20px;
-
-            margin-bottom: 22px;
-
-            border-bottom:
-                1px dashed
-                #cbdce4;
-        }
-
-
-        .card-title {
-
-            color: #123c57;
-
-            font-size: 22px;
-
-            font-weight: 800;
-        }
-
-
-        .card-subtitle {
-
-            color: #78909c;
-
-            font-size: 13px;
-
-            margin-top: 5px;
-        }
-
-
-        /* =====================================================
-           CUSTOMER
-        ===================================================== */
-
-        .customer-box {
-
-            padding: 17px;
-
-            margin-bottom: 20px;
-
-            border-radius: 17px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #f1faff,
-                    #f8fcfe
-                );
-
-            border:
-                1px solid
-                #d5e8f0;
-        }
-
-
-        .customer-label {
-
-            color: #78909c;
-
-            font-size: 9px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1.2px;
-
-            margin-bottom: 6px;
-
-            font-weight: 800;
-        }
-
-
-        .customer-name {
-
-            color: #123c57;
-
-            font-size: 18px;
-
-            font-weight: 800;
-        }
-
-
-        /* =====================================================
-           INFO PAKET
-        ===================================================== */
-
-        .info-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(2,1fr);
-
-            gap: 12px;
-
             margin-bottom: 25px;
         }
 
-
-        .info-box {
-
-            padding: 16px;
-
-            border-radius: 15px;
-
-            background: #f8fbfc;
-
-            border:
-                1px solid
-                #e1edf1;
-        }
-
-
-        .info-label {
-
-            color: #78909c;
-
-            font-size: 8px;
-
-            text-transform: uppercase;
-
-            letter-spacing: .8px;
-
-            margin-bottom: 6px;
-
-            font-weight: 800;
-        }
-
-
-        .info-value {
-
-            color: #183b4d;
-
-            font-size: 14px;
-
-            font-weight: 800;
-        }
-
-
-        /* =====================================================
-           SECTION
-        ===================================================== */
-
         .section {
-
-            padding-top: 24px;
-
-            margin-top: 20px;
-
-            border-top:
-                1px dashed
-                #cbdce4;
+            margin-bottom: 30px;
         }
-
 
         .section-title {
-
-            color: #123c57;
-
             font-size: 18px;
+            font-weight: 700;
+            color: #164e66;
+            margin-bottom: 8px;
+            padding-bottom: 12px;
 
-            font-weight: 800;
-
-            margin-bottom: 5px;
+            border-bottom:
+                1px solid
+                rgba(
+                    35,
+                    110,
+                    140,
+                    0.12
+                );
         }
 
-
         .section-description {
-
-            color: #78909c;
-
-            font-size: 12px;
-
+            color: #718892;
+            font-size: 13px;
             margin-bottom: 20px;
         }
 
+        .package-box {
+            display: grid;
+            grid-template-columns:
+                1fr 1fr;
 
-        /* =====================================================
-           FORM
-        ===================================================== */
+            gap: 20px;
+            padding: 22px;
+            border-radius: 18px;
+
+            background:
+                rgba(
+                    235,
+                    249,
+                    255,
+                    0.7
+                );
+
+            border:
+                1px solid
+                rgba(
+                    30,
+                    120,
+                    150,
+                    0.1
+                );
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .info-label {
+            font-size: 12px;
+            color: #78919c;
+        }
+
+        .info-value {
+            font-size: 15px;
+            font-weight: 650;
+            color: #174f66;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 20px;
+        }
 
         .form-group {
-
-            margin-bottom: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
-
-        .form-label {
-
-            display: block;
-
-            color: #546e7a;
-
-            font-size: 11px;
-
-            font-weight: 800;
-
-            margin-bottom: 7px;
+        .form-group.full {
+            grid-column: 1 / -1;
         }
 
+        label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #315f70;
+        }
 
-        .form-control {
-
+        input,
+        textarea,
+        select {
             width: 100%;
-
             padding: 13px 15px;
 
             border-radius: 12px;
 
             border:
                 1px solid
-                #d6e4e9;
+                rgba(
+                    40,
+                    110,
+                    140,
+                    0.16
+                );
 
-            background: white;
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.82
+                );
 
-            color: #183b4d;
-
+            color: #234c5d;
             outline: none;
-
-            font-size: 13px;
-
-            transition: .25s;
+            font-size: 14px;
+            transition: 0.2s;
         }
 
-
-        .form-control:focus {
-
-            border-color: #78bfdc;
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #4aa8ca;
 
             box-shadow:
                 0 0 0 3px
-                rgba(119,189,219,.13);
+                rgba(
+                    74,
+                    168,
+                    202,
+                    0.12
+                );
         }
 
-
-        /* =====================================================
-           FILE IDENTITAS
-        ===================================================== */
-
-        .file-info {
-
-            color: #78909c;
-
-            font-size: 10px;
-
-            margin-top: 6px;
-
-            line-height: 1.5;
+        textarea {
+            resize: vertical;
+            min-height: 100px;
         }
 
+        .peserta-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-        input[type="file"].form-control {
+        .peserta-card {
+            padding: 24px;
+            border-radius: 18px;
 
-            padding: 10px 12px;
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.62
+                );
 
+            border:
+                1px solid
+                rgba(
+                    35,
+                    110,
+                    140,
+                    0.1
+                );
+        }
+
+        .peserta-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .peserta-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #195b73;
+        }
+
+        .badge {
+            padding: 5px 10px;
+            border-radius: 999px;
+
+            background:
+                rgba(
+                    53,
+                    156,
+                    192,
+                    0.1
+                );
+
+            color: #277d9d;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .file-note {
+            font-size: 11px;
+            color: #80949c;
+            margin-top: 2px;
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | PEMBAYARAN
+        |--------------------------------------------------------------------------
+        */
+
+        .payment-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    1fr
+                );
+
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .payment-option {
+            position: relative;
             cursor: pointer;
+            display: block;
         }
 
+        .payment-option input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
 
-        /* =====================================================
-           JUMLAH PESERTA
-        ===================================================== */
-
-        .jumlah-box {
-
+        .payment-card {
+            min-height: 110px;
             padding: 20px;
+            border-radius: 18px;
 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            gap: 7px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.68
+                );
+
+            border:
+                2px solid
+                rgba(
+                    50,
+                    120,
+                    145,
+                    0.1
+                );
+
+            transition:
+                0.25s ease;
+        }
+
+        .payment-option:hover
+        .payment-card {
+            transform: translateY(-2px);
+
+            border-color:
+                rgba(
+                    43,
+                    151,
+                    190,
+                    0.35
+                );
+        }
+
+        .payment-option input:checked
+        + .payment-card {
+            border-color: #2497bf;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(
+                        229,
+                        248,
+                        255,
+                        0.95
+                    ),
+                    rgba(
+                        245,
+                        252,
+                        255,
+                        0.9
+                    )
+                );
+
+            box-shadow:
+                0 10px 25px
+                rgba(
+                    36,
+                    151,
+                    191,
+                    0.12
+                );
+        }
+
+        .payment-name {
+            font-size: 17px;
+            font-weight: 750;
+            color: #175c75;
+        }
+
+        .payment-desc {
+            font-size: 12px;
+            color: #7c919a;
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | TOTAL
+        |--------------------------------------------------------------------------
+        */
+
+        .total-box {
+            padding: 24px;
             border-radius: 18px;
 
             background:
                 linear-gradient(
                     135deg,
-                    #eef9fd,
-                    #f8fcfe
+                    rgba(
+                        228,
+                        247,
+                        255,
+                        0.92
+                    ),
+                    rgba(
+                        248,
+                        253,
+                        255,
+                        0.9
+                    )
                 );
 
             border:
                 1px solid
-                #d4eaf2;
-
-            margin-bottom: 25px;
-        }
-
-
-        .jumlah-info {
-
-            color: #78909c;
-
-            font-size: 12px;
-
-            margin-top: 5px;
-        }
-
-
-        /* =====================================================
-           PESERTA CARD
-        ===================================================== */
-
-        .peserta-list {
+                rgba(
+                    35,
+                    130,
+                    165,
+                    0.12
+                );
 
             display: flex;
-
-            flex-direction: column;
-
-            gap: 18px;
-        }
-
-
-        .peserta-card {
-
-            padding: 22px;
-
-            border-radius: 20px;
-
-            background:
-                #f8fbfc;
-
-            border:
-                1px solid
-                #dcebef;
-
-            box-shadow:
-                0 8px 20px
-                rgba(18,60,87,.04);
-
-            animation:
-                fadeUp .35s ease both;
-        }
-
-
-        .peserta-header {
-
-            display: flex;
-
-            align-items: center;
-
             justify-content: space-between;
-
-            margin-bottom: 18px;
-
-            padding-bottom: 12px;
-
-            border-bottom:
-                1px dashed
-                #d5e4e9;
+            align-items: center;
+            gap: 20px;
         }
 
+        .total-label {
+            color: #5e7b87;
+            font-size: 13px;
+        }
 
-        .peserta-number {
-
-            color: #123c57;
-
-            font-size: 16px;
-
+        .total-price {
+            font-size: 26px;
             font-weight: 800;
+            color: #14627e;
         }
 
-
-        .peserta-badge {
-
-            padding: 5px 10px;
-
-            border-radius: 20px;
-
-            background:
-                #e4f5fb;
-
-            color: #24789b;
-
-            font-size: 9px;
-
-            font-weight: 800;
-
-            text-transform: uppercase;
-        }
-
-
-        .peserta-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                2fr 1.5fr 1fr;
-
-            gap: 14px;
-        }
-
-
-        /* =====================================================
-           IDENTITAS FULL WIDTH
-        ===================================================== */
-
-        .identitas-group {
-
-            grid-column:
-                1 / -1;
-        }
-
-
-        /* =====================================================
-           TOTAL
-        ===================================================== */
-
-        .total-box {
-
+        .submit-area {
+            display: flex;
+            justify-content: flex-end;
             margin-top: 25px;
+        }
 
-            padding: 22px;
+        .submit-btn {
+            border: none;
+            cursor: pointer;
 
-            border-radius: 20px;
+            padding: 14px 28px;
+            border-radius: 14px;
 
             background:
                 linear-gradient(
                     135deg,
-                    #eaf8fd,
-                    #dff3fa
+                    #2497bf,
+                    #176986
+                );
+
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+
+            box-shadow:
+                0 10px 25px
+                rgba(
+                    24,
+                    105,
+                    134,
+                    0.22
+                );
+
+            transition: 0.25s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 14px 30px
+                rgba(
+                    24,
+                    105,
+                    134,
+                    0.28
+                );
+        }
+
+        .error-box {
+            padding: 15px 18px;
+            border-radius: 13px;
+            margin-bottom: 20px;
+
+            background:
+                rgba(
+                    255,
+                    235,
+                    235,
+                    0.9
                 );
 
             border:
                 1px solid
-                #c6e7f3;
+                rgba(
+                    200,
+                    80,
+                    80,
+                    0.15
+                );
 
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-        }
-
-
-        .total-label {
-
-            color: #658293;
-
-            font-size: 11px;
-
-            font-weight: 800;
-
-            text-transform: uppercase;
-        }
-
-
-        .total-info {
-
-            color: #78909c;
-
-            font-size: 12px;
-
-            margin-top: 4px;
-        }
-
-
-        .total-value {
-
-            color: #123c57;
-
-            font-size: 25px;
-
-            font-weight: 900;
-        }
-
-
-        /* =====================================================
-           CATATAN
-        ===================================================== */
-
-        textarea.form-control {
-
-            min-height: 100px;
-
-            resize: vertical;
-        }
-
-
-        /* =====================================================
-           BUTTON
-        ===================================================== */
-
-        .actions {
-
-            display: flex;
-
-            gap: 12px;
-
-            margin-top: 25px;
-
-            flex-wrap: wrap;
-        }
-
-
-        .submit-btn {
-
-            flex: 1;
-
-            min-width: 200px;
-
-            padding: 15px 22px;
-
-            border: none;
-
-            border-radius: 25px;
-
-            background:
-                #123c57;
-
-            color: white;
-
+            color: #a34b4b;
             font-size: 13px;
-
-            font-weight: 800;
-
-            cursor: pointer;
-
-            transition: .3s;
-
-            box-shadow:
-                0 8px 20px
-                rgba(18,60,87,.18);
         }
 
-
-        .submit-btn:hover {
-
-            transform:
-                translateY(-3px);
-
-            background: #194e6d;
+        .error-box ul {
+            padding-left: 20px;
         }
 
-
-        .back-btn {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            min-width: 150px;
-
-            padding: 15px 22px;
-
-            border-radius: 25px;
-
-            background: white;
-
-            color: #123c57;
-
-            border:
-                1px solid
-                #d4e3e8;
-
-            text-decoration: none;
-
-            font-size: 13px;
-
-            font-weight: 800;
-
-            transition: .3s;
-        }
-
-
-        .back-btn:hover {
-
-            transform:
-                translateY(-3px);
-
-            background: #f5fafc;
-        }
-
-
-        /* =====================================================
-           ALERT
-        ===================================================== */
-
-        .alert {
-
-            padding: 14px 16px;
-
-            border-radius: 14px;
-
+        .success-box {
+            padding: 15px 18px;
+            border-radius: 13px;
             margin-bottom: 20px;
 
-            font-size: 12px;
-        }
-
-
-        .alert-error {
-
-            background: #fff2f2;
+            background:
+                rgba(
+                    230,
+                    250,
+                    239,
+                    0.9
+                );
 
             border:
                 1px solid
-                #f2d0d0;
+                rgba(
+                    60,
+                    160,
+                    100,
+                    0.15
+                );
 
-            color: #a33a3a;
+            color: #34704a;
+            font-size: 13px;
         }
 
+        @media (
+            max-width: 768px
+        ) {
 
-        /* =====================================================
-           ANIMATION
-        ===================================================== */
-
-        @keyframes fadeUp {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    translateY(15px);
+            body {
+                padding: 20px 12px;
             }
 
-            to {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0);
+            .header {
+                padding: 22px;
+                flex-direction: column;
+                align-items: flex-start;
             }
-        }
-
-
-        /* =====================================================
-           RESPONSIVE
-        ===================================================== */
-
-        @media(max-width: 750px) {
-
-            .navbar {
-
-                padding: 0 5%;
-            }
-
-
-            .logo {
-
-                font-size: 21px;
-            }
-
-
-            .role {
-
-                display: none;
-            }
-
-
-            .container {
-
-                width: 92%;
-
-                padding-top: 110px;
-            }
-
 
             .card {
-
-                padding: 20px;
+                padding: 22px;
             }
 
-
-            .info-grid {
-
+            .package-box,
+            .form-grid {
                 grid-template-columns: 1fr;
             }
 
-
-            .peserta-grid {
-
-                grid-template-columns: 1fr;
-            }
-
-
-            .identitas-group {
-
+            .form-group.full {
                 grid-column: auto;
             }
 
+            .payment-grid {
+                grid-template-columns: 1fr;
+            }
 
             .total-box {
-
                 flex-direction: column;
-
                 align-items: flex-start;
-
-                gap: 10px;
             }
 
-
-            .actions {
-
-                flex-direction: column;
+            .submit-area {
+                justify-content: stretch;
             }
 
-
-            .submit-btn,
-            .back-btn {
-
+            .submit-btn {
                 width: 100%;
             }
         }
@@ -972,312 +711,255 @@
 
 </head>
 
-
 <body>
 
+<div class="container">
 
-<!-- =========================================================
-     NAVBAR
-========================================================= -->
+    <!-- =================================================
+         HEADER
+    ================================================== -->
 
-<nav class="navbar">
+    <div class="header glass">
 
-    <a
-        href="/pelanggan/dashboard"
-        class="logo"
-    >
-        FAWZATA<span> TRAVEL</span>
-    </a>
+        <div class="brand">
 
+            <div class="brand-icon">
+                F
+            </div>
 
-    <div class="nav-right">
+            <div>
 
-        <div class="role">
-            PELANGGAN
+                <h1>
+                    Pemesanan Wisata
+                </h1>
+
+                <p>
+                    FAWZATA TRAVEL
+                </p>
+
+            </div>
+
         </div>
 
-
-        <form
-            action="/logout"
-            method="POST"
+        <a
+            href="{{ route('pelanggan.pemesanan.index') }}"
+            class="back-btn"
         >
-
-            @csrf
-
-            <button
-                type="submit"
-                class="logout"
-            >
-                Logout
-            </button>
-
-        </form>
-
-    </div>
-
-</nav>
-
-
-<!-- =========================================================
-     CONTENT
-========================================================= -->
-
-<main class="container">
-
-
-    <div class="header">
-
-        <div class="small-title">
-            FAWZATA TRAVEL • PEMESANAN
-        </div>
-
-        <h1>
-            Pemesanan
-        </h1>
-
-        <p>
-            Lengkapi data perjalanan dan peserta
-            yang akan mengikuti tour.
-        </p>
+            ← Kembali
+        </a>
 
     </div>
 
 
-    <!-- =====================================================
-         CARD
-    ===================================================== -->
+    <!-- =================================================
+         ERROR VALIDATION
+    ================================================== -->
 
-    <div class="card">
+    @if ($errors->any())
 
+        <div class="error-box glass">
 
-        <div class="card-header">
+            <strong>
+                Terjadi kesalahan:
+            </strong>
 
-            <div class="card-title">
-                Detail Pemesanan
-            </div>
+            <ul>
 
-            <div class="card-subtitle">
-                Pastikan data perjalanan Anda sudah benar.
-            </div>
+                @foreach ($errors->all() as $error)
 
-        </div>
-
-
-        <!-- =================================================
-             ERROR
-        ================================================= -->
-
-        @if(session('error'))
-
-            <div class="alert alert-error">
-                {{ session('error') }}
-            </div>
-
-        @endif
-
-
-        @if($errors->any())
-
-            <div class="alert alert-error">
-
-                @foreach($errors->all() as $error)
-
-                    <div>
+                    <li>
                         {{ $error }}
-                    </div>
+                    </li>
 
                 @endforeach
 
-            </div>
-
-        @endif
-
-
-        <!-- =================================================
-             DATA PELANGGAN
-        ================================================= -->
-
-        <div class="customer-box">
-
-            <div class="customer-label">
-                Nama Pelanggan
-            </div>
-
-            <div class="customer-name">
-
-                {{ auth()->user()->nama_lengkap ?? '-' }}
-
-            </div>
+            </ul>
 
         </div>
 
-
-        <!-- =================================================
-             INFO PAKET
-        ================================================= -->
-
-        <div class="info-grid">
+    @endif
 
 
-            <div class="info-box">
+    <!-- =================================================
+         SUCCESS
+    ================================================== -->
 
-                <div class="info-label">
-                    Paket Wisata
-                </div>
+    @if (session('success'))
 
-                <div class="info-value">
+        <div class="success-box glass">
 
-                    {{ $paket->nama_paket }}
-
-                </div>
-
-            </div>
-
-
-            <div class="info-box">
-
-                <div class="info-label">
-                    Harga / Orang
-                </div>
-
-                <div class="info-value">
-
-                    Rp
-                    {{ number_format(
-                        $paket->harga_promo ?: $paket->harga_normal,
-                        0,
-                        ',',
-                        '.'
-                    ) }}
-
-                </div>
-
-            </div>
-
-
-            <div class="info-box">
-
-                <div class="info-label">
-                    Keberangkatan
-                </div>
-
-                <div class="info-value">
-
-                    {{ \Carbon\Carbon::parse(
-                        $jadwal->tgl_keberangkatan
-                    )->format('d M Y') }}
-
-                </div>
-
-            </div>
-
-
-            <div class="info-box">
-
-                <div class="info-label">
-                    Kepulangan
-                </div>
-
-                <div class="info-value">
-
-                    {{ \Carbon\Carbon::parse(
-                        $jadwal->tgl_kepulangan
-                    )->format('d M Y') }}
-
-                </div>
-
-            </div>
-
-
-            <div class="info-box">
-
-                <div class="info-label">
-                    Sisa Kuota
-                </div>
-
-                <div class="info-value">
-
-                    {{ $jadwal->sisa_kuota }}
-                    peserta
-
-                </div>
-
-            </div>
-
+            {{ session('success') }}
 
         </div>
 
+    @endif
 
-        <!-- =================================================
-             FORM
-        ================================================= -->
 
-        <form
-            action="{{ route('pelanggan.pemesanan.store') }}"
-            method="POST"
-            enctype="multipart/form-data"
-            id="formPemesanan"
+    <!-- =================================================
+         FORM PEMESANAN
+    ================================================== -->
+
+    <form
+        action="{{ route('pelanggan.pemesanan.store') }}"
+        method="POST"
+        enctype="multipart/form-data"
+    >
+
+        @csrf
+
+        {{-- INI PERBAIKANNYA --}}
+        <input
+            type="hidden"
+            name="id_jadwal"
+            value="{{ $jadwal->id_jadwal }}"
         >
 
-            @csrf
 
-
-            <!-- ID JADWAL -->
-
-            <input
-                type="hidden"
-                name="id_jadwal"
-                value="{{ $jadwal->id_jadwal }}"
-            >
-
+        <div class="card glass">
 
             <!-- =================================================
-                 JUMLAH PESERTA
-            ================================================= -->
+                 INFORMASI PAKET
+            ================================================== -->
 
             <div class="section">
 
                 <div class="section-title">
-                    Jumlah Peserta
+                    Informasi Paket Wisata
                 </div>
 
                 <div class="section-description">
-                    Tentukan jumlah orang yang akan mengikuti
-                    perjalanan ini.
+                    Informasi paket wisata yang akan Anda pesan.
                 </div>
 
+                <div class="package-box">
 
-                <div class="jumlah-box">
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Nama Paket
+                        </span>
+
+                        <span class="info-value">
+                            {{ $paket->nama_paket }}
+                        </span>
+
+                    </div>
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Jadwal Keberangkatan
+                        </span>
+
+                        <span class="info-value">
+                            {{ \Carbon\Carbon::parse($jadwal->tgl_keberangkatan)->translatedFormat('d F Y') }}
+                        </span>
+
+                    </div>
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Harga per Peserta
+                        </span>
+
+                        <span class="info-value">
+                            Rp {{ number_format($harga, 0, ',', '.') }}
+                        </span>
+
+                    </div>
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Sisa Kuota
+                        </span>
+
+                        <span class="info-value">
+                            {{ $jadwal->sisa_kuota }}
+                            peserta
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 DATA PEMESAN
+            ================================================== -->
+
+            <div class="section">
+
+                <div class="section-title">
+                    Data Pemesan
+                </div>
+
+                <div class="section-description">
+                    Data pelanggan yang melakukan pemesanan.
+                </div>
+
+                <div class="form-grid">
 
                     <div class="form-group">
 
-                        <label
-                            for="jumlah_peserta"
-                            class="form-label"
-                        >
-                            Jumlah Peserta
+                        <label>
+                            Nama Lengkap
                         </label>
 
+                        <input
+                            type="text"
+                            value="{{ $pelanggan->nama_lengkap }}"
+                            readonly
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Email
+                        </label>
+
+                        <input
+                            type="text"
+                            value="{{ $pelanggan->email }}"
+                            readonly
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Nomor Telepon
+                        </label>
+
+                        <input
+                            type="text"
+                            value="{{ $pelanggan->no_telepon ?? '-' }}"
+                            readonly
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Jumlah Peserta
+                        </label>
 
                         <input
                             type="number"
                             id="jumlah_peserta"
                             name="jumlah_peserta"
-                            class="form-control"
                             min="1"
                             max="{{ $jadwal->sisa_kuota }}"
                             value="{{ old('jumlah_peserta', 1) }}"
                             required
                         >
-
-
-                        <div class="jumlah-info">
-
-                            Maksimal
-                            {{ $jadwal->sisa_kuota }}
-                            peserta.
-
-                        </div>
 
                     </div>
 
@@ -1288,7 +970,7 @@
 
             <!-- =================================================
                  DATA PESERTA
-            ================================================= -->
+            ================================================== -->
 
             <div class="section">
 
@@ -1297,22 +979,21 @@
                 </div>
 
                 <div class="section-description">
-                    Masukkan data setiap orang yang ikut
-                    dalam perjalanan.
+                    Isi data seluruh peserta yang akan mengikuti perjalanan wisata.
                 </div>
 
-
                 <div
+                    id="peserta-container"
                     class="peserta-list"
-                    id="pesertaList"
-                ></div>
+                >
+                </div>
 
             </div>
 
 
             <!-- =================================================
                  CATATAN
-            ================================================= -->
+            ================================================== -->
 
             <div class="section">
 
@@ -1321,26 +1002,19 @@
                 </div>
 
                 <div class="section-description">
-                    Tambahkan informasi jika ada yang perlu
-                    diketahui oleh pihak travel.
+                    Tambahkan catatan jika ada informasi khusus mengenai pemesanan.
                 </div>
-
 
                 <div class="form-group">
 
-                    <label
-                        for="catatan_revisi"
-                        class="form-label"
-                    >
+                    <label for="catatan_revisi">
                         Catatan
                     </label>
 
-
                     <textarea
-                        id="catatan_revisi"
                         name="catatan_revisi"
-                        class="form-control"
-                        placeholder="Contoh: membutuhkan kursi khusus, permintaan kamar, dan sebagainya..."
+                        id="catatan_revisi"
+                        placeholder="Tulis catatan pemesanan jika diperlukan..."
                     >{{ old('catatan_revisi') }}</textarea>
 
                 </div>
@@ -1349,42 +1023,98 @@
 
 
             <!-- =================================================
-                 TOTAL
-            ================================================= -->
+                 PEMBAYARAN
+            ================================================== -->
 
-            <div class="total-box">
+            <div class="section">
 
-                <div>
-
-                    <div class="total-label">
-                        Total Pembayaran
-                    </div>
-
-                    <div class="total-info">
-
-                        <span id="jumlahText">
-                            1
-                        </span>
-
-                        peserta × harga paket
-
-                    </div>
-
+                <div class="section-title">
+                    Pembayaran
                 </div>
 
+                <div class="section-description">
+                    Pilih metode pembayaran yang akan digunakan untuk pemesanan ini.
+                </div>
 
-                <div
-                    class="total-value"
-                    id="totalBayar"
-                >
+                <div class="payment-grid">
 
-                    Rp
-                    {{ number_format(
-                        $paket->harga_promo ?: $paket->harga_normal,
-                        0,
-                        ',',
-                        '.'
-                    ) }}
+                    <!-- QRIS -->
+
+                    <label class="payment-option">
+
+                        <input
+                            type="radio"
+                            name="metode_pembayaran"
+                            value="QRIS"
+                            {{ old('metode_pembayaran') === 'QRIS' ? 'checked' : '' }}
+                            required
+                        >
+
+                        <span class="payment-card">
+
+                            <span class="payment-name">
+                                QRIS
+                            </span>
+
+                            <span class="payment-desc">
+                                Pembayaran melalui QRIS
+                            </span>
+
+                        </span>
+
+                    </label>
+
+
+                    <!-- OVO -->
+
+                    <label class="payment-option">
+
+                        <input
+                            type="radio"
+                            name="metode_pembayaran"
+                            value="OVO"
+                            {{ old('metode_pembayaran') === 'OVO' ? 'checked' : '' }}
+                        >
+
+                        <span class="payment-card">
+
+                            <span class="payment-name">
+                                OVO
+                            </span>
+
+                            <span class="payment-desc">
+                                Pembayaran melalui OVO
+                            </span>
+
+                        </span>
+
+                    </label>
+
+
+                    <!-- DANA -->
+
+                    <label class="payment-option">
+
+                        <input
+                            type="radio"
+                            name="metode_pembayaran"
+                            value="DANA"
+                            {{ old('metode_pembayaran') === 'DANA' ? 'checked' : '' }}
+                        >
+
+                        <span class="payment-card">
+
+                            <span class="payment-name">
+                                DANA
+                            </span>
+
+                            <span class="payment-desc">
+                                Pembayaran melalui DANA
+                            </span>
+
+                        </span>
+
+                    </label>
 
                 </div>
 
@@ -1392,83 +1122,97 @@
 
 
             <!-- =================================================
-                 BUTTON
-            ================================================= -->
+                 TOTAL
+            ================================================== -->
 
-            <div class="actions">
+            <div class="section">
 
+                <div class="section-title">
+                    Total Pembayaran
+                </div>
 
-                <button
-                    type="submit"
-                    class="submit-btn"
-                >
+                <div class="total-box">
 
-                    ✓
-                    Pesan Sekarang
+                    <div>
 
-                </button>
+                        <div class="total-label">
+                            Total peserta
+                        </div>
 
+                        <div
+                            id="total-peserta"
+                            class="info-value"
+                        >
+                            1 peserta
+                        </div>
 
-                <a
-                    href="/paket-wisata"
-                    class="back-btn"
-                >
+                    </div>
 
-                    ←
-                    Kembali
+                    <div>
 
-                </a>
+                        <div class="total-label">
+                            Total pembayaran
+                        </div>
 
+                        <div
+                            id="total-harga"
+                            class="total-price"
+                        >
+                            Rp {{ number_format($harga, 0, ',', '.') }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="submit-area">
+
+                    <button
+                        type="submit"
+                        class="submit-btn"
+                    >
+                        ✓ Pesan Sekarang
+                    </button>
+
+                </div>
 
             </div>
 
+        </div>
 
-        </form>
+    </form>
+
+</div>
 
 
-    </div>
-
-</main>
-
+<!-- =================================================
+     JAVASCRIPT
+================================================== -->
 
 <script>
 
-    /*
-    |--------------------------------------------------------------------------
-    | DATA DASAR
-    |--------------------------------------------------------------------------
-    */
-
-    const jumlahInput =
+    const jumlahPeserta =
         document.getElementById(
             'jumlah_peserta'
         );
 
-
-    const pesertaList =
+    const pesertaContainer =
         document.getElementById(
-            'pesertaList'
+            'peserta-container'
         );
 
-
-    const totalBayar =
+    const totalPeserta =
         document.getElementById(
-            'totalBayar'
+            'total-peserta'
         );
 
-
-    const jumlahText =
+    const totalHarga =
         document.getElementById(
-            'jumlahText'
+            'total-harga'
         );
 
-
-    const hargaPerOrang =
-        {{ $paket->harga_promo ?: $paket->harga_normal }};
-
-
-    const maxPeserta =
-        {{ $jadwal->sisa_kuota }};
+    const hargaPerPeserta =
+        {{ (float) $harga }};
 
 
     /*
@@ -1477,11 +1221,14 @@
     |--------------------------------------------------------------------------
     */
 
-    function formatRupiah(angka)
-    {
+    function formatRupiah(
+        angka
+    ) {
+
         return new Intl.NumberFormat(
             'id-ID'
         ).format(angka);
+
     }
 
 
@@ -1491,38 +1238,35 @@
     |--------------------------------------------------------------------------
     */
 
-    function generatePeserta()
-    {
+    function generatePeserta() {
 
         let jumlah =
             parseInt(
-                jumlahInput.value
+                jumlahPeserta.value
             ) || 1;
 
+        const max =
+            parseInt(
+                jumlahPeserta.max
+            ) || 1;
 
         if (jumlah < 1) {
 
             jumlah = 1;
 
-            jumlahInput.value = 1;
+            jumlahPeserta.value = 1;
+
         }
 
+        if (jumlah > max) {
 
-        if (jumlah > maxPeserta) {
+            jumlah = max;
 
-            jumlah = maxPeserta;
+            jumlahPeserta.value = max;
 
-            jumlahInput.value =
-                maxPeserta;
-
-            alert(
-                'Jumlah peserta melebihi sisa kuota.'
-            );
         }
 
-
-        pesertaList.innerHTML = '';
-
+        pesertaContainer.innerHTML = '';
 
         for (
             let i = 0;
@@ -1530,114 +1274,86 @@
             i++
         ) {
 
-
             const card =
                 document.createElement(
                     'div'
                 );
 
-
             card.className =
                 'peserta-card';
-
 
             card.innerHTML = `
 
                 <div class="peserta-header">
 
-                    <div class="peserta-number">
-
+                    <div class="peserta-title">
                         Peserta ${i + 1}
-
                     </div>
 
-                    <div class="peserta-badge">
-
-                        Data Peserta
-
+                    <div class="badge">
+                        DATA PESERTA
                     </div>
 
                 </div>
 
+                <div class="form-grid">
 
-                <div class="peserta-grid">
+                    <div class="form-group full">
 
-
-                    <div class="form-group">
-
-                        <label
-                            class="form-label"
-                        >
-                            Nama Lengkap
+                        <label>
+                            Nama Peserta
                         </label>
 
                         <input
                             type="text"
                             name="peserta[${i}][nama_peserta]"
-                            class="form-control"
-                            placeholder="Nama lengkap peserta"
+                            placeholder="Masukkan nama lengkap peserta"
                             required
                         >
 
                     </div>
 
-
                     <div class="form-group">
 
-                        <label
-                            class="form-label"
-                        >
+                        <label>
                             NIK
                         </label>
 
                         <input
                             type="text"
                             name="peserta[${i}][nik]"
-                            class="form-control"
-                            placeholder="NIK peserta"
+                            placeholder="Masukkan NIK"
                         >
 
                     </div>
 
-
                     <div class="form-group">
 
-                        <label
-                            class="form-label"
-                        >
+                        <label>
                             Usia
                         </label>
 
                         <input
                             type="number"
                             name="peserta[${i}][usia]"
-                            class="form-control"
-                            placeholder="Usia"
                             min="1"
                             max="100"
+                            placeholder="Usia"
                             required
                         >
 
                     </div>
 
-
                     <div class="form-group">
 
-                        <label
-                            class="form-label"
-                        >
+                        <label>
                             Kategori
                         </label>
 
                         <select
                             name="peserta[${i}][kategori]"
-                            class="form-control"
                             required
                         >
-
-                            <option value="">
-                                Pilih kategori
-                            </option>
 
                             <option value="dewasa">
                                 Dewasa
@@ -1651,24 +1367,16 @@
 
                     </div>
 
-
                     <div class="form-group">
 
-                        <label
-                            class="form-label"
-                        >
+                        <label>
                             Jenis Kelamin
                         </label>
 
                         <select
                             name="peserta[${i}][jenis_kelamin]"
-                            class="form-control"
                             required
                         >
-
-                            <option value="">
-                                Pilih jenis kelamin
-                            </option>
 
                             <option value="L">
                                 Laki-laki
@@ -1682,45 +1390,30 @@
 
                     </div>
 
+                    <div class="form-group full">
 
-                    <!-- =========================================
-                         IDENTITAS PESERTA
-                    ========================================== -->
-
-                    <div class="form-group identitas-group">
-
-                        <label
-                            class="form-label"
-                        >
-                            Identitas / Tanda Pengenal
+                        <label>
+                            File Identitas
                         </label>
 
                         <input
                             type="file"
                             name="peserta[${i}][file_identitas]"
-                            class="form-control"
                             accept=".jpg,.jpeg,.png,.pdf"
                             required
                         >
 
-                        <div class="file-info">
-
-                            Upload 1 identitas/tanda pengenal
-                            peserta.
-                            Format JPG, JPEG, PNG, atau PDF.
-                            Maksimal 2 MB.
-
-                        </div>
+                        <span class="file-note">
+                            Format JPG, JPEG, PNG, atau PDF. Maksimal 5 MB.
+                        </span>
 
                     </div>
-
 
                 </div>
 
             `;
 
-
-            pesertaList.appendChild(
+            pesertaContainer.appendChild(
                 card
             );
 
@@ -1733,29 +1426,33 @@
         |--------------------------------------------------------------------------
         */
 
-        const total =
-            hargaPerOrang * jumlah;
+        totalPeserta.textContent =
+            jumlah +
+            ' peserta';
 
-
-        totalBayar.innerText =
+        totalHarga.textContent =
             'Rp ' +
-            formatRupiah(total);
-
-
-        jumlahText.innerText =
-            jumlah;
+            formatRupiah(
+                hargaPerPeserta *
+                jumlah
+            );
 
     }
 
 
     /*
     |--------------------------------------------------------------------------
-    | JUMLAH PESERTA BERUBAH
+    | EVENT JUMLAH PESERTA
     |--------------------------------------------------------------------------
     */
 
-    jumlahInput.addEventListener(
+    jumlahPeserta.addEventListener(
         'input',
+        generatePeserta
+    );
+
+    jumlahPeserta.addEventListener(
+        'change',
         generatePeserta
     );
 
@@ -1769,7 +1466,6 @@
     generatePeserta();
 
 </script>
-
 
 </body>
 

@@ -92,17 +92,12 @@ class PemesananController extends Controller
             |--------------------------------------------------------------------------
             | JIKA SISA KUOTA NULL
             |--------------------------------------------------------------------------
-            |
-            | Jika admin hanya mengisi kuota,
-            | otomatis gunakan kuota sebagai sisa kuota.
-            |
             */
 
             if (
                 $jadwal->sisa_kuota === null
                 && $jadwal->kuota !== null
             ) {
-
                 $jadwal->sisa_kuota =
                     $jadwal->kuota;
 
@@ -120,7 +115,6 @@ class PemesananController extends Controller
                 $jadwal->tgl_keberangkatan
                 && $jadwal->tgl_keberangkatan < now()
             ) {
-
                 return redirect()
                     ->route('paket-wisata.index')
                     ->with(
@@ -139,7 +133,6 @@ class PemesananController extends Controller
             if (
                 (int) $jadwal->sisa_kuota <= 0
             ) {
-
                 return redirect()
                     ->route('paket-wisata.index')
                     ->with(
@@ -182,7 +175,6 @@ class PemesananController extends Controller
                         $item->sisa_kuota === null
                         && $item->kuota !== null
                     ) {
-
                         $item->sisa_kuota =
                             $item->kuota;
 
@@ -207,7 +199,6 @@ class PemesananController extends Controller
             */
 
             if (!$jadwal) {
-
                 return redirect()
                     ->route('paket-wisata.index')
                     ->with(
@@ -228,12 +219,10 @@ class PemesananController extends Controller
             $paket->harga_promo !== null
             && $paket->harga_promo > 0
         ) {
-
             $harga =
                 (float) $paket->harga_promo;
 
         } else {
-
             $harga =
                 (float) $paket->harga_normal;
         }
@@ -336,6 +325,12 @@ class PemesananController extends Controller
                 'max:5120'
             ],
 
+            'metode_pembayaran' => [
+                'required',
+                'string',
+                'in:QRIS,OVO,DANA'
+            ],
+
             'catatan_revisi' => [
                 'nullable',
                 'string'
@@ -412,7 +407,6 @@ class PemesananController extends Controller
                 count($peserta)
                 != $jumlahPeserta
             ) {
-
                 abort(
                     422,
                     'Jumlah data peserta tidak sesuai dengan jumlah peserta.'
@@ -430,7 +424,6 @@ class PemesananController extends Controller
                 $jadwal->sisa_kuota === null
                 && $jadwal->kuota !== null
             ) {
-
                 $jadwal->sisa_kuota =
                     $jadwal->kuota;
 
@@ -448,7 +441,6 @@ class PemesananController extends Controller
                 $jumlahPeserta >
                 (int) $jadwal->sisa_kuota
             ) {
-
                 abort(
                     422,
                     'Jumlah peserta melebihi sisa kuota.'
@@ -466,12 +458,10 @@ class PemesananController extends Controller
                 $paketWisata->harga_promo !== null
                 && $paketWisata->harga_promo > 0
             ) {
-
                 $hargaPerOrang =
                     (float) $paketWisata->harga_promo;
 
             } else {
-
                 $hargaPerOrang =
                     (float) $paketWisata->harga_normal;
             }
@@ -553,7 +543,7 @@ class PemesananController extends Controller
 
             /*
             |--------------------------------------------------------------------------
-            | STATUS
+            | STATUS PEMESANAN
             |--------------------------------------------------------------------------
             */
 
@@ -677,9 +667,31 @@ class PemesananController extends Controller
                 $pemesanan->id_pemesanan;
 
 
+            /*
+            |--------------------------------------------------------------------------
+            | SIMPAN METODE PEMBAYARAN
+            |--------------------------------------------------------------------------
+            */
+
+            $pembayaran->metode_pembayaran =
+                $request->metode_pembayaran;
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | STATUS PEMBAYARAN
+            |--------------------------------------------------------------------------
+            */
+
             $pembayaran->status_pembayaran =
                 'menunggu';
 
+
+            /*
+            |--------------------------------------------------------------------------
+            | SIMPAN PEMBAYARAN
+            |--------------------------------------------------------------------------
+            */
 
             $pembayaran->save();
         });
@@ -687,15 +699,15 @@ class PemesananController extends Controller
 
         /*
         |--------------------------------------------------------------------------
-        | REDIRECT KE PEMBAYARAN
+        | REDIRECT KE DAFTAR PEMESANAN
         |--------------------------------------------------------------------------
         */
 
         return redirect()
-            ->route('pelanggan.pembayaran')
+            ->route('pelanggan.pemesanan.index')
             ->with(
                 'success',
-                'Pemesanan berhasil dibuat. Silakan lanjutkan pembayaran.'
+                'Pemesanan berhasil dibuat dan pembayaran berhasil disimpan.'
             );
     }
 }

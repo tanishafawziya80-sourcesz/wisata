@@ -19,15 +19,58 @@ class ETicketController extends Controller
 
     public function index()
     {
-        $tickets = ETicket::with([
+        /*
+        |--------------------------------------------------------------------------
+        | E-TICKET YANG SUDAH DITERBITKAN
+        |--------------------------------------------------------------------------
+        */
+
+        $eTickets = ETicket::with([
             'pemesanan.pelanggan',
             'pemesanan.pembayaran',
             'pemesanan.jadwalTour'
-        ])->latest()->get();
+        ])
+        ->latest()
+        ->get();
+
+        /*
+        |--------------------------------------------------------------------------
+        | ALIAS TICKETS
+        |--------------------------------------------------------------------------
+        | Disediakan juga supaya bagian lain yang masih menggunakan
+        | $tickets tidak mengalami error.
+        */
+
+        $tickets = $eTickets;
+
+        /*
+        |--------------------------------------------------------------------------
+        | PEMESANAN YANG SIAP DITERBITKAN E-TICKET
+        |--------------------------------------------------------------------------
+        */
+
+        $pemesananSiapTerbit = Pemesanan::with([
+            'pelanggan',
+            'pembayaran',
+            'jadwalTour'
+        ])
+        ->whereDoesntHave('eTicket')
+        ->latest()
+        ->get();
+
+        /*
+        |--------------------------------------------------------------------------
+        | KIRIM SEMUA DATA KE VIEW
+        |--------------------------------------------------------------------------
+        */
 
         return view(
             'pegawai.e-ticket.index',
-            compact('tickets')
+            compact(
+                'eTickets',
+                'tickets',
+                'pemesananSiapTerbit'
+            )
         );
     }
 
@@ -39,11 +82,37 @@ class ETicketController extends Controller
 
     public function terbitkan($id_pemesanan)
     {
+        /*
+        |--------------------------------------------------------------------------
+        | CARI PEMESANAN
+        |--------------------------------------------------------------------------
+        */
+
         $pemesanan = Pemesanan::with([
             'pelanggan',
             'pembayaran',
             'jadwalTour'
         ])->findOrFail($id_pemesanan);
+
+        /*
+        |--------------------------------------------------------------------------
+        | CEK E-TICKET LAMA
+        |--------------------------------------------------------------------------
+        */
+
+        $ticketLama = ETicket::where(
+            'id_pemesanan',
+            $pemesanan->id_pemesanan
+        )->first();
+
+        if ($ticketLama) {
+            return redirect()
+                ->route('pegawai.e-ticket.index')
+                ->with(
+                    'error',
+                    'E-Ticket untuk pemesanan ini sudah diterbitkan.'
+                );
+        }
 
         /*
         |--------------------------------------------------------------------------
@@ -98,6 +167,12 @@ class ETicketController extends Controller
             'status_pemesanan' => 'selesai',
         ]);
 
+        /*
+        |--------------------------------------------------------------------------
+        | KEMBALI KE HALAMAN E-TICKET
+        |--------------------------------------------------------------------------
+        */
+
         return redirect()
             ->route('pegawai.e-ticket.index')
             ->with(
@@ -116,6 +191,12 @@ class ETicketController extends Controller
 
     public function download($id)
     {
+        /*
+        |--------------------------------------------------------------------------
+        | CARI E-TICKET
+        |--------------------------------------------------------------------------
+        */
+
         $ticket = ETicket::with([
             'pemesanan.pelanggan',
             'pemesanan.pembayaran',
