@@ -9,7 +9,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        PaketWisata::create([
+       PaketWisata::create([
     'nama_paket'       => 'Wisata Bandung Pangalengan',
     'deskripsi'        => 'Paket liburan seru ke perkebunan teh dan pemandian air panas.',
     'akomodasi'        => 'Hotel Bintang 3',
