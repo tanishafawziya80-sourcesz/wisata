@@ -10,11 +10,10 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Buat user pegawai
+        // Buat user pegawai (tanpa kolom 'name' yang bikin error)
         User::firstOrCreate(
             ['email' => 'pegawai@wisata.com'],
             [
-                'name' => 'Pegawai Wisata',
                 'password' => bcrypt('password123'),
                 'role' => 'pegawai',
             ]
