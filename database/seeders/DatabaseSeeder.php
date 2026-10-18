@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\PaketWisata;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -21,5 +21,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        \App\Models\PaketWisata::create([
+    'nama_paket' => 'Wisata Bandung Pangalengan',
+    'deskripsi' => 'Paket liburan seru ke perkebunan teh dan pemandian air panas.',
+    'harga' => 350000,
+    // sesuaikan kolom dengan tabel di database Anda
+]);
     }
 }
