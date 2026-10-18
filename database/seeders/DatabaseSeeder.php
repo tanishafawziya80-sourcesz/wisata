@@ -27,4 +27,5 @@ class DatabaseSeeder extends Seeder
             'harga' => 350000,
         ]);
     }
+
 }
