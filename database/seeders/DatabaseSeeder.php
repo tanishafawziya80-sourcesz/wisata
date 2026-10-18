@@ -3,30 +3,28 @@
 namespace Database\Seeders;
 
 use App\Models\PaketWisata;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Buat user secara langsung tanpa factory
+        User::firstOrCreate(
+            ['email' => 'pegawai@wisata.com'],
+            [
+                'name' => 'Pegawai Wisata',
+                'password' => bcrypt('password123'),
+                'role' => 'pegawai',
+            ]
+        );
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // Buat data paket wisata
+        PaketWisata::create([
+            'nama_paket' => 'Wisata Bandung Pangalengan',
+            'deskripsi' => 'Paket liburan seru ke perkebunan teh dan pemandian air panas.',
+            'harga' => 350000,
         ]);
-
-        \App\Models\PaketWisata::create([
-    'nama_paket' => 'Wisata Bandung Pangalengan',
-    'deskripsi' => 'Paket liburan seru ke perkebunan teh dan pemandian air panas.',
-    'harga' => 350000,
-    // sesuaikan kolom dengan tabel di database Anda
-]);
     }
 }
