@@ -10,7 +10,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Buat user secara langsung tanpa factory
+        // Buat user pegawai secara langsung
         User::firstOrCreate(
             ['email' => 'pegawai@wisata.com'],
             [
